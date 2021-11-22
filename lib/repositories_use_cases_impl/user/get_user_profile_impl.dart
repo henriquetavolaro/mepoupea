@@ -1,0 +1,24 @@
+import 'package:dartz/dartz.dart';
+import 'package:mepoupeapp/datasource/network_service.dart';
+import 'package:mepoupeapp/domain/model/user_profile.dart';
+import 'package:mepoupeapp/domain/use_cases/user.dart';
+
+class GetUserProfileImpl implements GetUserProfileUseCase {
+
+  final NetworkService service;
+
+  GetUserProfileImpl(this.service);
+
+  @override
+  Future<Either<Exception, UserProfile>> call() async {
+    try {
+      final result = await service.getUserProfile();
+      return Right(result);
+    } catch (e) {
+      return Left(Exception(e));
+    }
+  }
+
+
+
+}
