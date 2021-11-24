@@ -2,13 +2,13 @@ import 'dart:convert';
 
 class FinanceTransactionInput {
   final String category;
-  final String typeByCategory;
+  final String subCategory;
   final double value;
   final String date;
   final String description;
   FinanceTransactionInput({
     required this.category,
-    required this.typeByCategory,
+    required this.subCategory,
     required this.value,
     required this.date,
     required this.description,
@@ -17,7 +17,7 @@ class FinanceTransactionInput {
   Map<String, dynamic> toMap() {
     return {
       'category': category,
-      'typeByCategory': typeByCategory,
+      'typeByCategory': subCategory,
       'value': value,
       'date': date,
       'description': description,
@@ -27,7 +27,7 @@ class FinanceTransactionInput {
   factory FinanceTransactionInput.fromMap(Map<String, dynamic> map) {
     return FinanceTransactionInput(
       category: map['category'],
-      typeByCategory: map['typeByCategory'],
+      subCategory: map['typeByCategory'],
       value: map['value'],
       date: map['date'],
       description: map['description'],

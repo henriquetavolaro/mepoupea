@@ -54,8 +54,8 @@ class _FakeCategoricalCosts_7 extends _i1.Fake implements _i9.CategoricalCosts {
 
 class _FakeCostsList_8 extends _i1.Fake implements _i10.CostsList {}
 
-class _FakeCategoricalNathCostsDetails_9 extends _i1.Fake
-    implements _i11.CategoricalNathCostsDetails {}
+class _FakeCategoricalNathLimitsCosts_9 extends _i1.Fake
+    implements _i11.CategoricalNathLimitsCosts {}
 
 class _FakeRecommendationsCards_10 extends _i1.Fake
     implements _i12.RecommendationsCards {}
@@ -141,12 +141,12 @@ class MockNetworkService extends _i1.Mock implements _i14.NetworkService {
               returnValue: Future<_i10.CostsList>.value(_FakeCostsList_8()))
           as _i15.Future<_i10.CostsList>);
   @override
-  _i15.Future<_i11.CategoricalNathCostsDetails> getFinanceNathLimit(
+  _i15.Future<_i11.CategoricalNathLimitsCosts> getFinanceNathLimit(
           String? context) =>
       (super.noSuchMethod(Invocation.method(#getFinanceNathLimit, [context]),
-              returnValue: Future<_i11.CategoricalNathCostsDetails>.value(
-                  _FakeCategoricalNathCostsDetails_9()))
-          as _i15.Future<_i11.CategoricalNathCostsDetails>);
+              returnValue: Future<_i11.CategoricalNathLimitsCosts>.value(
+                  _FakeCategoricalNathLimitsCosts_9()))
+          as _i15.Future<_i11.CategoricalNathLimitsCosts>);
   @override
   _i15.Future<int> postFinanceGoals(_i18.FinanceGoalInput? financeGoalInput) =>
       (super.noSuchMethod(
@@ -171,6 +171,11 @@ class MockNetworkService extends _i1.Mock implements _i14.NetworkService {
   @override
   _i15.Future<int> putFinanceGoals(_i20.FinanceGoal? financeGoal) =>
       (super.noSuchMethod(Invocation.method(#putFinanceGoals, [financeGoal]),
+          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+  @override
+  _i15.Future<int> patchCostListDetail(String? costId, String? category) =>
+      (super.noSuchMethod(
+          Invocation.method(#patchCostListDetail, [costId, category]),
           returnValue: Future<int>.value(0)) as _i15.Future<int>);
   @override
   _i15.Future<int> deleteFinanceGoals(String? goalId) =>

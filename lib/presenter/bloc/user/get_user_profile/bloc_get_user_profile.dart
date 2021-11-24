@@ -17,6 +17,7 @@ class GetUserProfileBloc
     if (event is GetUserProfileEvent) {
       yield GetUserProfileLoadingState();
       final result = await useCase();
+      print('result: ${result.toString()}');
       yield result.fold((l) => GetUserProfileErrorState(l),
               (r) => GetUserProfileSuccessState(r));
     }

@@ -7,7 +7,7 @@ import 'package:mockito/mockito.dart';
 
 import '../onboarding/get_onboard_answer_test.mocks.dart';
 
-class CategoricalNathCostsDetailsMock extends Mock implements CategoricalNathCostsDetails{}
+class CategoricalNathLimitsCostsMock extends Mock implements CategoricalNathLimitsCosts{}
 
 main(){
 
@@ -15,12 +15,12 @@ main(){
 
   final useCase = GetFinancialNathLimitImpl(service);
 
-  test('should return Right CategoricalNathCostsDetails', () async {
-    when(service.getFinanceNathLimit("context")).thenAnswer((_) async => CategoricalNathCostsDetailsMock());
+  test('should return Right CategoricalNathLimitsCosts', () async {
+    when(service.getFinanceNathLimit("context")).thenAnswer((_) async => CategoricalNathLimitsCostsMock());
 
     final result = await useCase("context");
 
-    expect(result.fold(id, id), isA<CategoricalNathCostsDetails>());
+    expect(result.fold(id, id), isA<CategoricalNathLimitsCosts>());
   });
 
   test('should return Left Exception', () async {

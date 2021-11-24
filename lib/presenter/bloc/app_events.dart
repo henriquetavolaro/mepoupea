@@ -99,6 +99,9 @@ class GetCategoricalCostsEvent extends AppEvents {
 }
 
 class GetFinanceBalanceEvent extends AppEvents {
+
+
+
   @override
   List<Object?> get props => throw UnimplementedError();
 }
@@ -108,10 +111,10 @@ class GetFinanceGoalsEvent extends AppEvents {
   List<Object?> get props => throw UnimplementedError();
 }
 
-class GetFinanceCostsEvent extends AppEvents {
+class GetFinancialCostsEvent extends AppEvents {
   final String context;
 
-  GetFinanceCostsEvent(this.context);
+  GetFinancialCostsEvent(this.context);
 
   @override
   List<Object?> get props => throw UnimplementedError();
@@ -159,11 +162,21 @@ class PostFinanceMovementEvent extends AppEvents {
   List<Object?> get props => throw UnimplementedError();
 }
 
-class PostFinanceNathLimit extends AppEvents {
+class PostFinanceNathLimitEvent extends AppEvents {
   final CategoricalNathLimitsCosts limitsCosts;
   final String context;
 
-  PostFinanceNathLimit(this.limitsCosts, this.context);
+  PostFinanceNathLimitEvent(this.limitsCosts, this.context);
+
+  @override
+  List<Object?> get props => throw UnimplementedError();
+}
+
+class PatchCostListDetailsEvent extends AppEvents {
+  final String costId;
+  final String category;
+
+  PatchCostListDetailsEvent(this.costId, this.category);
 
   @override
   List<Object?> get props => throw UnimplementedError();

@@ -13,7 +13,7 @@ main() {
 
   final financeTransactionInput = FinanceTransactionInput(
       category: "category",
-      typeByCategory: "typeByCategory",
+      subCategory: "typeByCategory",
       value: 0.0,
       date: "date",
       description: "description");

@@ -20,7 +20,7 @@ main(){
   test('should emit loading state and success state', () async {
 
     when(useCase("context")).thenAnswer((_) async => Right(OnboardModelMock()));
-    bloc.add(GetOnboardingAnswersEvent("lastItemId"));
+    bloc.add(GetOnboardingAnswersEvent("context"));
     expect(bloc.stream, emitsInOrder([
       isA<GetOnboardAnswerLoadingState>(),
       isA<GetOnboardAnswerSuccessState>()
@@ -30,7 +30,7 @@ main(){
   test('should emit loading state and error state', () async {
 
     when(useCase("context")).thenAnswer((_) async => Left(Exception()));
-    bloc.add(GetOnboardingAnswersEvent("lastItemId"));
+    bloc.add(GetOnboardingAnswersEvent("context"));
     expect(bloc.stream, emitsInOrder([
       isA<GetOnboardAnswerLoadingState>(),
       isA<GetOnboardAnswerErrorState>()

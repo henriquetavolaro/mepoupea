@@ -1,9 +1,12 @@
+
+
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:mepoupeapp/datasource/network_service.dart';
+import 'package:mepoupeapp/domain/model/answer_model.dart';
 import 'package:mepoupeapp/domain/model/categorical_costs.dart';
 import 'package:mepoupeapp/domain/model/categorical_nath_limits_costs.dart';
 import 'package:mepoupeapp/domain/model/costs_list.dart';
@@ -14,6 +17,7 @@ import 'package:mepoupeapp/domain/model/onboard_model.dart';
 import 'package:mepoupeapp/domain/model/recommendation_cards.dart';
 import 'package:mepoupeapp/domain/model/recommendation_cards_categorical.dart';
 import 'package:mepoupeapp/domain/model/user_profile.dart';
+import 'package:mepoupeapp/domain/model/user_profile_editable.dart';
 import 'package:mepoupeapp/domain/model/wealth_selfie.dart';
 import 'package:mockito/mockito.dart';
 
@@ -31,7 +35,7 @@ main() {
   test("should return Onboarding Model", () async {
     const path = "/onboard/page-date/0/lastAnswerId";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonOnboardModel);
+      server.reply(200, jsonDecode(jsonOnboardModel));
     });
     final result = await service.getOnboardingAnswer("lastAnswerId");
     expect(result, isA<OnboardModel>());
@@ -43,7 +47,7 @@ main() {
       error: {'message': 'Some beautiful error!'},
       requestOptions: RequestOptions(path: path),
       response: Response(
-        statusCode: 500,
+        statusCode: 404,
         requestOptions: RequestOptions(path: path),
       ),
       type: DioErrorType.response,
@@ -52,7 +56,18 @@ main() {
       server.throws(404, dioError);
     });
     final result = await service.getOnboardingAnswer("lastAnswerId");
-    expect(result, throwsA(isA<DioError>()));
+    expect(result, isA<OnboardModel>());
+  });
+
+  final answerModel = AnswerModel(pageId: "1");
+
+  test("should return 200", () async {
+    const path = "/onboard/answer";
+    dioAdapter.onPost(path, (server) {
+      server.reply(200, 200);
+    });
+    final result = await service.postOnboardingAnswer(answerModel);
+    expect(result, isA<int>());
   });
 
   // USER
@@ -60,10 +75,21 @@ main() {
   test("should return User Profile", () async {
     const path = "/user/profile";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonUser);
+      server.reply(200, jsonDecode(jsonUser));
     });
     final result = await service.getUserProfile();
     expect(result, isA<UserProfile>());
+  });
+
+  final userProfileEditable = UserProfileEditable(name: "name", email: "email", phone: "phone");
+
+  test("should return 200", () async {
+    const path = "/user/profile";
+    dioAdapter.onPut(path, (server) {
+      server.reply(200, {200});
+    });
+    final result = await service.putUserProfile(userProfileEditable);
+    expect(result, isA<int>());
   });
 
   // FINANCE
@@ -71,7 +97,7 @@ main() {
   test("should return FinanceSelfie", () async {
     const path = "/finance/selfie";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonFinanceSelfie);
+      server.reply(200, jsonDecode(jsonFinanceSelfie));
     });
     final result = await service.getFinancialSelfie("dataRange");
     expect(result, isA<FinanceSelfie>());
@@ -80,7 +106,7 @@ main() {
   test("should return WealthSelfie", () async {
     const path = "/finance/wealth-selfie";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonWealthSelfie);
+      server.reply(200, jsonDecode(jsonWealthSelfie));
     });
     final result = await service.getWealthSelfie();
     expect(result, isA<WealthSelfie>());
@@ -89,61 +115,55 @@ main() {
   test("should return FinanceBalance", () async {
     const path = "/finance/balance";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonFinanceBalance);
+      server.reply(200, jsonDecode(jsonFinanceBalance));
     });
     final result = await service.getFinanceBalance();
     expect(result, isA<FinanceBalance>());
   });
 
-  // test("should return FinanceGoals", () async {
-  //   const path = "/finance/goals";
-  //   dioAdapter.onGet(
-  //       path,
-  //           (server) {
-  //         server.reply(200, jsonFinanceGoals);
-  //       });
-  //   final result = await service.getFinanceGoals();
-  //   expect(result, isA<FinanceGoals>());
-  // });
+  test("should return FinanceGoals", () async {
+    const path = "/finance/goals";
+    dioAdapter.onGet(path, (server) {
+          server.reply(200, jsonDecode(jsonFinanceGoals));
+        });
+    final result = await service.getFinanceGoals();
+    expect(result, isA<FinanceGoals>());
+  });
 
   test("should return CategoricalCosts", () async {
     const path = "/finance/categorical-costs/context";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonCategoricalCosts);
+      server.reply(200, jsonDecode(jsonCategoricalCosts));
     });
     final result = await service.getCategoricalCosts("date", "context");
     expect(result, isA<CategoricalCosts>());
   });
 
-  //
-  // test("should return CostsList", () async {
-  //   const path = "/finance/costs-list/context";
-  //   dioAdapter.onGet(
-  //       path,
-  //           (server) {
-  //         server.reply(200, jsonCostList);
-  //       });
-  //   final result = await service.getFinancialCosts("context");
-  //   expect(result, isA<CostsList>());
-  // });
 
-  // test("should return CategoricalNathCostsDetails", () async {
-  //   const path = "/finance/nath/limit/context";
-  //   dioAdapter.onGet(
-  //       path,
-  //           (server) {
-  //         server.reply(200, jsonCategoricalNathCostsDetails);
-  //       });
-  //   final result = await service.getFinanceNathLimit("context");
-  //   expect(result, isA<CategoricalNathCostsDetails>());
-  // });
+  test("should return CostsList", () async {
+    const path = "/finance/costs-list/context";
+    dioAdapter.onGet(path, (server) {
+          server.reply(200, jsonDecode(jsonCostList));
+        });
+    final result = await service.getFinancialCosts("context");
+    expect(result, isA<CostsList>());
+  });
+
+  test("should return CategoricalNathLimitsCosts", () async {
+    const path = "/finance/nath/limit/context";
+    dioAdapter.onGet(path, (server) {
+          server.reply(200, jsonDecode(jsonCategoricalNathLimitsCosts));
+        });
+    final result = await service.getFinanceNathLimit("context");
+    expect(result, isA<CategoricalNathLimitsCosts>());
+  });
 
   // RECOMMENDATION
 
   test("should return RecommendationsCards", () async {
     const path = "/recommendations/cards/context";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonRecommendationCards);
+      server.reply(200, jsonDecode(jsonRecommendationCards));
     });
     final result = await service.getRecommendationCard("context");
     expect(result, isA<RecommendationsCards>());
@@ -152,7 +172,7 @@ main() {
   test("should return RecommendationsCardsCategorical", () async {
     const path = "/recommendations/categorical/context";
     dioAdapter.onGet(path, (server) {
-      server.reply(200, jsonRecommendationsCardsCategorical);
+      server.reply(200, jsonDecode(jsonRecommendationsCardsCategorical));
     });
     final result = await service.getRecommendationCardCategorical("context");
     expect(result, isA<RecommendationsCardsCategorical>());
@@ -162,8 +182,8 @@ main() {
 var jsonOnboardModel =
     "{\"pageId\": \"string\",\"cardType\": 0,\"texts\": [{\"text\": \"string\",\"fontSize\": 0.0,\"marker\": \"string\",\"textPosition\": \"string\"}],\"answerOptions\": [{\"answerId\": \"string\",\"text\": \"string\",\"fieldType\": 0,\"url\": \"string\"}]}";
 
-var jsonUser =
-    "{\"name\":\"string\",\"email\":\"string\",\"phone\":\"string\",\"imgUrl\":\"string\",\"createdAt\":\"string\",\"updatedAt\":\"string\"}";
+var jsonUser = "{\"name\": null,\"email\": \"12345\",\"phone\": null,\"isActive\": false,\"createdAt\": \"2021-11-23T16:15:53.151000\",\"updatedAt\": null,\"TESTING\": null}";
+    // "{\"name\":\"string\",\"email\":\"string\",\"phone\":\"string\",\"imgUrl\":\"string\",\"createdAt\":\"string\",\"updatedAt\":\"string\"}";
 
 var jsonFinanceSelfie =
     "{\"alone\": {\"likes\": 0.0,\"won\": {\"total\": 0.0},\"spent\": {\"total\": 0.0,\"value\": 0.0},\"invested\": {\"total\": 0.0,\"value\": 0.0}},\"withNath\": {\"likes\": 0.0,\"won\": {\"total\": 0.0},\"spent\": {\"total\": 0.0,\"value\": 0.0},\"invested\": {\"total\": 0.0,\"value\": 0.0}}}";
@@ -183,10 +203,11 @@ var jsonCategoricalCosts =
 var jsonCostList =
     "{\"transactionsNumber\": 0.0,\"costs\": [{\"costId\": \"string\",\"icon\": \"string\",\"title\": \"string\",\"category\": \"string\",\"value\": 0.0,\"origin\": \"string\"}]}";
 
-var jsonCategoricalNathCostsDetails =
+var jsonCategoricalNathLimitsCosts =
     "{\"total\": 0.0,\"budget\": 0.0,\"live\": {\"value\": 0.0,\"percentage\": 0.0,\"limit\": 0.0},\"eat\": {\"value\": 0.0,\"percentage\": 0.0,\"limit\": 0.0},\"health\": {\"value\": 0.0,\"percentage\": 0.0,\"limit\": 0.0},\"transport\": {\"value\": 0.0,\"percentage\": 0.0,\"limit\": 0.0},\"entertainment\": {\"value\": 0.0,\"percentage\": 0.0,\"limit\": 0.0}}";
 
 var jsonRecommendationCards =
     "{\"text\": \"string\",\"costValue\": 0.0,\"savedValue\": 0.0,\"icon\": \"string\",\"recommendationId\": \"string\"}";
 
 var jsonRecommendationsCardsCategorical = "{\"category\": \"string\",\"text\": \"string\",\"details\": [\"string\"],\"recommendationId\": \"string\"}";
+

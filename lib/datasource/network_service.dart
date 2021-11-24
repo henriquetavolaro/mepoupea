@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:mepoupeapp/domain/model/answer_model.dart';
 import 'package:mepoupeapp/domain/model/categorical_costs.dart';
@@ -26,10 +29,12 @@ class NetworkService {
     dio.options.baseUrl =
     "http://me-poupe-lucy-backend.sa-east-1.elasticbeanstalk.com";
     dio.options.headers['Authorization'] = 'Bearer $token';
-
+    dio.options.connectTimeout = 15000;
+    dio.options.responseType = ResponseType.plain;
     dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
       print('base ${options.baseUrl}');
       print("PATH: ${options.path}");
+      print("headers: ${options.headers}");
       return handler.next(options);
     }, onResponse: (response, handler) {
       print(
@@ -48,8 +53,10 @@ class NetworkService {
   Future<UserProfile> getUserProfile() async {
     try {
       var response = await dio.get('/user/profile');
+      print('response ${response.data}');
       return UserProfile.fromJson(response.data);
     } on DioError catch (e) {
+      print('e $e');
       throw Exception(e);
     }
   }
@@ -170,11 +177,11 @@ class NetworkService {
     }
   }
 
-  Future<CategoricalNathCostsDetails> getFinanceNathLimit(
+  Future<CategoricalNathLimitsCosts> getFinanceNathLimit(
       String context) async {
     try {
       var response = await dio.get('/finance/nath/limit/$context');
-      return CategoricalNathCostsDetails.fromJson(response.data);
+      return CategoricalNathLimitsCosts.fromJson(response.data);
     } on DioError catch (e) {
       throw Exception(e);
     }
@@ -224,15 +231,15 @@ class NetworkService {
     }
   }
 
-  // Future<int> patchCostListDetail(String costId costListDetails) async {
-  //   var json = costListDetails.toJson();
-  //   try {
-  //     var response = await dio.patch('/finance/cost/$costId', data: json);
-  //     return response.statusCode!;
-  //   } on DioError catch (e) {
-  //     throw Exception(e);
-  //   }
-  // }
+  Future<int> patchCostListDetail(String costId, String category) async {
+    try {
+      var response = await dio.patch('/finance/cost/$costId',
+          queryParameters: {'category': category});
+      return response.statusCode!;
+    } on DioError catch (e) {
+      throw Exception(e);
+    }
+  }
 
   Future<int> deleteFinanceGoals(String goalId) async {
     try {

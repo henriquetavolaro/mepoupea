@@ -16,7 +16,7 @@ class FinanceGoals {
 
   factory FinanceGoals.fromMap(Map<String, dynamic> map) {
     return FinanceGoals(
-      goals: List<FinanceGoal>.from(map['finance']?.map((x) => FinanceGoal.fromMap(x))),
+      goals: List<FinanceGoal>.from(map['goals']?.map((x) => FinanceGoal.fromMap(x))),
     );
   }
 

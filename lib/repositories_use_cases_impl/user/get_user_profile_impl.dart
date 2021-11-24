@@ -13,9 +13,12 @@ class GetUserProfileImpl implements GetUserProfileUseCase {
   Future<Either<Exception, UserProfile>> call() async {
     try {
       final result = await service.getUserProfile();
+      print('result:: $result');
       return Right(result);
     } catch (e) {
+      print('e: $e');
       return Left(Exception(e));
+
     }
   }
 

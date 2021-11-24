@@ -18,7 +18,7 @@ class FinanceGoal {
   Map<String, dynamic> toMap() {
     return {
       'goalId': goalId,
-      'actualValue': presentValue,
+      'presentValue': presentValue,
       'goalValue': goalValue,
       'date': date,
       'icon': icon,
@@ -28,7 +28,7 @@ class FinanceGoal {
   factory FinanceGoal.fromMap(Map<String, dynamic> map) {
     return FinanceGoal(
       goalId: map['goalId'],
-      presentValue: map['actualValue'],
+      presentValue: map['presentValue'],
       goalValue: map['goalValue'],
       date: map['date'],
       icon: map['icon'],

@@ -10,7 +10,7 @@ class GetFinancialNathLimitImpl implements GetFinancialNathLimitUseCase {
   GetFinancialNathLimitImpl(this.service);
 
   @override
-  Future<Either<Exception, CategoricalNathCostsDetails>> call(String context) async {
+  Future<Either<Exception, CategoricalNathLimitsCosts>> call(String context) async {
     try {
       final result = await service.getFinanceNathLimit(context);
       return Right(result);

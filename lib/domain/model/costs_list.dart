@@ -1,23 +1,23 @@
 import 'dart:convert';
 
 class CostsList {
-  final double transactionNumber;
+  final double transactionsNumber;
   final List<CostsListsDetails> costs;
   CostsList({
-    required this.transactionNumber,
+    required this.transactionsNumber,
     required this.costs,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'transactionNumber': transactionNumber,
+      'transactionNumber': transactionsNumber,
       'costs': costs.map((x) => x.toMap()).toList(),
     };
   }
 
   factory CostsList.fromMap(Map<String, dynamic> map) {
     return CostsList(
-      transactionNumber: map['transactionNumber'],
+      transactionsNumber: map['transactionsNumber'],
       costs: List<CostsListsDetails>.from(map['costs'].map((x) => CostsListsDetails.fromMap(x))),
     );
   }

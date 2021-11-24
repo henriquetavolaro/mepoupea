@@ -18,7 +18,7 @@ main() {
 
   final useCase = PostOnboardAnswersImpl(service);
 
-  final answerModel = AnswerModel(answers: AnswerModelBody(pageId: "1"));
+  final answerModel = AnswerModel(pageId: "1");
 
   test('should return Right int - code 200', () async {
     when(service.postOnboardingAnswer(answerModel)).thenAnswer((_) async => 200);

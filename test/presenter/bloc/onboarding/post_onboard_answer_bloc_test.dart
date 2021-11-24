@@ -18,7 +18,7 @@ main(){
 
   final bloc = PostOnboardAnswersBloc(useCase);
 
-  final answerModel = AnswerModel(answers: AnswerModelBody(pageId: "1"));
+  final answerModel = AnswerModel(pageId: "1");
 
   test('should emit loading state and success state', () async {
 

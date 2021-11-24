@@ -28,7 +28,7 @@ abstract class GetFinancialCostsUseCase {
 }
 
 abstract class GetFinancialNathLimitUseCase {
-  Future<Either<Exception,CategoricalNathCostsDetails>> call(
+  Future<Either<Exception,CategoricalNathLimitsCosts>> call(
       String context);
 }
 
@@ -59,9 +59,9 @@ abstract class EditFinanceGoalsUseCase {
   Future<Either<Exception,int>> call(FinanceGoal goal);
 }
 
-// abstract class PatchCostListDetailsUseCase {
-//   Future<Either<Exception, int>> patchCostListDetails(String costId, String category);
-// }
+abstract class PatchCostListDetailsUseCase {
+  Future<Either<Exception, int>> call(String costId, String category);
+}
 
 abstract class DeleteFinanceGoalsUseCase {
   Future<Either<Exception, int>> call(String goalId);
