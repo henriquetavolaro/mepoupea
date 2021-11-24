@@ -5,7 +5,7 @@
 import 'dart:async' as _i15;
 
 import 'package:dio/dio.dart' as _i2;
-import 'package:mepoupeapp/datasource/network_service.dart' as _i14;
+import 'package:mepoupeapp/data/datasource/network_service.dart' as _i14;
 import 'package:mepoupeapp/domain/model/answer_model.dart' as _i17;
 import 'package:mepoupeapp/domain/model/categorical_costs.dart' as _i9;
 import 'package:mepoupeapp/domain/model/categorical_nath_limits_costs.dart'

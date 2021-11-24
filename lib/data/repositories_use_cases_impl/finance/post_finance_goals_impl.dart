@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:mepoupeapp/datasource/network_service.dart';
+import 'package:mepoupeapp/data/datasource/network_service.dart';
 import 'package:mepoupeapp/domain/model/finance_goal_input.dart';
 import 'package:mepoupeapp/domain/use_cases/finance.dart';
 

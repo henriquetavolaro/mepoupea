@@ -2,16 +2,13 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mepoupeapp/data/repositories_use_cases_impl/onboarding/post_onboard_answers_impl.dart';
 import 'package:mepoupeapp/domain/model/answer_model.dart';
 import 'package:mepoupeapp/domain/model/onboard_model.dart';
 import 'package:mepoupeapp/domain/use_cases/onboarding.dart';
-import 'package:mepoupeapp/repositories_use_cases_impl/onboarding/post_onboard_answers_impl.dart';
 import 'package:mockito/mockito.dart';
-
 import '../../datasource/network_service_test.dart';
 import 'get_onboard_answer_test.mocks.dart';
-
-
 
 main() {
   final service = MockNetworkService();

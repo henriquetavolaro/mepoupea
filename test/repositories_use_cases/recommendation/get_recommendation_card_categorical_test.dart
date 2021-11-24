@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mepoupeapp/data/repositories_use_cases_impl/recommendations/get_recommendation_card_categorical_impl.dart';
 import 'package:mepoupeapp/domain/model/recommendation_cards_categorical.dart';
-import 'package:mepoupeapp/repositories_use_cases_impl/recommendations/get_recommendation_card_categorical_impl.dart';
 import 'package:mockito/mockito.dart';
-
 import '../onboarding/get_onboard_answer_test.mocks.dart';
 
 class RecommendationCardCategoricalMock extends Mock implements RecommendationsCardsCategorical {}

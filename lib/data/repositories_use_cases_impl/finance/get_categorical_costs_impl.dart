@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:mepoupeapp/datasource/network_service.dart';
+import 'package:mepoupeapp/data/datasource/network_service.dart';
 import 'package:mepoupeapp/domain/model/categorical_costs.dart';
 import 'package:mepoupeapp/domain/use_cases/finance.dart';
 

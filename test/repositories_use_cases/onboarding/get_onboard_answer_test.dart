@@ -1,9 +1,9 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mepoupeapp/datasource/network_service.dart';
+import 'package:mepoupeapp/data/datasource/network_service.dart';
+import 'package:mepoupeapp/data/repositories_use_cases_impl/onboarding/get_onboard_answers_impl.dart';
 import 'package:mepoupeapp/domain/model/onboard_model.dart';
-import 'package:mepoupeapp/repositories_use_cases_impl/onboarding/get_onboard_answers_impl.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
