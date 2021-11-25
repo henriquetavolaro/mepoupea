@@ -31,4 +31,17 @@ class PhoneSignInVerifyEvent extends AuthenticationEvent {
   List<Object> get props => [smsCode];
 }
 
-class AuthenticationLoggedOut extends AuthenticationEvent {}
+class AuthenticationLoggedOutEvent extends AuthenticationEvent {}
+
+class AuthenticationGetTokenEvent extends AuthenticationEvent {}
+
+class AuthenticationListenUserChangeEvent extends AuthenticationEvent {
+
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  AuthenticationListenUserChangeEvent(this.navigatorKey);
+
+  @override
+  List<Object> get props => [navigatorKey];
+
+}

@@ -1,7 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mepoupeapp/di/injection_module.dart';
 import 'package:mepoupeapp/presenter/bloc/app_events.dart';
@@ -19,13 +18,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late GetUserProfileBloc bloc;
-
-  @override
-  void initState() {
-    bloc = sl.get<GetUserProfileBloc>();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: HomeBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          bloc.add(GetUserProfileEvent());
+          sl.get<GetUserProfileBloc>().add(GetUserProfileEvent());
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

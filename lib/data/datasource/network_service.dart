@@ -18,28 +18,29 @@ import 'package:mepoupeapp/domain/model/recommendation_cards_categorical.dart';
 import 'package:mepoupeapp/domain/model/user_profile.dart';
 import 'package:mepoupeapp/domain/model/user_profile_editable.dart';
 import 'package:mepoupeapp/domain/model/wealth_selfie.dart';
+import 'package:mepoupeapp/utils/secure_storage.dart';
 
 class NetworkService {
   final Dio dio;
+  final SecureStorage storage;
 
-  // TODO PEGAR JWT TOKEN
-  final token = "12345";
-
-  NetworkService(this.dio) {
+  NetworkService(this.dio, this.storage) {
     dio.options.baseUrl =
-    "http://me-poupe-lucy-backend.sa-east-1.elasticbeanstalk.com";
-    dio.options.headers['Authorization'] = 'Bearer $token';
-    dio.options.connectTimeout = 15000;
+        "http://me-poupe-lucy-backend.sa-east-1.elasticbeanstalk.com";
+    // dio.options.headers['Authorization'] = 'Bearer $token';
+    dio.options.connectTimeout = 10000;
     dio.options.responseType = ResponseType.plain;
-    dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
+    dio.interceptors.add(InterceptorsWrapper(
+        onRequest: (options, handler) async {
+      //     final jwt = await storage.getToken();
+      // options.headers.addAll({'Authorization': 'Bearer $jwt'});
       print('base ${options.baseUrl}');
       print("PATH: ${options.path}");
       print("headers: ${options.headers}");
       return handler.next(options);
     }, onResponse: (response, handler) {
       print(
-          "RESPONSE: ${response.statusCode} / PATH: ${response.requestOptions
-              .path}");
+          "RESPONSE: ${response.statusCode} / PATH: ${response.requestOptions.path}");
       return handler.next(response);
     }, onError: (DioError e, handler) {
       print(
@@ -157,8 +158,8 @@ class NetworkService {
     }
   }
 
-  Future<CategoricalCosts> getCategoricalCosts(String date,
-      String context) async {
+  Future<CategoricalCosts> getCategoricalCosts(
+      String date, String context) async {
     try {
       var response = await dio.get('/finance/categorical-costs/$context',
           queryParameters: {'date': date});
@@ -177,8 +178,7 @@ class NetworkService {
     }
   }
 
-  Future<CategoricalNathLimitsCosts> getFinanceNathLimit(
-      String context) async {
+  Future<CategoricalNathLimitsCosts> getFinanceNathLimit(String context) async {
     try {
       var response = await dio.get('/finance/nath/limit/$context');
       return CategoricalNathLimitsCosts.fromJson(response.data);
@@ -210,8 +210,7 @@ class NetworkService {
   }
 
   Future<int> postFinanceMovement(
-      FinanceTransactionInput financeTransactionInput,
-      String context) async {
+      FinanceTransactionInput financeTransactionInput, String context) async {
     var json = financeTransactionInput.toJson();
     try {
       var response = await dio.post('/finance/$context', data: json);

@@ -28,5 +28,16 @@ class AuthenticationFailureState extends AuthenticationState {
 
   @override
   List<Object> get props => [message];
+}
+
+class AuthenticationTokenState extends AuthenticationState {
+
+  final String token;
+
+  const AuthenticationTokenState(this.token);
+
+  @override
+  List<Object> get props => [token];
+
 
 }

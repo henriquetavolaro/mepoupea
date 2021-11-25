@@ -4,10 +4,12 @@ import 'package:mepoupeapp/domain/use_cases/finance.dart';
 import 'package:mepoupeapp/presenter/bloc/app_events.dart';
 import 'package:mepoupeapp/presenter/bloc/finance/delete_finance_goal/bloc_delete_finance_goal.dart';
 import 'package:mepoupeapp/presenter/bloc/finance/delete_finance_goal/state_delete_finance_goal.dart';
+import 'package:mepoupeapp/utils/secure_storage.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'delete_finance_goal_test.mocks.dart';
+
 
 @GenerateMocks([DeleteFinanceGoalsUseCase])
 main() {

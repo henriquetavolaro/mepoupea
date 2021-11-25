@@ -17,8 +17,6 @@ class AuthenticationBloc
       try {
         final credential = await authentication.signInWithGoogle();
         print('my credential: ${credential.idToken}');
-        final isSignedIn = await authentication.isSignedIn();
-        print('is signed in: $isSignedIn');
         yield AuthenticationSuccessState(credential);
       } catch(e) {
         yield AuthenticationFailureState(e.toString());
@@ -45,8 +43,15 @@ class AuthenticationBloc
         print(e.toString());
       }
     }
-    if(event is AuthenticationLoggedOut){
+    if(event is AuthenticationLoggedOutEvent){
       authentication.signOut();
+    }
+    if(event is AuthenticationListenUserChangeEvent){
+      authentication.listenUserChanges(event.navigatorKey);
+    }
+    if(event is AuthenticationGetTokenEvent){
+      final result = await authentication.getUserId();
+      yield AuthenticationTokenState(result);
     }
 
   }

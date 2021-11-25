@@ -1,14 +1,16 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mepoupeapp/utils/secure_storage.dart';
 
 class AuthenticationClass {
-
   final FirebaseAuth auth;
+  final SecureStorage storage;
 
-  AuthenticationClass(this.auth);
-
+  AuthenticationClass(this.auth, this.storage);
 
   Future<OAuthCredential> signInWithGoogle() async {
     // Trigger the authentication flow
@@ -16,7 +18,7 @@ class AuthenticationClass {
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
-    await googleUser?.authentication;
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -38,51 +40,56 @@ class AuthenticationClass {
         verificationCompleted: (PhoneAuthCredential credential) async {
           await auth.signInWithCredential(credential);
         },
-        verificationFailed: (FirebaseAuthException e){
-          if(e.code == 'invalid-phone-number'){
+        verificationFailed: (FirebaseAuthException e) {
+          if (e.code == 'invalid-phone-number') {
             print('Invalid phone number');
           }
         },
-        codeSent: (String verificationId, int? resendToken) async{
+        codeSent: (String verificationId, int? resendToken) async {
           this.verificationId = verificationId;
         },
-        codeAutoRetrievalTimeout: (String verificationId){});
+        codeAutoRetrievalTimeout: (String verificationId) {});
   }
 
   Future<void> verify(String smsCode) async {
-    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: smsCode);
-    print('auth provider: ${phoneAuthCredential.providerId}');
-    print('auth token: ${phoneAuthCredential.token}');
+    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
+        verificationId: verificationId, smsCode: smsCode);
     await auth.signInWithCredential(phoneAuthCredential);
   }
 
   void facebookSignIn() async {
     try {
       final result = await FacebookAuth.instance.login();
-
-      print('facebook token: ${result.accessToken!.token}');
-
       final facebookAuthCredential =
-      FacebookAuthProvider.credential(result.accessToken!.token);
+          FacebookAuthProvider.credential(result.accessToken!.token);
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       print(e.toString());
     }
   }
 
-
-  Future<bool> isSignedIn() async {
-    final currentUser = auth.currentUser;
-    return currentUser != null;
+  Future<StreamSubscription<User?>> listenUserChanges(
+      GlobalKey<NavigatorState> navigatorKey) async {
+    final sub = auth.userChanges().listen((event) async {
+      if (event != null) {
+        final token = await getUserId();
+        await storage.setToken(token);
+        navigatorKey.currentState!.pushReplacementNamed('/logged');
+      } else {
+        await storage.removeToken();
+        navigatorKey.currentState!.pushReplacementNamed('/home_page');
+      }
+    });
+    return sub;
   }
 
-  Future<User?> getUser() async {
-    return auth.currentUser;
+  Future<String> getUserId() async {
+    var userid = await auth.currentUser!.getIdToken(true);
+    return userid;
   }
 
   Future<void> signOut() async {
+    await storage.removeToken();
     return await auth.signOut();
   }
-
 }
-

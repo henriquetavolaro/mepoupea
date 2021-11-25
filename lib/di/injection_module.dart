@@ -46,17 +46,19 @@ import 'package:mepoupeapp/presenter/bloc/recommendations/get_recommendation_car
 import 'package:mepoupeapp/presenter/bloc/user/delete_user_profile/bloc_delete_user_profile.dart';
 import 'package:mepoupeapp/presenter/bloc/user/edit_user_profile/bloc_edit_user_profile.dart';
 import 'package:mepoupeapp/presenter/bloc/user/get_user_profile/bloc_get_user_profile.dart';
+import 'package:mepoupeapp/utils/secure_storage.dart';
 
 final sl = GetIt.instance;
 
 void setupServiceLocator(){
 
   sl.registerSingleton(Dio());
-  sl.registerLazySingleton<NetworkService>(() => NetworkService(sl()));
+  sl.registerSingleton(SecureStorage());
+  sl.registerLazySingleton<NetworkService>(() => NetworkService(sl(), sl()));
 
   //AUTHENTICATION
   sl.registerLazySingleton(() => FirebaseAuth.instance);
-  sl.registerLazySingleton(() => AuthenticationClass(sl()));
+  sl.registerLazySingleton(() => AuthenticationClass(sl(), sl()));
   sl.registerLazySingleton(() => AuthenticationBloc(sl()));
 
 

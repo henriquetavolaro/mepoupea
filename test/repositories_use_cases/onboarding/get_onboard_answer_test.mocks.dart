@@ -2,28 +2,29 @@
 // in mepoupeapp/test/repositories_use_cases/onboarding/get_onboard_answer_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i15;
+import 'dart:async' as _i16;
 
 import 'package:dio/dio.dart' as _i2;
-import 'package:mepoupeapp/data/datasource/network_service.dart' as _i14;
-import 'package:mepoupeapp/domain/model/answer_model.dart' as _i17;
-import 'package:mepoupeapp/domain/model/categorical_costs.dart' as _i9;
+import 'package:mepoupeapp/data/datasource/network_service.dart' as _i15;
+import 'package:mepoupeapp/domain/model/answer_model.dart' as _i18;
+import 'package:mepoupeapp/domain/model/categorical_costs.dart' as _i10;
 import 'package:mepoupeapp/domain/model/categorical_nath_limits_costs.dart'
-    as _i11;
-import 'package:mepoupeapp/domain/model/costs_list.dart' as _i10;
-import 'package:mepoupeapp/domain/model/finance_balance.dart' as _i7;
-import 'package:mepoupeapp/domain/model/finance_goal.dart' as _i20;
-import 'package:mepoupeapp/domain/model/finance_goal_input.dart' as _i18;
-import 'package:mepoupeapp/domain/model/finance_goals.dart' as _i8;
-import 'package:mepoupeapp/domain/model/finance_selfie.dart' as _i5;
-import 'package:mepoupeapp/domain/model/finance_transaction_input.dart' as _i19;
-import 'package:mepoupeapp/domain/model/onboard_model.dart' as _i4;
-import 'package:mepoupeapp/domain/model/recommendation_cards.dart' as _i12;
+    as _i12;
+import 'package:mepoupeapp/domain/model/costs_list.dart' as _i11;
+import 'package:mepoupeapp/domain/model/finance_balance.dart' as _i8;
+import 'package:mepoupeapp/domain/model/finance_goal.dart' as _i21;
+import 'package:mepoupeapp/domain/model/finance_goal_input.dart' as _i19;
+import 'package:mepoupeapp/domain/model/finance_goals.dart' as _i9;
+import 'package:mepoupeapp/domain/model/finance_selfie.dart' as _i6;
+import 'package:mepoupeapp/domain/model/finance_transaction_input.dart' as _i20;
+import 'package:mepoupeapp/domain/model/onboard_model.dart' as _i5;
+import 'package:mepoupeapp/domain/model/recommendation_cards.dart' as _i13;
 import 'package:mepoupeapp/domain/model/recommendation_cards_categorical.dart'
-    as _i13;
-import 'package:mepoupeapp/domain/model/user_profile.dart' as _i3;
-import 'package:mepoupeapp/domain/model/user_profile_editable.dart' as _i16;
-import 'package:mepoupeapp/domain/model/wealth_selfie.dart' as _i6;
+    as _i14;
+import 'package:mepoupeapp/domain/model/user_profile.dart' as _i4;
+import 'package:mepoupeapp/domain/model/user_profile_editable.dart' as _i17;
+import 'package:mepoupeapp/domain/model/wealth_selfie.dart' as _i7;
+import 'package:mepoupeapp/utils/secure_storage.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -37,36 +38,38 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeDio_0 extends _i1.Fake implements _i2.Dio {}
 
-class _FakeUserProfile_1 extends _i1.Fake implements _i3.UserProfile {}
+class _FakeSecureStorage_1 extends _i1.Fake implements _i3.SecureStorage {}
 
-class _FakeOnboardModel_2 extends _i1.Fake implements _i4.OnboardModel {}
+class _FakeUserProfile_2 extends _i1.Fake implements _i4.UserProfile {}
 
-class _FakeFinanceSelfie_3 extends _i1.Fake implements _i5.FinanceSelfie {}
+class _FakeOnboardModel_3 extends _i1.Fake implements _i5.OnboardModel {}
 
-class _FakeWealthSelfie_4 extends _i1.Fake implements _i6.WealthSelfie {}
+class _FakeFinanceSelfie_4 extends _i1.Fake implements _i6.FinanceSelfie {}
 
-class _FakeFinanceBalance_5 extends _i1.Fake implements _i7.FinanceBalance {}
+class _FakeWealthSelfie_5 extends _i1.Fake implements _i7.WealthSelfie {}
 
-class _FakeFinanceGoals_6 extends _i1.Fake implements _i8.FinanceGoals {}
+class _FakeFinanceBalance_6 extends _i1.Fake implements _i8.FinanceBalance {}
 
-class _FakeCategoricalCosts_7 extends _i1.Fake implements _i9.CategoricalCosts {
-}
+class _FakeFinanceGoals_7 extends _i1.Fake implements _i9.FinanceGoals {}
 
-class _FakeCostsList_8 extends _i1.Fake implements _i10.CostsList {}
+class _FakeCategoricalCosts_8 extends _i1.Fake
+    implements _i10.CategoricalCosts {}
 
-class _FakeCategoricalNathLimitsCosts_9 extends _i1.Fake
-    implements _i11.CategoricalNathLimitsCosts {}
+class _FakeCostsList_9 extends _i1.Fake implements _i11.CostsList {}
 
-class _FakeRecommendationsCards_10 extends _i1.Fake
-    implements _i12.RecommendationsCards {}
+class _FakeCategoricalNathLimitsCosts_10 extends _i1.Fake
+    implements _i12.CategoricalNathLimitsCosts {}
 
-class _FakeRecommendationsCardsCategorical_11 extends _i1.Fake
-    implements _i13.RecommendationsCardsCategorical {}
+class _FakeRecommendationsCards_11 extends _i1.Fake
+    implements _i13.RecommendationsCards {}
+
+class _FakeRecommendationsCardsCategorical_12 extends _i1.Fake
+    implements _i14.RecommendationsCardsCategorical {}
 
 /// A class which mocks [NetworkService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNetworkService extends _i1.Mock implements _i14.NetworkService {
+class MockNetworkService extends _i1.Mock implements _i15.NetworkService {
   MockNetworkService() {
     _i1.throwOnMissingStub(this);
   }
@@ -76,125 +79,125 @@ class MockNetworkService extends _i1.Mock implements _i14.NetworkService {
       (super.noSuchMethod(Invocation.getter(#dio), returnValue: _FakeDio_0())
           as _i2.Dio);
   @override
-  String get token =>
-      (super.noSuchMethod(Invocation.getter(#token), returnValue: '')
-          as String);
+  _i3.SecureStorage get storage =>
+      (super.noSuchMethod(Invocation.getter(#storage),
+          returnValue: _FakeSecureStorage_1()) as _i3.SecureStorage);
   @override
-  _i15.Future<_i3.UserProfile> getUserProfile() =>
+  _i16.Future<_i4.UserProfile> getUserProfile() =>
       (super.noSuchMethod(Invocation.method(#getUserProfile, []),
-              returnValue: Future<_i3.UserProfile>.value(_FakeUserProfile_1()))
-          as _i15.Future<_i3.UserProfile>);
+              returnValue: Future<_i4.UserProfile>.value(_FakeUserProfile_2()))
+          as _i16.Future<_i4.UserProfile>);
   @override
-  _i15.Future<int> putUserProfile(
-          _i16.UserProfileEditable? userProfileEditable) =>
+  _i16.Future<int> putUserProfile(
+          _i17.UserProfileEditable? userProfileEditable) =>
       (super.noSuchMethod(
           Invocation.method(#putUserProfile, [userProfileEditable]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<int> deleteUserProfile() =>
+  _i16.Future<int> deleteUserProfile() =>
       (super.noSuchMethod(Invocation.method(#deleteUserProfile, []),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<_i4.OnboardModel> getOnboardingAnswer(String? lastAnswerId) =>
+  _i16.Future<_i5.OnboardModel> getOnboardingAnswer(String? lastAnswerId) =>
       (super.noSuchMethod(
               Invocation.method(#getOnboardingAnswer, [lastAnswerId]),
               returnValue:
-                  Future<_i4.OnboardModel>.value(_FakeOnboardModel_2()))
-          as _i15.Future<_i4.OnboardModel>);
+                  Future<_i5.OnboardModel>.value(_FakeOnboardModel_3()))
+          as _i16.Future<_i5.OnboardModel>);
   @override
-  _i15.Future<int> postOnboardingAnswer(_i17.AnswerModel? answerModel) => (super
+  _i16.Future<int> postOnboardingAnswer(_i18.AnswerModel? answerModel) => (super
       .noSuchMethod(Invocation.method(#postOnboardingAnswer, [answerModel]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<_i5.FinanceSelfie> getFinancialSelfie(String? dataRange) =>
+  _i16.Future<_i6.FinanceSelfie> getFinancialSelfie(String? dataRange) =>
       (super.noSuchMethod(Invocation.method(#getFinancialSelfie, [dataRange]),
               returnValue:
-                  Future<_i5.FinanceSelfie>.value(_FakeFinanceSelfie_3()))
-          as _i15.Future<_i5.FinanceSelfie>);
+                  Future<_i6.FinanceSelfie>.value(_FakeFinanceSelfie_4()))
+          as _i16.Future<_i6.FinanceSelfie>);
   @override
-  _i15.Future<_i6.WealthSelfie> getWealthSelfie() => (super.noSuchMethod(
+  _i16.Future<_i7.WealthSelfie> getWealthSelfie() => (super.noSuchMethod(
           Invocation.method(#getWealthSelfie, []),
-          returnValue: Future<_i6.WealthSelfie>.value(_FakeWealthSelfie_4()))
-      as _i15.Future<_i6.WealthSelfie>);
+          returnValue: Future<_i7.WealthSelfie>.value(_FakeWealthSelfie_5()))
+      as _i16.Future<_i7.WealthSelfie>);
   @override
-  _i15.Future<_i7.FinanceBalance> getFinanceBalance() =>
+  _i16.Future<_i8.FinanceBalance> getFinanceBalance() =>
       (super.noSuchMethod(Invocation.method(#getFinanceBalance, []),
               returnValue:
-                  Future<_i7.FinanceBalance>.value(_FakeFinanceBalance_5()))
-          as _i15.Future<_i7.FinanceBalance>);
+                  Future<_i8.FinanceBalance>.value(_FakeFinanceBalance_6()))
+          as _i16.Future<_i8.FinanceBalance>);
   @override
-  _i15.Future<_i8.FinanceGoals> getFinanceGoals() => (super.noSuchMethod(
+  _i16.Future<_i9.FinanceGoals> getFinanceGoals() => (super.noSuchMethod(
           Invocation.method(#getFinanceGoals, []),
-          returnValue: Future<_i8.FinanceGoals>.value(_FakeFinanceGoals_6()))
-      as _i15.Future<_i8.FinanceGoals>);
+          returnValue: Future<_i9.FinanceGoals>.value(_FakeFinanceGoals_7()))
+      as _i16.Future<_i9.FinanceGoals>);
   @override
-  _i15.Future<_i9.CategoricalCosts> getCategoricalCosts(
+  _i16.Future<_i10.CategoricalCosts> getCategoricalCosts(
           String? date, String? context) =>
       (super.noSuchMethod(
               Invocation.method(#getCategoricalCosts, [date, context]),
-              returnValue:
-                  Future<_i9.CategoricalCosts>.value(_FakeCategoricalCosts_7()))
-          as _i15.Future<_i9.CategoricalCosts>);
+              returnValue: Future<_i10.CategoricalCosts>.value(
+                  _FakeCategoricalCosts_8()))
+          as _i16.Future<_i10.CategoricalCosts>);
   @override
-  _i15.Future<_i10.CostsList> getFinancialCosts(String? context) =>
+  _i16.Future<_i11.CostsList> getFinancialCosts(String? context) =>
       (super.noSuchMethod(Invocation.method(#getFinancialCosts, [context]),
-              returnValue: Future<_i10.CostsList>.value(_FakeCostsList_8()))
-          as _i15.Future<_i10.CostsList>);
+              returnValue: Future<_i11.CostsList>.value(_FakeCostsList_9()))
+          as _i16.Future<_i11.CostsList>);
   @override
-  _i15.Future<_i11.CategoricalNathLimitsCosts> getFinanceNathLimit(
+  _i16.Future<_i12.CategoricalNathLimitsCosts> getFinanceNathLimit(
           String? context) =>
       (super.noSuchMethod(Invocation.method(#getFinanceNathLimit, [context]),
-              returnValue: Future<_i11.CategoricalNathLimitsCosts>.value(
-                  _FakeCategoricalNathLimitsCosts_9()))
-          as _i15.Future<_i11.CategoricalNathLimitsCosts>);
+              returnValue: Future<_i12.CategoricalNathLimitsCosts>.value(
+                  _FakeCategoricalNathLimitsCosts_10()))
+          as _i16.Future<_i12.CategoricalNathLimitsCosts>);
   @override
-  _i15.Future<int> postFinanceGoals(_i18.FinanceGoalInput? financeGoalInput) =>
+  _i16.Future<int> postFinanceGoals(_i19.FinanceGoalInput? financeGoalInput) =>
       (super.noSuchMethod(
           Invocation.method(#postFinanceGoals, [financeGoalInput]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<int> postFinanceNathLimit(
-          _i11.CategoricalNathLimitsCosts? categoricalNathLimitsCosts,
+  _i16.Future<int> postFinanceNathLimit(
+          _i12.CategoricalNathLimitsCosts? categoricalNathLimitsCosts,
           String? context) =>
       (super.noSuchMethod(
           Invocation.method(
               #postFinanceNathLimit, [categoricalNathLimitsCosts, context]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<int> postFinanceMovement(
-          _i19.FinanceTransactionInput? financeTransactionInput,
+  _i16.Future<int> postFinanceMovement(
+          _i20.FinanceTransactionInput? financeTransactionInput,
           String? context) =>
       (super.noSuchMethod(
           Invocation.method(
               #postFinanceMovement, [financeTransactionInput, context]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<int> putFinanceGoals(_i20.FinanceGoal? financeGoal) =>
+  _i16.Future<int> putFinanceGoals(_i21.FinanceGoal? financeGoal) =>
       (super.noSuchMethod(Invocation.method(#putFinanceGoals, [financeGoal]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<int> patchCostListDetail(String? costId, String? category) =>
+  _i16.Future<int> patchCostListDetail(String? costId, String? category) =>
       (super.noSuchMethod(
           Invocation.method(#patchCostListDetail, [costId, category]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<int> deleteFinanceGoals(String? goalId) =>
+  _i16.Future<int> deleteFinanceGoals(String? goalId) =>
       (super.noSuchMethod(Invocation.method(#deleteFinanceGoals, [goalId]),
-          returnValue: Future<int>.value(0)) as _i15.Future<int>);
+          returnValue: Future<int>.value(0)) as _i16.Future<int>);
   @override
-  _i15.Future<_i12.RecommendationsCards> getRecommendationCard(
+  _i16.Future<_i13.RecommendationsCards> getRecommendationCard(
           String? context) =>
       (super.noSuchMethod(Invocation.method(#getRecommendationCard, [context]),
-              returnValue: Future<_i12.RecommendationsCards>.value(
-                  _FakeRecommendationsCards_10()))
-          as _i15.Future<_i12.RecommendationsCards>);
+              returnValue: Future<_i13.RecommendationsCards>.value(
+                  _FakeRecommendationsCards_11()))
+          as _i16.Future<_i13.RecommendationsCards>);
   @override
-  _i15.Future<_i13.RecommendationsCardsCategorical>
+  _i16.Future<_i14.RecommendationsCardsCategorical>
       getRecommendationCardCategorical(String? context) => (super.noSuchMethod(
               Invocation.method(#getRecommendationCardCategorical, [context]),
-              returnValue: Future<_i13.RecommendationsCardsCategorical>.value(
-                  _FakeRecommendationsCardsCategorical_11()))
-          as _i15.Future<_i13.RecommendationsCardsCategorical>);
+              returnValue: Future<_i14.RecommendationsCardsCategorical>.value(
+                  _FakeRecommendationsCardsCategorical_12()))
+          as _i16.Future<_i14.RecommendationsCardsCategorical>);
   @override
   String toString() => super.toString();
 }
