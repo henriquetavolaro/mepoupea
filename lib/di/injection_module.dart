@@ -57,7 +57,7 @@ void setupServiceLocator(){
   //AUTHENTICATION
   sl.registerLazySingleton(() => FirebaseAuth.instance);
   sl.registerLazySingleton(() => AuthenticationClass(sl()));
-  sl.registerLazySingleton(() => AuthenticationBloc(userRepository: sl()));
+  sl.registerLazySingleton(() => AuthenticationBloc(sl()));
 
 
   //USE CASES
