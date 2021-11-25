@@ -1,7 +1,7 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mepoupeapp/di/injection_module.dart';
 import 'package:mepoupeapp/presenter/bloc/app_events.dart';
@@ -19,7 +19,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   late GetUserProfileBloc bloc;
 
   @override
@@ -31,7 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("App"),
+      appBar: AppBar(
+        title: Text("App"),
       ),
       body: HomeBody(),
       floatingActionButton: FloatingActionButton(
@@ -46,7 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class HomeBody extends StatefulWidget {
-
   const HomeBody({Key? key}) : super(key: key);
 
   @override
@@ -54,13 +53,12 @@ class HomeBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeBody> {
-
   var phoneNumberController = TextEditingController();
   var smsCodeController = TextEditingController();
   var phoneMask = MaskTextInputFormatter(
-    mask: '(__) _________',
-    filter: { '_': RegExp(r'[0-9]')}
-  );
+      mask: '(__) _________', filter: {'_': RegExp(r'[0-9]')});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,10 +73,14 @@ class _HomeBodyState extends State<HomeBody> {
                 return const Center(child: CircularProgressIndicator());
               } else if (state is GetUserProfileSuccessState) {
                 return Center(child: Text(state.userProfile.email.toString()));
-              } else if (state is GetUserProfileErrorState){
-                return const Center(child: Text("sssssss"),);
+              } else if (state is GetUserProfileErrorState) {
+                return const Center(
+                  child: Text("sssssss"),
+                );
               } else {
-                return const Center(child: Text("erro"),);
+                return const Center(
+                  child: Text("erro"),
+                );
               }
             }),
         Padding(
@@ -92,14 +94,22 @@ class _HomeBodyState extends State<HomeBody> {
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton.icon(
+              onPressed: () {
+                sl.get<AuthenticationBloc>().add(FacebookSignInEvent());
+              },
+              icon: const FaIcon(FontAwesomeIcons.facebook),
+              label: const Text('Sign Up with Facebook')),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
           child: TextField(
             inputFormatters: [phoneMask],
             controller: phoneNumberController,
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Telefone",
-              hintText: "Insira o número do telefone"
-            ),
+                border: OutlineInputBorder(),
+                labelText: "Telefone",
+                hintText: "Insira o número do telefone"),
           ),
         ),
         Padding(
@@ -107,25 +117,24 @@ class _HomeBodyState extends State<HomeBody> {
           child: TextField(
             controller: smsCodeController,
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Código de validação",
-              hintText: "Insira o código"
-            ),
+                border: OutlineInputBorder(),
+                labelText: "Código de validação",
+                hintText: "Insira o código"),
           ),
         ),
         TextButton(
             onPressed: () {
-              sl.get<AuthenticationBloc>().add(PhoneSignInSendCodeEvent(phoneNumberController.text.toString()));
+              sl.get<AuthenticationBloc>().add(PhoneSignInSendCodeEvent(
+                  phoneNumberController.text.toString()));
             },
-
             child: Text('fetch OTP')),
         TextButton(
             onPressed: () {
-              sl.get<AuthenticationBloc>().add(PhoneSignInVerifyEvent(smsCodeController.text.toString()));
+              sl.get<AuthenticationBloc>().add(
+                  PhoneSignInVerifyEvent(smsCodeController.text.toString()));
             },
             child: Text('Send'))
       ],
     );
   }
 }
-

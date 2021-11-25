@@ -8,6 +8,8 @@ abstract class AuthenticationEvent extends Equatable {
 
 class GoogleSignInEvent extends AuthenticationEvent {}
 
+class FacebookSignInEvent extends AuthenticationEvent {}
+
 class PhoneSignInSendCodeEvent extends AuthenticationEvent {
 
   final String phoneNumber;
@@ -28,7 +30,5 @@ class PhoneSignInVerifyEvent extends AuthenticationEvent {
   @override
   List<Object> get props => [smsCode];
 }
-
-class FacebookSignInEvent extends AuthenticationEvent {}
 
 class AuthenticationLoggedOut extends AuthenticationEvent {}

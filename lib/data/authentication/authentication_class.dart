@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationClass {
@@ -54,6 +55,21 @@ class AuthenticationClass {
     print('auth token: ${phoneAuthCredential.token}');
     await auth.signInWithCredential(phoneAuthCredential);
   }
+
+  void facebookSignIn() async {
+    try {
+      final result = await FacebookAuth.instance.login();
+
+      print('facebook token: ${result.accessToken!.token}');
+
+      final facebookAuthCredential =
+      FacebookAuthProvider.credential(result.accessToken!.token);
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    } on FirebaseAuthException catch (e) {
+      print(e.toString());
+    }
+  }
+
 
   Future<bool> isSignedIn() async {
     final currentUser = auth.currentUser;

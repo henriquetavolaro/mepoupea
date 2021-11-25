@@ -24,8 +24,12 @@ class AuthenticationBloc
         yield AuthenticationFailureState(e.toString());
       }
     }
-    if(event is AuthenticationLoggedOut){
-    authentication.signOut();
+    if(event is FacebookSignInEvent){
+      try{
+        authentication.facebookSignIn();
+      } catch (e){
+        yield AuthenticationFailureState(e.toString());
+      }
     }
     if(event is PhoneSignInSendCodeEvent){
       try {
@@ -41,16 +45,9 @@ class AuthenticationBloc
         print(e.toString());
       }
     }
+    if(event is AuthenticationLoggedOut){
+      authentication.signOut();
+    }
 
-
-
-    //   else {
-    //     yield AuthenticationFailure();
-    //   }
-    // } else if (event is AuthenticationLoggedIn) {
-    //   final result = await _userRepository.getUser();
-    //   yield AuthenticationSuccess(result!);
-    // } else if (event is AuthenticationLoggedOut) {
-    //   yield AuthenticationFailure();
   }
 }
