@@ -27,7 +27,7 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
-
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -44,7 +44,7 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 42, left: 22, right: 42),
+              padding: const EdgeInsets.only(bottom: 42, left: 22, right: 22),
               child: Column(
                 children: [
                   Text(
@@ -111,17 +111,20 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                     padding: const EdgeInsets.only(bottom: 66.0, top: 16),
-                    child: RichText(
-                        text: TextSpan(
-                          text: 'Já tem uma conta? ',
-                          style: TextStyles.textWhite,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Entrar',
-                                style: TextStyles.textUnderlineWhite)
-                          ],
-                        ),
-                        textAlign: TextAlign.center
+                    child: InkWell(
+                      onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+                      child: RichText(
+                          text: TextSpan(
+                            text: 'Já tem uma conta? ',
+                            style: TextStyles.textWhite,
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Entrar',
+                                  style: TextStyles.textUnderlineWhite)
+                            ],
+                          ),
+                          textAlign: TextAlign.center
+                      ),
                     )
                 ),
               ),

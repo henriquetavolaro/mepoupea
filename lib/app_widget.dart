@@ -7,6 +7,7 @@ import 'package:mepoupeapp/di/injection_module.dart';
 import 'package:mepoupeapp/presenter/bloc/auth_events.dart';
 import 'package:mepoupeapp/presenter/bloc/authentication/authentication_bloc.dart';
 import 'package:mepoupeapp/presenter/pages/logged_page.dart';
+import 'package:mepoupeapp/presenter/pages/login/login_1.dart';
 import 'package:mepoupeapp/presenter/pages/my_home_page.dart';
 import 'package:mepoupeapp/presenter/pages/onboarding/onboarding_1.dart';
 import 'package:mepoupeapp/presenter/pages/onboarding/onboarding_2.dart';
@@ -45,7 +46,7 @@ class _AppWidgetState extends State<AppWidget> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/onboarding_5',
+        initialRoute: '/login_1',
         routes: {
           '/onboarding_1': (context) => const OnboardingScreen1(),
           '/onboarding_2': (context) => const OnboardingScreen2(),
@@ -56,6 +57,11 @@ class _AppWidgetState extends State<AppWidget> {
           '/onboarding_3e_naosei': (context) => const Onboarding3ENaoSei(),
           '/onboarding_4_hojenao': (context) => const Onboarding4HojeNao(),
           '/onboarding_5': (context) => const Onboarding5(),
+
+          '/login_1': (context) => const Login1(),
+
+
+
           '/home_page': (context) => const MyHomePage(),
           '/logged': (context) => const Logged()
         });

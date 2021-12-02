@@ -17,12 +17,8 @@ class _Onboarding5 extends State<Onboarding5> {
       appBar: AppBar(
         backgroundColor: AppColors.primaryBlue,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
+          automaticallyImplyLeading: false,
 
-          },
-        ),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -59,29 +55,38 @@ class _Onboarding5 extends State<Onboarding5> {
             const SizedBox(
               height: 24,
             ),
-           CustomButton(
-                        onClick: () {},
-                        text: 'Bora, Na.th!',
-                        color: AppColors.white,
-                        textColor: AppColors.darkBlue,
-                      ),
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 78.0),
+             child: SizedBox(
+                 width: MediaQuery.of(context).size.width,
+               child: CustomButton(
+                            onClick: () async => await Navigator.pushNamed(context, '/login_1'),
+                            text: 'Bora, Na.th!',
+                            color: AppColors.white,
+                            textColor: AppColors.darkBlue,
+                          ),
+             ),
+           ),
 
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                     padding: const EdgeInsets.only(bottom: 66.0, top: 16),
-                    child: RichText(
-                        text: TextSpan(
-                          text: 'Já tem uma conta? ',
-                          style: TextStyles.textWhite,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Entrar',
-                                style: TextStyles.textUnderlineWhite)
-                          ],
-                        ),
-                        textAlign: TextAlign.center
+                    child: InkWell(
+                      onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+                      child: RichText(
+                          text: TextSpan(
+                            text: 'Já tem uma conta? ',
+                            style: TextStyles.textWhite,
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Entrar',
+                                  style: TextStyles.textUnderlineWhite)
+                            ],
+                          ),
+                          textAlign: TextAlign.center
+                      ),
                     )
                 ),
               ),

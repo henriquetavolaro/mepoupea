@@ -15,6 +15,7 @@ class Onboarding3D extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.primaryBlue,
         elevation: 0,
+          automaticallyImplyLeading: false
       ),
       body: Container(
         height: MediaQuery
@@ -60,23 +61,21 @@ class Onboarding3D extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 78, right: 78, bottom: 30),
               child: SizedBox(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+                width: MediaQuery.of(context).size.width,
                 child: CustomButton(
-                  onClick: () {
-
-                  },
+                  onClick: () async => await Navigator.pushNamed(context, '/login_1'),
                   text: 'Claro, Na.th!',
                   color: AppColors.white,
                   textColor: AppColors.darkBlue,
                 ),
               ),
             ),
-            Text(
-              'Hoje não, Na.th',
-              style: TextStyles.textUnderlineWhite,
+            InkWell(
+              onTap: () async => await Navigator.pushNamed(context, '/onboarding_4_hojenao'),
+              child: Text(
+                'Hoje não, Na.th',
+                style: TextStyles.textUnderlineWhite,
+              ),
             )
           ],
         ),

@@ -26,7 +26,7 @@ class _Onboarding3ENaoSeiState extends State<Onboarding3ENaoSei> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
-
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -90,17 +90,20 @@ class _Onboarding3ENaoSeiState extends State<Onboarding3ENaoSei> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                     padding: const EdgeInsets.only(bottom: 66.0, top: 16),
-                    child: RichText(
-                        text: TextSpan(
-                          text: 'Já tem uma conta? ',
-                          style: TextStyles.textWhite,
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: 'Entrar',
-                                style: TextStyles.textUnderlineWhite)
-                          ],
-                        ),
-                        textAlign: TextAlign.center
+                    child: InkWell(
+                      onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+                      child: RichText(
+                          text: TextSpan(
+                            text: 'Já tem uma conta? ',
+                            style: TextStyles.textWhite,
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Entrar',
+                                  style: TextStyles.textUnderlineWhite)
+                            ],
+                          ),
+                          textAlign: TextAlign.center
+                      ),
                     )
                 ),
               ),

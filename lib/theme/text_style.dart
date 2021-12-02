@@ -59,5 +59,15 @@ class TextStyles {
       color: AppColors.white,
       decoration: TextDecoration.underline
   );
+  static final headerTextBlue = GoogleFonts.poppins(
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+      color: AppColors.primaryBlue
+  );
+  static final loginParagraphSmall = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack
+  );
 
 }

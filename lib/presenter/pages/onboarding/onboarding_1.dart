@@ -64,9 +64,12 @@ class OnboardingScreen1 extends StatelessWidget {
                   textColor: AppColors.white,
                   ),
             ),
-            Text(
-                'Já tenho cadastro',
-                style: TextStyles.textBlue,)
+            InkWell(
+              onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+              child: Text(
+                  'Já tenho cadastro',
+                  style: TextStyles.textBlue,),
+            )
           ],
         ),
       ),

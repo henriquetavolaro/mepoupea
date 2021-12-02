@@ -29,6 +29,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
       appBar: AppBar(
         backgroundColor: AppColors.primaryBlue,
         elevation: 0,
+        automaticallyImplyLeading: false
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -44,7 +45,6 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                   bottom: -46,
                   child: Image.asset('assets/vector1.png')),
                 Container(
-                  // height: MediaQuery.of(context).size.height * 0.42,
                   width: MediaQuery.of(context).size.width,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.vertical(
@@ -107,9 +107,12 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0),
-                child: Text(
-                    'Não sei o que eu quero',
-                  style: TextStyles.textUnderlinedDarkBlue,
+                child: InkWell(
+                  onTap: () async => await Navigator.pushNamed(context, '/onboarding_3e_naosei'),
+                  child: Text(
+                      'Não sei o que eu quero',
+                    style: TextStyles.textUnderlinedDarkBlue,
+                  ),
                 ),
               )
           ],
@@ -120,17 +123,20 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
         width: MediaQuery.of(context).size.width,
         child: Padding(
           padding: const EdgeInsets.only(bottom: 60.0, top: 16),
-          child: RichText(
-            text: TextSpan(
-              text: 'Já tem uma conta? ',
-              style: TextStyles.textBlue,
-              children: <TextSpan>[
-                TextSpan(
-                    text: 'Entrar',
-                style: TextStyles.textUnderlineBlue)
-              ],
+          child: InkWell(
+            onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+            child: RichText(
+              text: TextSpan(
+                text: 'Já tem uma conta? ',
+                style: TextStyles.textBlue,
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Entrar',
+                  style: TextStyles.textUnderlineBlue)
+                ],
+              ),
+                textAlign: TextAlign.center
             ),
-              textAlign: TextAlign.center
           )
         ),
       ),
