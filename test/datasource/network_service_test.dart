@@ -71,8 +71,9 @@ main() {
   //   when(storage.getToken()).thenAnswer((_) =>  Future.value('12345'));
   //   const path = "/onboard/answer";
   //   dioAdapter.onPost(path, (server) {
-  //     server.reply(200, 200);
-  //   });
+  //     server.reply(200, answerModel);
+  //   },
+  //   data: answerModel);
   //   final result = await service.postOnboardingAnswer(answerModel);
   //   expect(result, isA<int>());
   // });
