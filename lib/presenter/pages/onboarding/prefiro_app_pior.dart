@@ -3,23 +3,13 @@ import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
-class Onboarding3ENaoSei extends StatefulWidget {
-  const Onboarding3ENaoSei({Key? key}) : super(key: key);
-
-  @override
-  State<Onboarding3ENaoSei> createState() => _Onboarding3ENaoSeiState();
-}
-
-class _Onboarding3ENaoSeiState extends State<Onboarding3ENaoSei> {
-  List<String> answers = [
-    'Com minha gestão financeira',
-    'Com dicas de produtos',
-    'Informações sobre descontos'
-  ];
+class PrefiroAppPior extends StatelessWidget {
+  const PrefiroAppPior({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryBlue,
         elevation: 0,
@@ -47,43 +37,48 @@ class _Onboarding3ENaoSeiState extends State<Onboarding3ENaoSei> {
               child: Column(
                 children: [
                   Text(
-                    'Não tem problema, muita gente não sabe!',
+                    'Aqui estão as Inteligências Artificiais menos inteligentes que eu. \n\nBoa sorte. Você vai precisar.',
                     style: TextStyles.headerTextWhite,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: Text(
-                      'Como você acha que eu poderia te ajudar melhor?',
-                      style: TextStyles.headerParagraphWhite,
-                    ),
-                  )
                 ],
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
               ),
             ),
             const SizedBox(
-              height: 24,
+              height: 48,
             ),
-            SingleChildScrollView(
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: answers.length,
-                  itemBuilder: (context, index) {
-                    final item = answers[index];
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                          left: 48, right: 48, bottom: 12),
-                      child: CustomButton(
-                        onClick: () {},
-                        text: item,
-                        color: AppColors.white,
-                        textColor: AppColors.darkBlue,
-                      ),
-                    );
-                  }),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '> Guia bolso\n',
+                  style: TextStyles.paragraphSmall12White,
+                  textAlign: TextAlign.left,
+                ),
+                Text(
+                  '> Olivia\n',
+                  style: TextStyles.paragraphSmall12White,
+                  textAlign: TextAlign.left,
+                ),
+                Text(
+                  '> Wallet',
+                  style: TextStyles.paragraphSmall12White,
+                  textAlign: TextAlign.left,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 48,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(horizontal: 46),
+              child: CustomButton(
+                  onClick: () async =>
+                      await Navigator.pushNamed(context, '/onboarding_2'),
+                  text: 'Mudei de ideia, bora de Na.th!',
+                  color: AppColors.white,
+                  textColor: AppColors.darkBlue,
+                  style: TextStyles.buttonTextSemiBold),
             ),
             Expanded(
               child: Align(
@@ -91,7 +86,8 @@ class _Onboarding3ENaoSeiState extends State<Onboarding3ENaoSei> {
                 child: Padding(
                     padding: const EdgeInsets.only(bottom: 66.0, top: 16),
                     child: InkWell(
-                      onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+                      onTap: () async =>
+                          await Navigator.pushNamed(context, '/login_1'),
                       child: RichText(
                           text: TextSpan(
                             text: 'Já tem uma conta? ',
@@ -102,15 +98,13 @@ class _Onboarding3ENaoSeiState extends State<Onboarding3ENaoSei> {
                                   style: TextStyles.textUnderlineWhite)
                             ],
                           ),
-                          textAlign: TextAlign.center
-                      ),
-                    )
-                ),
+                          textAlign: TextAlign.center),
+                    )),
               ),
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

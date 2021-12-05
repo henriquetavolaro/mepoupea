@@ -34,9 +34,12 @@ class _CustomButtonIconState extends State<CustomButtonIcon> {
             ),
             Align(
               alignment: Alignment.center,
-              child: Text(
-                widget.text,
-                maxLines: 1,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 4.0),
+                child: Text(
+                  widget.text,
+                  maxLines: 1,
+                ),
               ),
             ),
           ],
@@ -49,7 +52,7 @@ class _CustomButtonIconState extends State<CustomButtonIcon> {
         ),
         primary: widget.color,
         onPrimary: widget.textColor,
-        textStyle: TextStyles.buttonTextWhiteMedium,
+        textStyle: TextStyles.buttonTextMedium,
 
       ),
 

@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
-class Onboarding5 extends StatefulWidget {
-  const Onboarding5({Key? key}) : super(key: key);
+class Onboarding3GanharMais extends StatelessWidget {
+  const Onboarding3GanharMais({Key? key}) : super(key: key);
 
-  @override
-  State<Onboarding5> createState() => _Onboarding5();
-}
-
-class _Onboarding5 extends State<Onboarding5> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: AppColors.orange));
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.primaryBlue,
           elevation: 0,
-            automaticallyImplyLeading: false,
-
+            automaticallyImplyLeading: false
         ),
         body: Container(
           height: MediaQuery.of(context).size.height,
@@ -38,13 +35,13 @@ class _Onboarding5 extends State<Onboarding5> {
                 child: Column(
                   children: [
                     Text(
-                      'Anotado! E se eu te disser que te ajudo com isso e mais um pouco aqui no app?',
+                      'Amei! Vou te ajudar a ganhar mais, muito rápido!',
                       style: TextStyles.headerTextWhite,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 24.0),
                       child: Text(
-                        'Mas preciso da sua ajuda também. Posso contar com você se esforçando um pouquinho para chegar mais longe, mais depressa?',
+                        'Mas minha inteligência é limitada e por enquanto só consigo fazer você ganhar mais dinheiro, se você também fizer um esforcinho. \n\nQuer continuar mesmo assim?',
                         style: TextStyles.paragraphMedium14White,
                       ),
                     )
@@ -54,21 +51,28 @@ class _Onboarding5 extends State<Onboarding5> {
                 ),
               ),
               const SizedBox(
-                height: 24,
+                height: 36,
               ),
-             Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 78.0),
-               child: SizedBox(
-                   width: MediaQuery.of(context).size.width,
-                 child: CustomButton(
-                              onClick: () async => await Navigator.pushNamed(context, '/login_1'),
-                              text: 'Bora, Na.th!',
-                              color: AppColors.white,
-                              textColor: AppColors.darkBlue,
-                   style: TextStyles.buttonTextMedium,
-                            ),
-               ),
-             ),
+              Padding(
+                padding:  const EdgeInsets.only(left: 78, right: 78, bottom: 30),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: CustomButton(
+                    onClick: () async => await Navigator.pushNamed(context, '/login_1'),
+                    text: 'Claro, Na.th!',
+                    color: AppColors.white,
+                    textColor: AppColors.darkBlue,
+                    style: TextStyles.buttonTextSemiBold,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () async => await Navigator.pushNamed(context, '/onboarding_4_hojenao'),
+                child: Text(
+                    'Hoje não, Na.th',
+                  style: TextStyles.textUnderlineWhite,
+                ),
+              )
             ],
           ),
         ),

@@ -3,19 +3,18 @@ import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
-class Onboarding4HojeNao extends StatefulWidget {
-  const Onboarding4HojeNao({Key? key}) : super(key: key);
+class Onboarding3NaoSei extends StatefulWidget {
+  const Onboarding3NaoSei({Key? key}) : super(key: key);
 
   @override
-  State<Onboarding4HojeNao> createState() => _Onboarding4HojeNaoState();
+  State<Onboarding3NaoSei> createState() => _Onboarding3NaoSeiState();
 }
 
-class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
+class _Onboarding3NaoSeiState extends State<Onboarding3NaoSei> {
   List<String> answers = [
     'Com minha gestão financeira',
     'Com dicas de produtos',
-    'Informações sobre descontos',
-    'Tava brincando, mudei de ideia'
+    'Informações sobre descontos'
   ];
 
   @override
@@ -49,7 +48,7 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
                 child: Column(
                   children: [
                     Text(
-                      'Que pena! Se você mudar de ideia, será uma jornada incrível. ',
+                      'Não tem problema, muita gente não sabe!',
                       style: TextStyles.headerTextWhite,
                     ),
                     Padding(
@@ -75,37 +74,17 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
                     itemCount: answers.length,
                     itemBuilder: (context, index) {
                       final item = answers[index];
-                      if (index != 3) {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 48, right: 48, bottom: 12),
-                          child: CustomButton(
-                            onClick: () {},
-                            text: item,
-                            color: AppColors.white,
-                            textColor: AppColors.darkBlue,
-                            style: TextStyles.buttonTextMedium,
-                          ),
-                        );
-                      } else {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 48, right: 48, bottom: 12),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(25),
-                                  side: const BorderSide(color: AppColors.white, width: 1),
-                                ),
-                                primary: AppColors.white),
-                            onPressed: () {},
-                            child: Text(
-                              item,
-                              style: TextStyles.buttonTextMedium,
-                            ),
-                          ),
-                        );
-                      }
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            left: 48, right: 48, bottom: 12),
+                        child: CustomButton(
+                          onClick: () {},
+                          text: item,
+                          color: AppColors.white,
+                          textColor: AppColors.darkBlue,
+                          style: TextStyles.buttonTextSemiBold,
+                        ),
+                      );
                     }),
               ),
               Expanded(

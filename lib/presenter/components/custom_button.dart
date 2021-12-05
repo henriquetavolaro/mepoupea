@@ -8,8 +8,9 @@ class CustomButton extends StatefulWidget {
   final String text;
   final Color color;
   final Color textColor;
+  final TextStyle style;
 
-  const CustomButton({Key? key, required this.onClick, required this.text, required this.color, required this.textColor}) : super(key: key);
+  const CustomButton({Key? key, required this.onClick, required this.text, required this.color, required this.textColor, required this.style}) : super(key: key);
 
   @override
   _CustomButtonState createState() => _CustomButtonState();
@@ -31,7 +32,7 @@ class _CustomButtonState extends State<CustomButton> {
           ),
           primary: widget.color,
           onPrimary: widget.textColor,
-          textStyle: TextStyles.buttonTextWhiteSemiBold,
+          textStyle: widget.style,
         ),
      );
   }

@@ -13,12 +13,12 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.white
   );
-  static final buttonTextWhiteSemiBold = GoogleFonts.poppins(
-    fontSize: 15,
+  static final buttonTextSemiBold = GoogleFonts.poppins(
+    fontSize: 12,
     fontWeight: FontWeight.w700,
   );
-  static final buttonTextWhiteMedium = GoogleFonts.poppins(
-    fontSize: 15,
+  static final buttonTextMedium = GoogleFonts.poppins(
+    fontSize: 12,
     fontWeight: FontWeight.w500,
   );
   static final textBlue = GoogleFonts.poppins(
@@ -32,23 +32,23 @@ class TextStyles {
     color: AppColors.white
   );
   static final headerTextWhite = GoogleFonts.poppins(
-    fontSize: 24,
+    fontSize: 21,
     fontWeight: FontWeight.w600,
     color: AppColors.white
   );
   static final headerParagraphWhite = GoogleFonts.poppins(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
     color: AppColors.white
   );
   static final textUnderlinedDarkBlue = GoogleFonts.poppins(
     fontSize: 15,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w600,
     color: AppColors.darkBlue,
     decoration: TextDecoration.underline
   );
   static final textUnderlineBlue = GoogleFonts.poppins(
-      fontSize: 15,
+      fontSize: 12,
       fontWeight: FontWeight.w500,
       color: AppColors.primaryBlue,
       decoration: TextDecoration.underline
@@ -60,12 +60,42 @@ class TextStyles {
       decoration: TextDecoration.underline
   );
   static final headerTextBlue = GoogleFonts.poppins(
-      fontSize: 24,
+      fontSize: 21,
       fontWeight: FontWeight.w600,
       color: AppColors.primaryBlue
   );
-  static final loginParagraphSmall = GoogleFonts.poppins(
+  static final paragraphSmall12Black = GoogleFonts.poppins(
     fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack
+  );
+  static final paragraphMedium14Black = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack
+  );
+  static final paragraphSmall12White = GoogleFonts.poppins(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: AppColors.white
+  );
+  static final paragraphMedium14White = GoogleFonts.poppins(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: AppColors.white
+  );
+  static final paragraphSmall12Grey = GoogleFonts.poppins(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textGray
+  );
+  static final paragraphSmall9grey = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textGray
+  );
+  static final phoneNumberTextField = GoogleFonts.openSans(
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     color: AppColors.textLightBlack
   );
