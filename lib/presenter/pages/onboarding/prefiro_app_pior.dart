@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mepoupeapp/presenter/components/background_blue_gradient_container.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
@@ -8,6 +10,9 @@ class PrefiroAppPior extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: AppColors.orange
+    ));
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -20,16 +25,7 @@ class PrefiroAppPior extends StatelessWidget {
           },
         ),
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(25)),
-          gradient: LinearGradient(
-              colors: [AppColors.primaryBlue, AppColors.secondaryBlue],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-        ),
+      body: BackgroundBlueGradientContainer(
         child: Column(
           children: [
             Padding(

@@ -8,6 +8,7 @@ import 'package:mepoupeapp/presenter/bloc/auth_events.dart';
 import 'package:mepoupeapp/presenter/bloc/authentication/authentication_bloc.dart';
 import 'package:mepoupeapp/presenter/components/custom_buttom_icon.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
+import 'package:mepoupeapp/presenter/components/login_social_bottom.dart';
 import 'package:mepoupeapp/presenter/components/social_login_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
@@ -29,42 +30,43 @@ class _LoginPhoneState extends State<LoginPhone> {
   @override
   void dispose() {
     phoneNumberController.dispose();
+    smsCodeController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground));
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.loginBackground,
         appBar: AppBar(
             toolbarHeight: 46,
             backgroundColor: AppColors.loginBackground,
             elevation: 0,
+            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
             automaticallyImplyLeading: false),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 22, right: 42),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Vamos começar!',
-                  style: TextStyles.headerTextBlue,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Text(
-                    'Calma, falta pouco!',
-                    style: TextStyles.paragraphSmall12Black,
+        body: Padding(
+          padding: const EdgeInsets.only(left: 22, right: 42),
+          child: Column(
+
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Vamos começar!',
+                    style: TextStyles.headerTextBlue,
                   ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.30,
-                  width: MediaQuery.of(context).size.width,
-                  child: Padding(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: Text(
+                      'Calma, falta pouco!',
+                      style: TextStyles.paragraphSmall12Black,
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.symmetric(vertical: 24.0),
                     child: Column(
                       children: [
@@ -76,11 +78,11 @@ class _LoginPhoneState extends State<LoginPhone> {
                             inputFormatters: [phoneMask],
                             controller: phoneNumberController,
                             decoration: InputDecoration(
-                              isDense: true,
+                                isDense: true,
                                 contentPadding: const EdgeInsets.all(8),
                                 prefixIcon: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
                                   child: Image.asset(
                                       'assets/bandeira_brasil_phone.png'),
                                 ),
@@ -94,73 +96,44 @@ class _LoginPhoneState extends State<LoginPhone> {
                         ),
                         ValueListenableBuilder(
                           valueListenable: phoneNumberController,
-                          builder: (BuildContext context, value, Widget? child) {
-                            final enabled = phoneNumberController.text.length == 28;
+                          builder:
+                              (BuildContext context, value, Widget? child) {
+                            final enabled =
+                                phoneNumberController.text.length == 28;
                             return Container(
                               width: MediaQuery.of(context).size.width,
-                              padding: const EdgeInsets.only(top: 60, left: 60, right: 60),
+                              padding: const EdgeInsets.only(
+                                  top: 60, left: 60, right: 60),
                               child: CustomButton(
-                                onClick: enabled ? () {sl.get<AuthenticationBloc>().add(PhoneSignInSendCodeEvent(
-                                    phoneNumberController.text.toString())); } : (){},
+                                onClick: enabled
+                                    ? () {
+                                        sl.get<AuthenticationBloc>().add(
+                                            PhoneSignInSendCodeEvent(
+                                                phoneNumberController.text
+                                                    .toString()));
+                                        Navigator.pushNamed(context,
+                                            '/login_phone_verification',
+                                            arguments:
+                                                phoneMask.getMaskedText());
+                                      }
+                                    : () {},
                                 text: 'Continuar',
-                                color: enabled ? AppColors.orange : AppColors.textGray,
+                                color: enabled
+                                    ? AppColors.orange
+                                    : AppColors.buttonDisabled,
                                 textColor: AppColors.white,
                                 style: TextStyles.buttonTextMedium,
                               ),
                             );
                           },
-
                         )
                       ],
                     ),
                   ),
-                ),
-                Row(children: [
-                  const Expanded(
-                      child: Padding(
-                    padding:EdgeInsets.only(right : 24.0, bottom: 24, top: 24),
-                    child: Divider(
-                      thickness: 1,
-                    ),
-                  )),
-                  Text("Ou entre com", style: TextStyles.paragraphSmall9grey),
-                  const Expanded(
-                      child: Padding(
-                    padding: EdgeInsets.only(left: 24.0, bottom: 24, top: 24),
-                    child: Divider(
-                      thickness: 1,
-                    ),
-                  )),
-                ]),
-                Row(
-                  children: [
-                    SocialLoginButton(
-                      icon: Image.asset('assets/google_logo.png'),
-                      text: 'Google',
-                      color: AppColors.white,
-                      textColor: AppColors.textLightBlack,
-                      onClick: () =>
-                          sl.get<AuthenticationBloc>().add(GoogleSignInEvent()),
-                      iconPaddingRight: 16,
-                      paddingLeft: 0,
-                      paddingRight: 12,
-                    ),
-                    SocialLoginButton(
-                      icon: const Icon(FontAwesomeIcons.facebook),
-                      text: 'Facebook',
-                      color: AppColors.facebookBlue,
-                      textColor: AppColors.white,
-                      onClick: () => sl
-                          .get<AuthenticationBloc>()
-                          .add(FacebookSignInEvent()),
-                      iconPaddingRight: 8,
-                      paddingLeft: 12,
-                      paddingRight: 0,
-                    )
-                  ],
-                )
-              ],
-            ),
+                ],
+              ),
+             const LoginSocialBottom()
+            ],
           ),
         ),
       ),

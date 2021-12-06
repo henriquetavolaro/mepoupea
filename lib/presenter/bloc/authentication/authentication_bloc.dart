@@ -31,16 +31,32 @@ class AuthenticationBloc
     }
     if(event is PhoneSignInSendCodeEvent){
       try {
-        authentication.fetchOtp(event.phoneNumber);
+        authentication.sendSmsCode(event.phoneNumber);
       } catch(e) {
         print(e.toString());
       }
     }
     if(event is PhoneSignInVerifyEvent){
       try {
-        authentication.verify(event.smsCode);
+        final verify = await authentication.verifySmsCode(event.smsCode);
+        print('VERIFY: $verify');
+        yield AuthenticationPhoneSuccessState(verify);
       } catch(e) {
-        print(e.toString());
+        yield AuthenticationFailureState(e.toString());
+      }
+    }
+    if(event is RegisterWithEmailAndPasswordEvent){
+      try {
+        await authentication.registerWithEmailAndPassword(event.email, event.password);
+      } catch(e) {
+        yield RegisterEmailAndPasswordFailureState(e.toString());
+      }
+    }
+    if(event is SignInWithEmailAndPasswordEvent){
+      try {
+        await authentication.signInWithEmailAndPassword(event.email, event.password);
+      } catch(e) {
+        yield SignInEmailAndPasswordFailureState(e.toString());
       }
     }
     if(event is AuthenticationLoggedOutEvent){

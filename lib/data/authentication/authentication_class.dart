@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mepoupeapp/utils/secure_storage.dart';
 
@@ -11,6 +13,7 @@ class AuthenticationClass {
   final SecureStorage storage;
 
   AuthenticationClass(this.auth, this.storage);
+
 
   Future<OAuthCredential> signInWithGoogle() async {
     // Trigger the authentication flow
@@ -34,7 +37,7 @@ class AuthenticationClass {
 
   String verificationId = '';
 
-  Future<void> fetchOtp(String phoneNumber) async {
+  Future<void> sendSmsCode(String phoneNumber) async {
     await auth.verifyPhoneNumber(
         phoneNumber: "+55$phoneNumber",
         verificationCompleted: (PhoneAuthCredential credential) async {
@@ -51,10 +54,12 @@ class AuthenticationClass {
         codeAutoRetrievalTimeout: (String verificationId) {});
   }
 
-  Future<void> verify(String smsCode) async {
+  Future<PhoneAuthCredential> verifySmsCode(String smsCode) async {
     PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
         verificationId: verificationId, smsCode: smsCode);
+
     await auth.signInWithCredential(phoneAuthCredential);
+    return phoneAuthCredential;
   }
 
   void facebookSignIn() async {
@@ -62,22 +67,57 @@ class AuthenticationClass {
       final result = await FacebookAuth.instance.login();
       final facebookAuthCredential =
           FacebookAuthProvider.credential(result.accessToken!.token);
+
       await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     } on FirebaseAuthException catch (e) {
       print(e.toString());
     }
   }
 
+  Future<void> registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        throw('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        throw('Já existe uma conta cadastrada com este e-mail');
+      }
+    } catch (e) {
+      throw("Ocorreu um erro");
+    }
+  }
+
+  Future<void> signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+          email: "barry.allen@example.com",
+          password: "SuperSecretPassword!"
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('Usuário não encontrado ou senha incorreta');
+      } else if (e.code == 'wrong-password') {
+        print('Usuário não encontrado ou senha incorreta');
+      }
+    }
+  }
+
+
+
   Future<StreamSubscription<User?>> listenUserChanges(
       GlobalKey<NavigatorState> navigatorKey) async {
-    final sub = auth.userChanges().listen((event) async {
+    final sub = auth.authStateChanges().listen((event) async {
       if (event != null) {
         final token = await getUserId();
-        await storage.setToken(token);
+        setToken(token);
         navigatorKey.currentState!.pushReplacementNamed('/logged');
       } else {
-        await storage.removeToken();
-        navigatorKey.currentState!.pushReplacementNamed('/home_page');
+        removeToken();
       }
     });
     return sub;
@@ -89,7 +129,15 @@ class AuthenticationClass {
   }
 
   Future<void> signOut() async {
-    await storage.removeToken();
+    removeToken();
     return await auth.signOut();
+  }
+
+  Future<void> setToken(String token) async {
+    await storage.setToken(token);
+  }
+
+  Future<void> removeToken() async {
+    await storage.removeToken();
   }
 }

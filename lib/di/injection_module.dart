@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mepoupeapp/app_widget.dart';
 import 'package:mepoupeapp/data/authentication/authentication_class.dart';
 import 'package:mepoupeapp/data/datasource/network_service.dart';
 import 'package:mepoupeapp/data/repositories_use_cases_impl/finance/delete_finance_goal_impl.dart';
@@ -55,6 +57,9 @@ void setupServiceLocator(){
   sl.registerSingleton(Dio());
   sl.registerSingleton(SecureStorage());
   sl.registerLazySingleton<NetworkService>(() => NetworkService(sl(), sl()));
+
+  // final auth = FirebaseAuth.instance;
+  // auth.setPersistence(Persistence.SESSION);
 
   //AUTHENTICATION
   sl.registerLazySingleton(() => FirebaseAuth.instance);
@@ -112,5 +117,8 @@ void setupServiceLocator(){
   sl.registerSingleton(EditUserProfileBloc(sl()));
   sl.registerSingleton(GetUserProfileBloc(sl()));
 
+
+  //NAVIGATOR KEY
+  sl.registerSingleton(GlobalKey<NavigatorState>());
 
 }

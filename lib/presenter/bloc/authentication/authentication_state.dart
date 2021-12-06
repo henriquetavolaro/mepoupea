@@ -38,6 +38,37 @@ class AuthenticationTokenState extends AuthenticationState {
 
   @override
   List<Object> get props => [token];
+}
 
+class AuthenticationPhoneSuccessState extends AuthenticationState {
+
+  final PhoneAuthCredential phoneAuthCredential;
+
+  const AuthenticationPhoneSuccessState(this.phoneAuthCredential);
+
+  @override
+  List<Object> get props => [phoneAuthCredential];
+
+}
+
+class RegisterEmailAndPasswordFailureState extends AuthenticationState {
+
+  final String message;
+
+  const RegisterEmailAndPasswordFailureState(this.message);
+
+  @override
+  List<Object> get props => [message];
+
+}
+
+class SignInEmailAndPasswordFailureState extends AuthenticationState {
+
+  final String message;
+
+  const SignInEmailAndPasswordFailureState(this.message);
+
+  @override
+  List<Object> get props => [message];
 
 }

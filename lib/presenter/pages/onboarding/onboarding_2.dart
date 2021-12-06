@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -21,16 +22,14 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: AppColors.orange
-    ));
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(
           backgroundColor: AppColors.primaryBlue,
           elevation: 0,
-          automaticallyImplyLeading: false
+          automaticallyImplyLeading: false,
+          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -64,15 +63,21 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                       padding: const EdgeInsets.only(bottom: 42, left: 22, right: 22),
                       child: Column(
                         children: [
-                          Text(
-                            'Uhul! Não vou te decepcionar! E já que estamos começando nossa relação, me conta: ',
-                            style: TextStyles.headerTextWhite,
+                          DelayedDisplay(
+                            delay: const Duration(milliseconds: 500),
+                            child: Text(
+                              'Uhul! Não vou te decepcionar! E já que estamos começando nossa relação, me conta: ',
+                              style: TextStyles.headerTextWhite,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 24.0),
-                            child: Text(
-                              'Qual o seu desejo mais urgente?',
-                              style: TextStyles.headerParagraphWhite,
+                            child: DelayedDisplay(
+                              delay: Duration(seconds: 2),
+                              child: Text(
+                                'Qual o seu desejo mais urgente?',
+                                style: TextStyles.headerParagraphWhite,
+                              ),
                             ),
                           )
                         ],
@@ -87,59 +92,70 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                 const SizedBox(
                   height: 56,
                 ),
-                SingleChildScrollView(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                      physics: const NeverScrollableScrollPhysics(),
-                    itemCount: answers.length,
-                    itemBuilder: (context, index){
-                      final item = answers[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 78, right: 78, bottom: 12),
-                        child: CustomButton(
-                            onClick: (){},
-                            text: item,
-                            color: AppColors.white,
-                            textColor: AppColors.darkBlue,
-                          style: TextStyles.buttonTextSemiBold,
-                            ),
-                      );
-                    }),
+                DelayedDisplay(
+                  delay: Duration(seconds: 2),
+                  child: SingleChildScrollView(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
+                      itemCount: answers.length,
+                      itemBuilder: (context, index){
+                        final item = answers[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 78, right: 78, bottom: 12),
+                          child: CustomButton(
+                              onClick: (){
+                                Navigator.pushNamed(context, '/loading');
+                              },
+                              text: item,
+                              color: AppColors.white,
+                              textColor: AppColors.darkBlue,
+                            style: TextStyles.buttonTextSemiBold,
+                              ),
+                        );
+                      }),
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 18.0),
-                  child: InkWell(
-                    onTap: () async => await Navigator.pushNamed(context, '/onboarding_3_naosei'),
-                    child: Text(
-                        'Não sei o que eu quero',
-                      style: TextStyles.textUnderlinedDarkBlue,
+                DelayedDisplay(
+                  delay: Duration(seconds: 2),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18.0),
+                    child: InkWell(
+                      onTap: () async => await Navigator.pushNamed(context, '/onboarding_3_naosei'),
+                      child: Text(
+                          'Não sei o que eu quero',
+                        style: TextStyles.textUnderlinedDarkBlue,
+                      ),
                     ),
                   ),
                 )
             ],
           ),
         ),
-        bottomSheet: Container(
-          color: AppColors.white,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 60.0, top: 16),
-            child: InkWell(
-              onTap: () async => await Navigator.pushNamed(context, '/login_1'),
-              child: RichText(
-                text: TextSpan(
-                  text: 'Já tem uma conta? ',
-                  style: TextStyles.textBlue,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Entrar',
-                    style: TextStyles.textUnderlineBlue)
-                  ],
+        bottomSheet: DelayedDisplay(
+          delay: Duration(seconds: 2),
+          child: Container(
+            color: AppColors.white,
+            width: MediaQuery.of(context).size.width,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 60.0, top: 16),
+              child: InkWell(
+                onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+                child: RichText(
+                  text: TextSpan(
+                    text: 'Já tem uma conta? ',
+                    style: TextStyles.textBlue,
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Entrar',
+                      style: TextStyles.textUnderlineBlue)
+                    ],
+                  ),
+                    textAlign: TextAlign.center
                 ),
-                  textAlign: TextAlign.center
-              ),
-            )
+              )
+            ),
           ),
         ),
       ),

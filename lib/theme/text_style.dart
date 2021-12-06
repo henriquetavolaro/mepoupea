@@ -99,5 +99,31 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.textLightBlack
   );
+  static final phoneNumberTextFieldSmall = GoogleFonts.openSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack
+  );
+  static final phoneVerificationSmall11 = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkBlue
+  );
+  static final phoneVerificationSmall11Underline = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkBlue,
+    decoration: TextDecoration.underline
+  );
+  static final textLoadingWhite20Medium = GoogleFonts.poppins(
+    fontSize:20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static final textLoadingWhite20SemiBold = GoogleFonts.poppins(
+    fontSize:20,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+  );
 
 }

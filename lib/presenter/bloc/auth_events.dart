@@ -31,6 +31,26 @@ class PhoneSignInVerifyEvent extends AuthenticationEvent {
   List<Object> get props => [smsCode];
 }
 
+class RegisterWithEmailAndPasswordEvent extends AuthenticationEvent {
+  final String email;
+  final String password;
+
+  RegisterWithEmailAndPasswordEvent(this.email, this.password);
+
+  @override
+  List<Object> get props => [email, password];
+}
+
+class SignInWithEmailAndPasswordEvent extends AuthenticationEvent {
+  final String email;
+  final String password;
+
+  SignInWithEmailAndPasswordEvent(this.email, this.password);
+
+  @override
+  List<Object> get props => [email, password];
+}
+
 class AuthenticationLoggedOutEvent extends AuthenticationEvent {}
 
 class AuthenticationGetTokenEvent extends AuthenticationEvent {}
