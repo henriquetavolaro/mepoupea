@@ -109,6 +109,12 @@ class _LoginPhoneVerificationState extends State<LoginPhoneVerification> {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 24.0, left: 48, right: 48),
                                 child: PinFieldAutoFill(
+                                  decoration: UnderlineDecoration(
+                                    gapSpaces: [8, 8, 24, 8, 8],
+                                    textStyle: TextStyles.textPinPhoneAuth,
+                                    colorBuilder: const FixedColorBuilder(
+                                        AppColors.textGray),
+                                  ),
                                   codeLength: 6,
                                   controller: smsCodeController,
                                   textInputAction: TextInputAction.send,

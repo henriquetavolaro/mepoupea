@@ -125,5 +125,10 @@ class TextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.white,
   );
+  static final textPinPhoneAuth = GoogleFonts.montserrat(
+    fontSize:22,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textLightBlack,
+  );
 
 }
