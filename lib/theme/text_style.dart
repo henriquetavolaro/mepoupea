@@ -64,9 +64,14 @@ class TextStyles {
       fontWeight: FontWeight.w600,
       color: AppColors.primaryBlue
   );
-  static final paragraphSmall12Black = GoogleFonts.poppins(
+  static final paragraphSmall12BlackMedium = GoogleFonts.poppins(
     fontSize: 12,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textLightBlack
+  );
+  static final paragraphSmall12BlackSemiBold = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
     color: AppColors.textLightBlack
   );
   static final paragraphMedium14Black = GoogleFonts.poppins(
@@ -129,6 +134,36 @@ class TextStyles {
     fontSize:22,
     fontWeight: FontWeight.w400,
     color: AppColors.textLightBlack,
+  );
+  static final textCardR$Ganhei = GoogleFonts.montserrat(
+    fontSize:20,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textLightBlack,
+  );
+  static final textCardValorGanhei = GoogleFonts.montserrat(
+    fontSize:28,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+  static final textCardR$Gastei = GoogleFonts.montserrat(
+    fontSize:11,
+    fontWeight: FontWeight.w600,
+    color: AppColors.redGastei,
+  );
+  static final textCardValorGastei = GoogleFonts.montserrat(
+    fontSize:16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.redGastei,
+  );
+  static final textCardR$Investi = GoogleFonts.montserrat(
+    fontSize:11,
+    fontWeight: FontWeight.w600,
+    color: AppColors.greenInvesti,
+  );
+  static final textCardValorInvest = GoogleFonts.montserrat(
+    fontSize:16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.greenInvesti,
   );
 
 }

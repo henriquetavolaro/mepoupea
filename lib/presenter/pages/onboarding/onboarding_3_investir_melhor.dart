@@ -10,15 +10,15 @@ class Onboarding3InvestirMelhor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryBlue,
-          elevation: 0,
-            automaticallyImplyLeading: false,
-          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
-        ),
-        body: BackgroundBlueGradientContainer(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryBlue,
+        elevation: 0,
+          automaticallyImplyLeading: false,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
+      ),
+      body: SafeArea(
+        child: BackgroundBlueGradientContainer(
           child: Column(
             children: [
               Padding(

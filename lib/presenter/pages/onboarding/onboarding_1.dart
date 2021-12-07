@@ -14,9 +14,9 @@ class OnboardingScreen1 extends StatelessWidget {
       statusBarColor: AppColors.orange
     ));
     return Material(
-      child: SafeArea(
-        child: Scaffold(
-          body: Column(
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.40,
@@ -84,27 +84,27 @@ class OnboardingScreen1 extends StatelessWidget {
               ),
             ],
           ),
-          bottomSheet: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () async => await Navigator.pushNamed(context, '/login_1'),
-                  child: Text(
-                    'Já tenho cadastro',
-                    style: TextStyles.textUnderlineBlue,),
-                ),
-                InkWell(
-                  onTap: () {
-                    showNathDialog(context);
-                  },
-                  child: Text(
-                    'Quem é Na.th?',
-                    style: TextStyles.textUnderlineBlue,),
-                ),
-              ],
-            ),
+        ),
+        bottomSheet: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () async => await Navigator.pushNamed(context, '/login_1'),
+                child: Text(
+                  'Já tenho cadastro',
+                  style: TextStyles.textUnderlineBlue,),
+              ),
+              InkWell(
+                onTap: () {
+                  showNathDialog(context);
+                },
+                child: Text(
+                  'Quem é Na.th?',
+                  style: TextStyles.textUnderlineBlue,),
+              ),
+            ],
           ),
         ),
       ),
@@ -129,7 +129,7 @@ class OnboardingScreen1 extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 28.0),
                     child: Text(
                         'Eu fui criada em laboratório pela musa das finanças pra que você tivesse a melhor ajuda possível no menor tempo possível, pagando o menor preço possível e ganhando o máximo de dinheiro possível. \n\nComplexo? Estou aqui para te ajudar a tomar as melhores decisões com o seu dinheiro.',
-                      style: TextStyles.paragraphSmall12Black,
+                      style: TextStyles.paragraphSmall12BlackMedium,
                       textAlign: TextAlign.center,
                     ),
                   ),

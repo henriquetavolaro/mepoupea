@@ -15,16 +15,16 @@ class Onboarding5 extends StatefulWidget {
 class _Onboarding5 extends State<Onboarding5> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryBlue,
-          elevation: 0,
-            automaticallyImplyLeading: false,
-          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryBlue,
+        elevation: 0,
+          automaticallyImplyLeading: false,
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
 
-        ),
-        body: BackgroundBlueGradientContainer(
+      ),
+      body: SafeArea(
+        child: BackgroundBlueGradientContainer(
           child: Column(
             children: [
               Padding(

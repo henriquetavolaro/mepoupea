@@ -50,24 +50,24 @@ class _LoginEmailState extends State<LoginEmail> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.loginBackground,
-        appBar: AppBar(
-            toolbarHeight: 46,
-            backgroundColor: AppColors.loginBackground,
-            elevation: 0,
-            systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
-            automaticallyImplyLeading: false),
-        body:  BlocListener<AuthenticationBloc, AuthenticationState>(
-          bloc: sl.get<AuthenticationBloc>(),
-          listener: (context, state){
-            if(state is RegisterEmailAndPasswordFailureState) {
-              buildShowSnackBar(context, state.message);
-            }
-          },
+    return Scaffold(
+      key: scaffoldKey,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: AppColors.loginBackground,
+      appBar: AppBar(
+          toolbarHeight: 46,
+          backgroundColor: AppColors.loginBackground,
+          elevation: 0,
+          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
+          automaticallyImplyLeading: false),
+      body:  BlocListener<AuthenticationBloc, AuthenticationState>(
+        bloc: sl.get<AuthenticationBloc>(),
+        listener: (context, state){
+          if(state is RegisterEmailAndPasswordFailureState) {
+            buildShowSnackBar(context, state.message);
+          }
+        },
+        child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(left: 22, right: 42, top: 46),
             child: SingleChildScrollView(
@@ -85,7 +85,7 @@ class _LoginEmailState extends State<LoginEmail> {
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
                         child: Text(
                           'Calma, falta pouco!',
-                          style: TextStyles.paragraphSmall12Black,
+                          style: TextStyles.paragraphSmall12BlackMedium,
                         ),
                       ),
                       Padding(

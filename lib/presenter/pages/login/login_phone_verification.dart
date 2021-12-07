@@ -34,23 +34,23 @@ class _LoginPhoneVerificationState extends State<LoginPhoneVerification> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: AppColors.loginBackground,
-        appBar: AppBar(
-            toolbarHeight: 46,
-            backgroundColor: AppColors.loginBackground,
-            elevation: 0,
-            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
-            automaticallyImplyLeading: false),
-        body:     BlocListener<AuthenticationBloc, AuthenticationState>(
-            bloc: sl.get<AuthenticationBloc>(),
-            listener: (context, state){
-              if(state is AuthenticationFailureState) {
-                buildShowSnackBar(context, "Falha na autenticação");
-              }
-            },
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: AppColors.loginBackground,
+      appBar: AppBar(
+          toolbarHeight: 46,
+          backgroundColor: AppColors.loginBackground,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
+          automaticallyImplyLeading: false),
+      body:     BlocListener<AuthenticationBloc, AuthenticationState>(
+          bloc: sl.get<AuthenticationBloc>(),
+          listener: (context, state){
+            if(state is AuthenticationFailureState) {
+              buildShowSnackBar(context, "Falha na autenticação");
+            }
+          },
+        child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(left: 22, right: 42),
@@ -65,7 +65,7 @@ class _LoginPhoneVerificationState extends State<LoginPhoneVerification> {
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     child: Text(
                       'Calma, falta pouco!',
-                      style: TextStyles.paragraphSmall12Black,
+                      style: TextStyles.paragraphSmall12BlackMedium,
                     ),
                   ),
                   Padding(

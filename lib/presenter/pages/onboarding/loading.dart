@@ -30,15 +30,15 @@ class _LoadingState extends State<Loading>  {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-            systemOverlayStyle:
-                const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
-            backgroundColor: AppColors.primaryBlue,
-            elevation: 0,
-            automaticallyImplyLeading: false),
-        body: BackgroundBlueGradientContainer(
+    return Scaffold(
+      appBar: AppBar(
+          systemOverlayStyle:
+              const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
+          backgroundColor: AppColors.primaryBlue,
+          elevation: 0,
+          automaticallyImplyLeading: false),
+      body: SafeArea(
+        child: BackgroundBlueGradientContainer(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

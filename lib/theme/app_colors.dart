@@ -9,8 +9,11 @@ class AppColors {
   static const darkBlue = Color(0xFF3A2372);
   static const loginBackground = Color(0xFFF6F2FF);
   static const textLightBlack = Color(0xFF202020);
+  static const black = Color(0xFF000000);
   static const textGray = Color(0xFF989898);
   static const buttonDisabled = Color(0xFFBFBFBF);
   static const facebookBlue = Color(0xFF1778F2);
+  static const redGastei = Color(0xFFE35365);
+  static const greenInvesti = Color(0xFF77A42C);
 
 }

@@ -36,17 +36,17 @@ class _LoginPhoneState extends State<LoginPhone> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.loginBackground,
-        appBar: AppBar(
-            toolbarHeight: 46,
-            backgroundColor: AppColors.loginBackground,
-            elevation: 0,
-            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
-            automaticallyImplyLeading: false),
-        body: Padding(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: AppColors.loginBackground,
+      appBar: AppBar(
+          toolbarHeight: 46,
+          backgroundColor: AppColors.loginBackground,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
+          automaticallyImplyLeading: false),
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.only(left: 22, right: 42),
           child: Column(
 
@@ -63,7 +63,7 @@ class _LoginPhoneState extends State<LoginPhone> {
                     padding: const EdgeInsets.symmetric(vertical: 20.0),
                     child: Text(
                       'Calma, falta pouco!',
-                      style: TextStyles.paragraphSmall12Black,
+                      style: TextStyles.paragraphSmall12BlackMedium,
                     ),
                   ),
                   Padding(

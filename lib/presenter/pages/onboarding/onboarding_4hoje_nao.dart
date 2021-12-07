@@ -22,20 +22,20 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryBlue,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryBlue,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
-        body: BackgroundBlueGradientContainer(
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
+      ),
+      body: SafeArea(
+        child: BackgroundBlueGradientContainer(
           child: Column(
             children: [
               Padding(

@@ -24,17 +24,17 @@ class _Login1State extends State<Login1> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.loginBackground,
-        appBar: AppBar(
-            toolbarHeight: 46,
-            backgroundColor: AppColors.loginBackground,
-            elevation: 0,
-            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
-            automaticallyImplyLeading: false),
-        body: Padding(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: AppColors.loginBackground,
+      appBar: AppBar(
+          toolbarHeight: 46,
+          backgroundColor: AppColors.loginBackground,
+          elevation: 0,
+          systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
+          automaticallyImplyLeading: false),
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.only(left: 22, right: 42),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
