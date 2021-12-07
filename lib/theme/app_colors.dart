@@ -15,5 +15,7 @@ class AppColors {
   static const facebookBlue = Color(0xFF1778F2);
   static const redGastei = Color(0xFFE35365);
   static const greenInvesti = Color(0xFF77A42C);
+  static const gasteiBackground = Color(0xFFFFF2F2);
+  static const investiBackground = Color(0xFFECFCED);
 
 }

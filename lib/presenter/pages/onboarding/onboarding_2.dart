@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:mepoupeapp/presenter/components/app_bar_blue.dart';
+import 'package:mepoupeapp/presenter/components/app_bar_login.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
+import 'package:mepoupeapp/presenter/components/ja_tem_uma_conta_bottom.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
@@ -24,12 +27,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(
-        backgroundColor: AppColors.primaryBlue,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
-      ),
+      appBar: AppBarBlue(appBar: AppBar(),),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -135,27 +133,13 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
         ),
       ),
       bottomSheet: DelayedDisplay(
-        delay: Duration(seconds: 2),
+        delay: const Duration(seconds: 2),
         child: Container(
           color: AppColors.white,
           width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 60.0, top: 16),
-            child: InkWell(
-              onTap: () async => await Navigator.pushNamed(context, '/login_1'),
-              child: RichText(
-                text: TextSpan(
-                  text: 'Já tem uma conta? ',
-                  style: TextStyles.textBlue,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: 'Entrar',
-                    style: TextStyles.textUnderlineBlue)
-                  ],
-                ),
-                  textAlign: TextAlign.center
-              ),
-            )
+          child: JaTemUmaContaBottom(
+            style: TextStyles.textBlue,
+            styleUnderline: TextStyles.textUnderlineBlue,
           ),
         ),
       ),

@@ -9,14 +9,14 @@ import 'package:mepoupeapp/presenter/components/liquid_linear_progress_custom.da
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
-class PreSelfieExemplo1 extends StatefulWidget {
-  const PreSelfieExemplo1({Key? key}) : super(key: key);
+class PreSelfieExemplo3 extends StatefulWidget {
+  const PreSelfieExemplo3({Key? key}) : super(key: key);
 
   @override
-  _PreSelfieExemplo1State createState() => _PreSelfieExemplo1State();
+  _PreSelfieExemplo3State createState() => _PreSelfieExemplo3State();
 }
 
-class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
+class _PreSelfieExemplo3State extends State<PreSelfieExemplo3>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
 
@@ -57,11 +57,11 @@ class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
                     RichText(
                       text: TextSpan(
                         text:
-                            'Alguém que ganha mil reais por mês e investe 300, tem uma Selfie Financeira MUITO BOA e merece ',
+                            'Agora se a pessoa ganha mil, mas gasta 1.200, precisa de ajuda para quitar as dívidas e recebe apenas ',
                         style: TextStyles.paragraphSmall12BlackMedium,
                         children: <TextSpan>[
                           TextSpan(
-                              text: '90 curtidas!',
+                              text: '20.',
                               style: TextStyles.paragraphSmall12BlackSemiBold),
                         ],
                       ),
@@ -82,29 +82,29 @@ class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
                       child: Padding(
                         padding: const EdgeInsets.only(right: 4.0),
                         child: CardGasteiInvesti(
-                          value: ' 700,00',
+                          value: ' 1200,00',
                           liquidColor: AppColors.gasteiBackground,
                           text: 'Gastei',
                           valueStyle: TextStyles.textCardValorGastei,
                           animationController: animationController,
                           moneyStyle: TextStyles.textCardR$Gastei,
-                          liquidPercentage: 0.56,
+                          liquidPercentage: 1,
                         ),
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: Padding(
-                          padding: const EdgeInsets.only(left: 4.0),
-                          child: CardGasteiInvesti(
-                            value: ' 300,00',
-                            liquidColor: AppColors.investiBackground,
-                            text: 'Investi',
-                            valueStyle: TextStyles.textCardValorInvest,
-                            animationController: animationController,
-                            moneyStyle: TextStyles.textCardR$Investi,
-                            liquidPercentage: 0.24,
-                          ),
+                        padding: const EdgeInsets.only(left: 4.0),
+                        child: CardGasteiInvesti(
+                          value: ' 0,00',
+                          liquidColor: AppColors.investiBackground,
+                          text: 'Investi',
+                          valueStyle: TextStyles.textCardValorInvest,
+                          animationController: animationController,
+                          moneyStyle: TextStyles.textCardR$Investi,
+                          liquidPercentage: 0,
+                        ),
                       ),
                     ),
                   ],
@@ -116,30 +116,19 @@ class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
                 child: Column(
                   children: [
                     Container(
-                      padding:
-                          const EdgeInsets.only(left: 60, right: 60, top: 36),
-                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.only(top: 36, bottom: 16),
+                      // width: MediaQuery.of(context).size.width,
                       child: CustomButton(
                         onClick: () {},
-                        text: 'Quantas curtidas mereço?',
-                        color: AppColors.darkBlue,
+                        text: 'Quero ver minha Selfie da Riqueza',
+                        color: AppColors.orange,
                         textColor: AppColors.white,
                         style: TextStyles.buttonTextSemiBold,
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 80),
-                      width: MediaQuery.of(context).size.width,
-                      child: CustomButtonStroke(
-                        text: 'Me dá outro exemplo...',
-                        onClick: () async => await Navigator.pushNamed(
-                            context, '/pre_selfie_exemplo_2'),
-                        style: TextStyles.buttonTextMedium,
-                        textColor: AppColors.darkBlue,
-                        borderSide: const BorderSide(
-                            width: 1, color: AppColors.darkBlue),
-                        color: AppColors.white,
-                      ),
+                    Text(
+                      'Prefiro continuar como estou',
+                      style: TextStyles.textUnderlinedDarkBlue,
                     )
                   ],
                 ),

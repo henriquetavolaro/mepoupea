@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mepoupeapp/presenter/components/app_bar_blue.dart';
 import 'package:mepoupeapp/presenter/components/background_blue_gradient_container.dart';
+import 'package:mepoupeapp/presenter/components/button_claro_nath.dart';
+import 'package:mepoupeapp/presenter/components/button_hoje_nao.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
@@ -12,12 +15,7 @@ class Onboarding3QuitarDividas extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.primaryBlue,
-        elevation: 0,
-          automaticallyImplyLeading: false,
-        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
-      ),
+      appBar: AppBarBlue(appBar: AppBar(),),
       body: SafeArea(
         child: BackgroundBlueGradientContainer(
           child: Column(
@@ -45,29 +43,8 @@ class Onboarding3QuitarDividas extends StatelessWidget {
               const SizedBox(
                 height: 36,
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 78, right: 78, bottom: 30),
-                child: SizedBox(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  child: CustomButton(
-                    onClick: () async => await Navigator.pushNamed(context, '/login_1'),
-                    text: 'Claro, Na.th!',
-                    color: AppColors.white,
-                    textColor: AppColors.darkBlue,
-                    style: TextStyles.buttonTextSemiBold,
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () async => await Navigator.pushNamed(context, '/onboarding_4_hojenao'),
-                child: Text(
-                  'Hoje não, Na.th',
-                  style: TextStyles.textUnderlineWhite,
-                ),
-              )
+              ButtonClaroNath(),
+              ButtonHojeNao()
             ],
           ),
         ),

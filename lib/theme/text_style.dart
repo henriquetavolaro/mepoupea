@@ -22,7 +22,7 @@ class TextStyles {
     fontWeight: FontWeight.w500,
   );
   static final textBlue = GoogleFonts.poppins(
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: FontWeight.w500,
     color: AppColors.primaryBlue
   );
@@ -42,7 +42,7 @@ class TextStyles {
     color: AppColors.white
   );
   static final textUnderlinedDarkBlue = GoogleFonts.poppins(
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: FontWeight.w600,
     color: AppColors.darkBlue,
     decoration: TextDecoration.underline

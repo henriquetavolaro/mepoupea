@@ -1,6 +1,7 @@
 import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mepoupeapp/presenter/components/app_bar_blue.dart';
 import 'package:mepoupeapp/presenter/components/background_blue_gradient_container.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
@@ -31,12 +32,7 @@ class _LoadingState extends State<Loading>  {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          systemOverlayStyle:
-              const SystemUiOverlayStyle(statusBarColor: AppColors.orange),
-          backgroundColor: AppColors.primaryBlue,
-          elevation: 0,
-          automaticallyImplyLeading: false),
+      appBar: AppBarBlue(appBar: AppBar(),),
       body: SafeArea(
         child: BackgroundBlueGradientContainer(
           child: Column(

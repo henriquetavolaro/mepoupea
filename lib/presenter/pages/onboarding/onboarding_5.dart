@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mepoupeapp/presenter/components/background_blue_gradient_container.dart';
@@ -25,45 +26,48 @@ class _Onboarding5 extends State<Onboarding5> {
       ),
       body: SafeArea(
         child: BackgroundBlueGradientContainer(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 42, left: 22, right: 22),
-                child: Column(
-                  children: [
-                    Text(
-                      'Anotado! E se eu te disser que te ajudo com isso e mais um pouco aqui no app?',
-                      style: TextStyles.headerTextWhite,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 24.0),
-                      child: Text(
-                        'Mas preciso da sua ajuda também. Posso contar com você se esforçando um pouquinho para chegar mais longe, mais depressa?',
-                        style: TextStyles.paragraphMedium14White,
+          child: DelayedDisplay(
+            delay: const Duration(milliseconds: 200),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 42, left: 22, right: 22),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Anotado! E se eu te disser que te ajudo com isso e mais um pouco aqui no app?',
+                        style: TextStyles.headerTextWhite,
                       ),
-                    )
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 24.0),
+                        child: Text(
+                          'Mas preciso da sua ajuda também. Posso contar com você se esforçando um pouquinho para chegar mais longe, mais depressa?',
+                          style: TextStyles.paragraphMedium14White,
+                        ),
+                      )
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-             Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 78.0),
-               child: SizedBox(
-                   width: MediaQuery.of(context).size.width,
-                 child: CustomButton(
-                              onClick: () async => await Navigator.pushNamed(context, '/login_1'),
-                              text: 'Bora, Na.th!',
-                              color: AppColors.white,
-                              textColor: AppColors.darkBlue,
-                   style: TextStyles.buttonTextMedium,
-                            ),
+                const SizedBox(
+                  height: 24,
+                ),
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 78.0),
+                 child: SizedBox(
+                     width: MediaQuery.of(context).size.width,
+                   child: CustomButton(
+                                onClick: () async => await Navigator.pushNamed(context, '/login_1'),
+                                text: 'Bora, Na.th!',
+                                color: AppColors.white,
+                                textColor: AppColors.darkBlue,
+                     style: TextStyles.buttonTextMedium,
+                              ),
+                 ),
                ),
-             ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

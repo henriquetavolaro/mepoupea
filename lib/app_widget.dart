@@ -25,6 +25,8 @@ import 'package:mepoupeapp/presenter/pages/onboarding/onboarding_5.dart';
 import 'package:mepoupeapp/presenter/pages/onboarding/prefiro_app_pior.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_1.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_1.dart';
+import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_2.dart';
+import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_3.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/utils/secure_storage.dart';
 
@@ -55,7 +57,7 @@ class _AppWidgetState extends State<AppWidget> {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          initialRoute: '/pre_selfie_exemplo_1',
+          initialRoute: '/pre_selfie_1',
           routes: {
             '/onboarding_1': (context) => const OnboardingScreen1(),
             '/onboarding_2': (context) => const OnboardingScreen2(),
@@ -78,6 +80,8 @@ class _AppWidgetState extends State<AppWidget> {
 
             '/pre_selfie_1': (context) => const PreSelfie1(),
             '/pre_selfie_exemplo_1': (context) => const PreSelfieExemplo1(),
+            '/pre_selfie_exemplo_2': (context) => const PreSelfieExemplo2(),
+            '/pre_selfie_exemplo_3': (context) => const PreSelfieExemplo3(),
 
             '/home_page': (context) => const MyHomePage(),
             '/logged': (context) => const Logged()
