@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:mepoupeapp/presenter/components/card_ganhei.dart';
 import 'package:mepoupeapp/presenter/components/card_gastei_investi.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
-import 'package:mepoupeapp/presenter/components/custom_button_stroke.dart';
-import 'package:mepoupeapp/presenter/components/liquid_linear_progress_custom.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
@@ -39,10 +36,16 @@ class _PreSelfieExemplo3State extends State<PreSelfieExemplo3>
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground));
     return Scaffold(
       backgroundColor: AppColors.white,
+      appBar: AppBar(
+          toolbarHeight: 0,
+          backgroundColor: AppColors.white,
+          elevation: 0,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarIconBrightness: Brightness.dark,
+              statusBarColor: AppColors.loginBackground),
+          automaticallyImplyLeading: false),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -119,7 +122,7 @@ class _PreSelfieExemplo3State extends State<PreSelfieExemplo3>
                       padding: const EdgeInsets.only(top: 36, bottom: 16),
                       // width: MediaQuery.of(context).size.width,
                       child: CustomButton(
-                        onClick: () {},
+                        onClick: () async => await Navigator.pushNamed(context, '/como_prefere_conectar'),
                         text: 'Quero ver minha Selfie da Riqueza',
                         color: AppColors.orange,
                         textColor: AppColors.white,

@@ -1,7 +1,6 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/presenter/components/custom_button_stroke.dart';
 import 'package:mepoupeapp/presenter/components/liquid_linear_progress_custom.dart';
@@ -38,11 +37,16 @@ class _PreSelfie1State extends State<PreSelfie1>
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground));
-
     return Scaffold(
       backgroundColor: AppColors.white,
+      appBar: AppBar(
+          toolbarHeight: 0,
+          backgroundColor: AppColors.white,
+          elevation: 0,
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarIconBrightness: Brightness.dark,
+              statusBarColor: AppColors.loginBackground),
+          automaticallyImplyLeading: false),
       body: SafeArea(
         child: DelayedDisplay(
           delay: const Duration(milliseconds: 200),
@@ -216,7 +220,7 @@ class _PreSelfie1State extends State<PreSelfie1>
                                 left: 60, right: 60, top: 16),
                             width: MediaQuery.of(context).size.width,
                             child: CustomButton(
-                              onClick: () {},
+                              onClick: () async => await Navigator.pushNamed(context, '/como_prefere_conectar'),
                               text: 'Pode ver minhas contas!',
                               color: AppColors.darkBlue,
                               textColor: AppColors.white,

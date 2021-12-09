@@ -13,7 +13,9 @@ class AppBarLogin extends StatelessWidget implements PreferredSizeWidget {
         toolbarHeight: 46,
         backgroundColor: AppColors.loginBackground,
         elevation: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppColors.loginBackground),
+        systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarIconBrightness: Brightness.dark,
+            statusBarColor: AppColors.loginBackground),
         automaticallyImplyLeading: false);
   }
 

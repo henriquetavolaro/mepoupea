@@ -71,7 +71,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                           Padding(
                             padding: const EdgeInsets.only(top: 24.0),
                             child: DelayedDisplay(
-                              delay: Duration(seconds: 2),
+                              delay: Duration(milliseconds: 1500),
                               child: Text(
                                 'Qual o seu desejo mais urgente?',
                                 style: TextStyles.headerParagraphWhite,
@@ -91,7 +91,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                   height: 56,
                 ),
                 DelayedDisplay(
-                  delay: Duration(seconds: 2),
+                  delay: Duration(milliseconds: 1500),
                   child: SingleChildScrollView(
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -116,7 +116,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                   ),
                 ),
                 DelayedDisplay(
-                  delay: Duration(seconds: 2),
+                  delay: Duration(milliseconds: 1500),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 18.0),
                     child: InkWell(
@@ -133,7 +133,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
         ),
       ),
       bottomSheet: DelayedDisplay(
-        delay: const Duration(seconds: 2),
+        delay: Duration(milliseconds: 1500),
         child: Container(
           color: AppColors.white,
           width: MediaQuery.of(context).size.width,

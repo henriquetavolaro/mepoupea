@@ -53,6 +53,12 @@ class TextStyles {
       color: AppColors.primaryBlue,
       decoration: TextDecoration.underline
   );
+  static final textUnderlineDarkBlueSmall9 = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.darkBlue,
+      decoration: TextDecoration.underline
+  );
   static final textUnderlineWhite = GoogleFonts.poppins(
       fontSize: 15,
       fontWeight: FontWeight.w500,
@@ -61,8 +67,19 @@ class TextStyles {
   );
   static final headerTextBlue = GoogleFonts.poppins(
       fontSize: 21,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
       color: AppColors.primaryBlue
+  );
+  static final headerTextDarkBlue = GoogleFonts.poppins(
+      fontSize: 21,
+      fontWeight: FontWeight.w500,
+      color: AppColors.darkBlue
+  );
+  static final headerTextBlueSemiBold = GoogleFonts.poppins(
+      fontSize: 21,
+      fontWeight: FontWeight.w700,
+      color: AppColors.primaryBlue,
+
   );
   static final paragraphSmall12BlackMedium = GoogleFonts.poppins(
     fontSize: 12,
@@ -84,6 +101,11 @@ class TextStyles {
       fontWeight: FontWeight.w500,
       color: AppColors.white
   );
+  static final paragraphSmall12DarkBlue = GoogleFonts.poppins(
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      color: AppColors.darkBlue
+  );
   static final paragraphMedium14White = GoogleFonts.poppins(
       fontSize: 14,
       fontWeight: FontWeight.w500,
@@ -94,10 +116,35 @@ class TextStyles {
       fontWeight: FontWeight.w500,
       color: AppColors.textGray
   );
+  static final paragraphSmall12Black = GoogleFonts.poppins(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: AppColors.black
+  );
   static final paragraphSmall9grey = GoogleFonts.poppins(
       fontSize: 9,
       fontWeight: FontWeight.w500,
       color: AppColors.textGray
+  );
+  static final paragraphSmall9lightBlack = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textLightBlack
+  );
+  static final paragraphSmall9orange = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.orange
+  );
+  static final paragraphSmall9red = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.redGastei
+  );
+  static final paragraphSmall9white = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.white
   );
   static final phoneNumberTextField = GoogleFonts.openSans(
     fontSize: 14,
@@ -119,6 +166,16 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
     decoration: TextDecoration.underline
+  );
+  static final paragraphGreySmall11light = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w300,
+    color: AppColors.textDarkGray,
+  );
+  static final paragraphGreySmall11Medium = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textDarkGray,
   );
   static final textLoadingWhite20Medium = GoogleFonts.poppins(
     fontSize:20,
@@ -164,6 +221,41 @@ class TextStyles {
     fontSize:16,
     fontWeight: FontWeight.w600,
     color: AppColors.greenInvesti,
+  );
+  static final textTermosBlack11 = GoogleFonts.montserrat(
+    fontSize:11,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
+  static final textTermosLightBlack11 = GoogleFonts.poppins(
+    fontSize:11,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack,
+  );
+  static final textWhite14Light = GoogleFonts.poppins(
+    fontSize:14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
+  static final textBlack14Medium = GoogleFonts.poppins(
+    fontSize:14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
+  static final textPurple14SemiBold = GoogleFonts.poppins(
+    fontSize:14,
+    fontWeight: FontWeight.w700,
+    color: AppColors.purple,
+  );
+  static final initialLetterSelfie = GoogleFonts.poppins(
+    fontSize:32,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static final textValueSmall13MontserratBlack = GoogleFonts.montserrat(
+    fontSize:13,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
   );
 
 }

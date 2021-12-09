@@ -115,7 +115,7 @@ class AuthenticationClass {
       if (event != null) {
         final token = await getUserId();
         setToken(token);
-        navigatorKey.currentState!.pushReplacementNamed('/logged');
+        navigatorKey.currentState!.pushReplacementNamed('/pre_selfie_1');
       } else {
         removeToken();
       }
