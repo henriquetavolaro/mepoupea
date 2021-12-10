@@ -38,7 +38,7 @@ class _Onboarding3NaoSeiState extends State<Onboarding3NaoSei> {
                     children: [
                       Text(
                         'Não tem problema, muita gente não sabe!',
-                        style: TextStyles.headerTextWhite,
+                        style: TextStyles.headerTextWhiteSemiBold,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24.0),

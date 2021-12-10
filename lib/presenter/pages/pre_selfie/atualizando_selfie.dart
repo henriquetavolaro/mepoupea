@@ -38,7 +38,7 @@ class _AtualizandoSelfieState extends State<AtualizandoSelfie> {
             children: [
               Text(
                 'Atualizando Selfie da riqueza',
-                style: TextStyles.headerTextWhite,
+                style: TextStyles.headerTextWhiteSemiBold,
               ),
               Expanded(
                 child: Column(

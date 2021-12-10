@@ -48,7 +48,7 @@ class CardGanhei extends StatelessWidget {
                   children: <TextSpan>[
                     TextSpan(
                         text: ' 1.000,00',
-                        style: TextStyles.textCardValorGanhei),
+                        style: TextStyles.textSelfieMedium16MontserratLightBlackSemiBold),
                   ],
                 ),
               ),

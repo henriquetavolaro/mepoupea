@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 import 'package:mepoupeapp/di/injection_module.dart';
@@ -29,7 +30,10 @@ import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_1.dart'
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_2.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_3.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/termos.dart';
+import 'package:mepoupeapp/presenter/pages/selfie_financeira/camera.dart';
+import 'package:mepoupeapp/presenter/pages/selfie_financeira/mostrar_selfie.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/selfie_financeira_1.dart';
+import 'package:mepoupeapp/presenter/pages/selfie_financeira/tirar_selfie.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -75,8 +79,8 @@ class _AppWidgetState extends State<AppWidget> {
             '/onboarding_4_hojenao': (context) => const Onboarding4HojeNao(),
             '/onboarding_5': (context) => const Onboarding5(),
             '/prefiro_app_pior': (context) => const PrefiroAppPior(),
-            '/login_1': (context) => Login1(),
-            '/login_email': (context) => LoginEmail(),
+            '/login_1': (context) => const Login1(),
+            '/login_email': (context) => const LoginEmail(),
             '/login_phone': (context) => const LoginPhone(),
             '/login_phone_verification': (context) => LoginPhoneVerification(
                   phoneNumber:
@@ -93,6 +97,13 @@ class _AppWidgetState extends State<AppWidget> {
             '/termos': (context) => const Termos(),
             '/atualizando_selfie': (context) => const AtualizandoSelfie(),
             '/selfie_financeira_1': (context) => const SelfieFinanceira1(),
+            '/tirar_selfie': (context) => const TirarSelfie(),
+            '/camera': (context) => Camera(
+                  cameras: ModalRoute.of(context)!.settings.arguments
+                      as List<CameraDescription>,
+                ),
+            '/mostrar_selfie': (context) => MostrarSelfie(
+                imageFile: ModalRoute.of(context)!.settings.arguments as XFile)
           }),
     );
   }

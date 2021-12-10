@@ -48,7 +48,7 @@ class _Onboarding4HojeNaoState extends State<Onboarding4HojeNao> {
                     children: [
                       Text(
                         'Que pena! Se você mudar de ideia, será uma jornada incrível. ',
-                        style: TextStyles.headerTextWhite,
+                        style: TextStyles.headerTextWhiteSemiBold,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24.0),

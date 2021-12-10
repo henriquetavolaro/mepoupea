@@ -29,7 +29,7 @@ class PrefiroAppPior extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 22),
                   child: Text(
                     'Aqui estão as Inteligências Artificiais menos inteligentes que eu.',
-                    style: TextStyles.headerTextWhite,
+                    style: TextStyles.headerTextWhiteSemiBold,
                   ),
                 ),
                 Align(
@@ -39,7 +39,7 @@ class PrefiroAppPior extends StatelessWidget {
                         horizontal: 22, vertical: 24),
                     child: Text(
                       'Boa sorte. Você vai precisar.',
-                      style: TextStyles.headerTextWhite,
+                      style: TextStyles.headerTextWhiteSemiBold,
                     ),
                   ),
                 ),

@@ -36,7 +36,7 @@ class _Onboarding5 extends State<Onboarding5> {
                     children: [
                       Text(
                         'Anotado! E se eu te disser que te ajudo com isso e mais um pouco aqui no app?',
-                        style: TextStyles.headerTextWhite,
+                        style: TextStyles.headerTextWhiteSemiBold,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24.0),

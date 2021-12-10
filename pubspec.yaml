@@ -42,6 +42,10 @@ dependencies:
   blinking_text: ^1.0.1+2
   delayed_display: ^2.0.0
   liquid_progress_indicator: ^0.4.0
+  camera: ^0.9.4+5
+  path: ^1.8.0
+  path_provider: ^2.0.8
+  gallery_saver: ^2.3.2
 
 dev_dependencies:
   mockito: ^5.0.16

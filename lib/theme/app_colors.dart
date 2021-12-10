@@ -19,5 +19,7 @@ class AppColors {
   static const gasteiBackground = Color(0xFFFFF2F2);
   static const investiBackground = Color(0xFFECFCED);
   static const purple = Color(0xFF9169F2);
+  static const lightRedSelfie = Color(0xFFFFB2A2);
+  static const lightGreenSelfie = Color(0xFFF1FFD9);
 
 }

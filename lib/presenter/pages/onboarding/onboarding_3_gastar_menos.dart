@@ -28,7 +28,7 @@ class Onboarding3GastarMenos extends StatelessWidget {
                     children: [
                       Text(
                         'Amei! Vou te ajudar a gastar menos, muito rápido!',
-                        style: TextStyles.headerTextWhite,
+                        style: TextStyles.headerTextWhiteSemiBold,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24.0),

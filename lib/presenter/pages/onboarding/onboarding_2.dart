@@ -65,7 +65,7 @@ class _OnboardingScreen2State extends State<OnboardingScreen2> {
                             delay: const Duration(milliseconds: 500),
                             child: Text(
                               'Uhul! Não vou te decepcionar! E já que estamos começando nossa relação, me conta: ',
-                              style: TextStyles.headerTextWhite,
+                              style: TextStyles.headerTextWhiteSemiBold,
                             ),
                           ),
                           Padding(

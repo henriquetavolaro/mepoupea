@@ -21,7 +21,12 @@ class _TermosState extends State<Termos> {
         child: Padding(
           padding: const EdgeInsets.only(top: 58.0, bottom: 112, left: 22, right: 22),
           child: Container(
-            color: AppColors.white,
+            decoration: BoxDecoration(
+                color: AppColors.white,
+          borderRadius:
+          BorderRadius.circular(8)
+            ),
+
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
