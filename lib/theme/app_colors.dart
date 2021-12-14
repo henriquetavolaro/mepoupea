@@ -21,5 +21,8 @@ class AppColors {
   static const purple = Color(0xFF9169F2);
   static const lightRedSelfie = Color(0xFFFFB2A2);
   static const lightGreenSelfie = Color(0xFFF1FFD9);
+  static const robotBubble = Color(0xFFFFF8EF);
+  static const cardLightOrange = Color(0xFFFFE8CB);
+  static const cardLightYellow = Color(0xFFF4FFE2);
 
 }

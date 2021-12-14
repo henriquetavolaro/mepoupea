@@ -9,9 +9,13 @@ class CardGanhei extends StatelessWidget {
   const CardGanhei({
     Key? key,
     required this.animationController,
+    required this.textAlignment,
+    required this.text,
   }) : super(key: key);
 
   final AnimationController animationController;
+  final AlignmentGeometry textAlignment;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +42,17 @@ class CardGanhei extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: textAlignment,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 16),
+              padding: EdgeInsets.only(bottom: 16, left: 16),
               child: RichText(
                 text: TextSpan(
-                  text: 'R\$',
+                  text: 'R\$ ',
                   style: TextStyles.textCardR$Ganhei,
                   children: <TextSpan>[
                     TextSpan(
-                        text: ' 1.000,00',
-                        style: TextStyles.textSelfieMedium16MontserratLightBlackSemiBold),
+                        text: text,
+                        style: TextStyles.textCardValorGanhei),
                   ],
                 ),
               ),

@@ -33,6 +33,7 @@ import 'package:mepoupeapp/presenter/pages/pre_selfie/termos.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/camera.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/mostrar_selfie.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/selfie_financeira_1.dart';
+import 'package:mepoupeapp/presenter/pages/selfie_financeira/selfie_financeira_2.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/tirar_selfie.dart';
 
 class AppWidget extends StatefulWidget {
@@ -57,54 +58,57 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return AppLifeCycleManager(
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: "Me Poupe! App",
-          navigatorKey: navigatorKey,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          initialRoute: '/selfie_financeira_1',
-          routes: {
-            '/onboarding_1': (context) => const OnboardingScreen1(),
-            '/onboarding_2': (context) => const OnboardingScreen2(),
-            '/onboarding_3_ganhar_mais': (context) =>
-                const Onboarding3GanharMais(),
-            '/onboarding_3_investir_melhor': (context) =>
-                const Onboarding3InvestirMelhor(),
-            '/onboarding_3_quitar_dividas': (context) =>
-                const Onboarding3QuitarDividas(),
-            '/onboarding_3_gastar_menos': (context) =>
-                const Onboarding3GastarMenos(),
-            '/onboarding_3_naosei': (context) => const Onboarding3NaoSei(),
-            '/onboarding_4_hojenao': (context) => const Onboarding4HojeNao(),
-            '/onboarding_5': (context) => const Onboarding5(),
-            '/prefiro_app_pior': (context) => const PrefiroAppPior(),
-            '/login_1': (context) => const Login1(),
-            '/login_email': (context) => const LoginEmail(),
-            '/login_phone': (context) => const LoginPhone(),
-            '/login_phone_verification': (context) => LoginPhoneVerification(
-                  phoneNumber:
-                      ModalRoute.of(context)!.settings.arguments as String,
-                ),
-            '/loading': (context) => const Loading(),
-            '/pre_selfie_1': (context) => const PreSelfie1(),
-            '/pre_selfie_exemplo_1': (context) => const PreSelfieExemplo1(),
-            '/pre_selfie_exemplo_2': (context) => const PreSelfieExemplo2(),
-            '/pre_selfie_exemplo_3': (context) => const PreSelfieExemplo3(),
-            '/como_prefere_conectar': (context) => const ComoPrefereConectar(),
-            '/conta_manual': (context) => const ContaManual(),
-            '/escolha_dos_bancos': (context) => const EscolhaDosBancos(),
-            '/termos': (context) => const Termos(),
-            '/atualizando_selfie': (context) => const AtualizandoSelfie(),
-            '/selfie_financeira_1': (context) => const SelfieFinanceira1(),
-            '/tirar_selfie': (context) => const TirarSelfie(),
-            '/camera': (context) => Camera(
-                  cameras: ModalRoute.of(context)!.settings.arguments
-                      as List<CameraDescription>,
-                ),
-            '/mostrar_selfie': (context) => MostrarSelfie(
-                imageFile: ModalRoute.of(context)!.settings.arguments as XFile)
-          }),
+        debugShowCheckedModeBanner: false,
+        title: "Me Poupe! App",
+        navigatorKey: navigatorKey,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        initialRoute: '/selfie_financeira_2',
+        routes: {
+          '/onboarding_1': (context) => const OnboardingScreen1(),
+          '/onboarding_2': (context) => const OnboardingScreen2(),
+          '/onboarding_3_ganhar_mais': (context) =>
+              const Onboarding3GanharMais(),
+          '/onboarding_3_investir_melhor': (context) =>
+              const Onboarding3InvestirMelhor(),
+          '/onboarding_3_quitar_dividas': (context) =>
+              const Onboarding3QuitarDividas(),
+          '/onboarding_3_gastar_menos': (context) =>
+              const Onboarding3GastarMenos(),
+          '/onboarding_3_naosei': (context) => const Onboarding3NaoSei(),
+          '/onboarding_4_hojenao': (context) => const Onboarding4HojeNao(),
+          '/onboarding_5': (context) => const Onboarding5(),
+          '/prefiro_app_pior': (context) => const PrefiroAppPior(),
+          '/login_1': (context) => const Login1(),
+          '/login_email': (context) => const LoginEmail(),
+          '/login_phone': (context) => const LoginPhone(),
+          '/login_phone_verification': (context) => LoginPhoneVerification(
+                phoneNumber:
+                    ModalRoute.of(context)!.settings.arguments as String,
+              ),
+          '/loading': (context) => const Loading(),
+          '/pre_selfie_1': (context) => const PreSelfie1(),
+          '/pre_selfie_exemplo_1': (context) => const PreSelfieExemplo1(),
+          '/pre_selfie_exemplo_2': (context) => const PreSelfieExemplo2(),
+          '/pre_selfie_exemplo_3': (context) => const PreSelfieExemplo3(),
+          '/como_prefere_conectar': (context) => const ComoPrefereConectar(),
+          '/conta_manual': (context) => const ContaManual(),
+          '/escolha_dos_bancos': (context) => const EscolhaDosBancos(),
+          '/termos': (context) => const Termos(),
+          '/atualizando_selfie': (context) => const AtualizandoSelfie(),
+          '/selfie_financeira_1': (context) => const SelfieFinanceira1(),
+          '/selfie_financeira_2': (context) => SelfieFinanceira2(),
+          '/tirar_selfie': (context) => const TirarSelfie(),
+          '/camera': (context) => Camera(
+                cameras: ModalRoute.of(context)!.settings.arguments
+                    as List<CameraDescription>,
+              ),
+          '/mostrar_selfie': (context) => MostrarSelfie(
+              imageFile: ModalRoute.of(context)!.settings.arguments as XFile),
+
+        },
+      ),
     );
   }
 }

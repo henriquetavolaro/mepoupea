@@ -74,7 +74,10 @@ class _PreSelfieExemplo3State extends State<PreSelfieExemplo3>
               ),
               Expanded(
                 flex: 1,
-                child: CardGanhei(animationController: animationController),
+                child: CardGanhei(
+                    animationController: animationController,
+                  textAlignment: Alignment.bottomCenter,
+                  text: '1.000,00',),
               ),
               Expanded(
                 flex: 1,
@@ -92,6 +95,7 @@ class _PreSelfieExemplo3State extends State<PreSelfieExemplo3>
                           animationController: animationController,
                           moneyStyle: TextStyles.textCardR$Gastei,
                           liquidPercentage: 1,
+                          textAlignment: Alignment.bottomCenter,
                         ),
                       ),
                     ),
@@ -107,6 +111,7 @@ class _PreSelfieExemplo3State extends State<PreSelfieExemplo3>
                           animationController: animationController,
                           moneyStyle: TextStyles.textCardR$Investi,
                           liquidPercentage: 0,
+                          textAlignment: Alignment.bottomCenter,
                         ),
                       ),
                     ),

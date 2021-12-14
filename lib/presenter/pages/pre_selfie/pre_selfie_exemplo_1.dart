@@ -75,7 +75,11 @@ class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
               ),
               Expanded(
                 flex: 1,
-                child: CardGanhei(animationController: animationController),
+                child: CardGanhei(
+                  animationController: animationController,
+                  textAlignment: Alignment.bottomCenter,
+                  text: '1.000,00',
+                ),
               ),
               Expanded(
                 flex: 1,
@@ -93,22 +97,24 @@ class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
                           animationController: animationController,
                           moneyStyle: TextStyles.textCardR$Gastei,
                           liquidPercentage: 0.56,
+                          textAlignment: Alignment.bottomCenter,
                         ),
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: Padding(
-                          padding: const EdgeInsets.only(left: 4.0),
-                          child: CardGasteiInvesti(
-                            value: ' 300,00',
-                            liquidColor: AppColors.investiBackground,
-                            text: 'Investi',
-                            valueStyle: TextStyles.textCardValorInvest,
-                            animationController: animationController,
-                            moneyStyle: TextStyles.textCardR$Investi,
-                            liquidPercentage: 0.24,
-                          ),
+                        padding: const EdgeInsets.only(left: 4.0),
+                        child: CardGasteiInvesti(
+                          value: ' 300,00',
+                          liquidColor: AppColors.investiBackground,
+                          text: 'Investi',
+                          valueStyle: TextStyles.textCardValorInvest,
+                          animationController: animationController,
+                          moneyStyle: TextStyles.textCardR$Investi,
+                          liquidPercentage: 0.24,
+                          textAlignment: Alignment.bottomCenter,
+                        ),
                       ),
                     ),
                   ],
@@ -124,7 +130,8 @@ class _PreSelfieExemplo1State extends State<PreSelfieExemplo1>
                           const EdgeInsets.only(left: 60, right: 60, top: 36),
                       width: MediaQuery.of(context).size.width,
                       child: CustomButton(
-                        onClick: () async => await Navigator.pushNamed(context, '/como_prefere_conectar'),
+                        onClick: () async => await Navigator.pushNamed(
+                            context, '/como_prefere_conectar'),
                         text: 'Quantas curtidas mereço?',
                         color: AppColors.darkBlue,
                         textColor: AppColors.white,

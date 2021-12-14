@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_chat_bubble/bubble_type.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_6.dart';
 import 'package:mepoupeapp/presenter/components/avatar_pre_selfie.dart';
 import 'package:mepoupeapp/presenter/components/card_ganhei.dart';
 import 'package:mepoupeapp/presenter/components/card_gastei_investi.dart';
 import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
+
 
 class SelfieFinanceira1 extends StatefulWidget {
   const SelfieFinanceira1({Key? key}) : super(key: key);
@@ -18,7 +21,7 @@ class SelfieFinanceira1 extends StatefulWidget {
 class _SelfieFinanceira1State extends State<SelfieFinanceira1>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-  bool isAccountConnected = true;
+  bool isAccountConnected = false;
 
   @override
   void initState() {
@@ -69,7 +72,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                         children: [
                           Text(
                             'R\$',
-                            style: TextStyles.textValueSmall7MontserratDarkBle,
+                            style: TextStyles.textValueSmall7MontserratDarkBlue,
                           ),
                           Text(' 3,00',
                               style:
@@ -87,7 +90,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                     ),
                   ),
                   Positioned(
-                      left: -4,
+                      left: 0,
                       bottom: 6,
                       child: Image.asset('assets/selfie_coin.png'),)
                 ],
@@ -175,7 +178,9 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                               Expanded(
                                 flex: 1,
                                 child: CardGanhei(
-                                    animationController: animationController),
+                                    animationController: animationController,
+                                  textAlignment: Alignment.bottomLeft,
+                                  text: '7.568,65',),
                               ),
                               Expanded(
                                 flex: 1,
@@ -186,7 +191,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                                       child: Padding(
                                         padding: const EdgeInsets.only(right: 4.0),
                                         child: CardGasteiInvesti(
-                                          value: ' 700,00',
+                                          value: ' 6.795,93',
                                           liquidColor: AppColors.gasteiBackground,
                                           text: 'Gastei',
                                           valueStyle:
@@ -194,6 +199,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                                           animationController: animationController,
                                           moneyStyle: TextStyles.textCardR$Gastei,
                                           liquidPercentage: 0.56,
+                                          textAlignment: Alignment.bottomLeft,
                                         ),
                                       ),
                                     ),
@@ -202,7 +208,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                                       child: Padding(
                                         padding: const EdgeInsets.only(left: 4.0),
                                         child: CardGasteiInvesti(
-                                          value: ' 300,00',
+                                          value: ' 398,42',
                                           liquidColor: AppColors.investiBackground,
                                           text: 'Investi',
                                           valueStyle:
@@ -210,6 +216,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                                           animationController: animationController,
                                           moneyStyle: TextStyles.textCardR$Investi,
                                           liquidPercentage: 0.24,
+                                          textAlignment: Alignment.bottomLeft,
                                         ),
                                       ),
                                     ),
@@ -277,9 +284,13 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                                   maintainAnimation: true,
                                   maintainState: true,
                                   visible: isAccountConnected ? false : true,
-                                  child: Text(
-                                      'Conecte todas as suas contas para ver uma mensagem que trouxe do futuro!',
-                                      style: TextStyles.paragraphSmall12Black),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        'Conecte todas as suas contas para ver uma mensagem que trouxe do futuro!',
+                                        style: TextStyles.paragraphSmall12Black,
+                                     ),
+                                  ),
                                 ),
                               ),
                               CustomButton(
@@ -312,8 +323,34 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
               Positioned(
                 bottom: 84,
                 right: 6,
-                child: Image.asset(
-                  'assets/robot.png',
+                child: Visibility(
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  visible: isAccountConnected ? true : false,
+                  child: Image.asset(
+                    'assets/robot.png',
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 115,
+                right: 32,
+                child: Visibility(
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  visible: isAccountConnected ? true : false,
+                  child: Container(
+                    child: ChatBubble(
+                      clipper: ChatBubbleClipper6(type: BubbleType.sendBubble),
+                      backGroundColor: AppColors.robotBubble,
+                      child: Text(
+                        'Conecte todas as suas contas para ver\numa mensagem que trouxe do futuro!',
+                        style: TextStyles.paragraphSmall9lightBlack,
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],

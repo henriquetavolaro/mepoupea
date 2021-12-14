@@ -15,16 +15,17 @@ class CardGasteiInvesti extends StatelessWidget {
     required this.valueStyle,
     required this.liquidColor,
     required this.liquidPercentage,
+    required this.textAlignment,
   }) : super(key: key);
 
   final AnimationController animationController;
-
   final String text;
   final String value;
   final TextStyle moneyStyle;
   final TextStyle valueStyle;
   final Color liquidColor;
   final double liquidPercentage;
+  final AlignmentGeometry textAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +50,9 @@ class CardGasteiInvesti extends StatelessWidget {
           ),
         ),
         Align(
-          alignment: Alignment.bottomCenter,
+          alignment: textAlignment,
           child: Padding(
-            padding: EdgeInsets.only(bottom: 28),
+            padding: EdgeInsets.only(bottom: 28, left: 16),
             child: RichText(
               text: TextSpan(
                 text: 'R\$',

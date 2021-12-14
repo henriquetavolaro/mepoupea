@@ -111,6 +111,11 @@ class TextStyles {
       fontWeight: FontWeight.w500,
       color: AppColors.darkBlue
   );
+  static final paragraphSmall11DarkBlue = GoogleFonts.poppins(
+      fontSize: 11,
+      fontWeight: FontWeight.w500,
+      color: AppColors.darkBlue
+  );
   static final paragraphMedium14White = GoogleFonts.poppins(
       fontSize: 14,
       fontWeight: FontWeight.w500,
@@ -136,6 +141,11 @@ class TextStyles {
       fontWeight: FontWeight.w500,
       color: AppColors.textLightBlack
   );
+  static final paragraphSmall13lightBlack = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textLightBlack
+  );
   static final paragraphSmall9orange = GoogleFonts.poppins(
       fontSize: 9,
       fontWeight: FontWeight.w500,
@@ -145,6 +155,11 @@ class TextStyles {
       fontSize: 9,
       fontWeight: FontWeight.w500,
       color: AppColors.redGastei
+  );
+  static final paragraphSmall9green = GoogleFonts.poppins(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.greenInvesti
   );
   static final paragraphSmall9white = GoogleFonts.poppins(
       fontSize: 9,
@@ -187,6 +202,11 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.textDarkGray,
   );
+  static final textDarkBlueSmall11Medium = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColors.darkBlue,
+  );
   static final textLoadingWhite20Medium = GoogleFonts.poppins(
     fontSize:20,
     fontWeight: FontWeight.w500,
@@ -221,6 +241,11 @@ class TextStyles {
     fontSize:32,
     fontWeight: FontWeight.w500,
     color: AppColors.white,
+  );
+  static final textValueSmall7LightBlack = GoogleFonts.poppins(
+    fontSize:7,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack,
   );
   static final textPinPhoneAuth = GoogleFonts.montserrat(
     fontSize:22,
@@ -257,6 +282,11 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.greenInvesti,
   );
+  static final textMedium16LightBlackBold = GoogleFonts.montserrat(
+    fontSize:16,
+    fontWeight: FontWeight.w800,
+    color: AppColors.textLightBlack,
+  );
   static final textTermosBlack11 = GoogleFonts.montserrat(
     fontSize:11,
     fontWeight: FontWeight.w400,
@@ -272,10 +302,20 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
   );
-  static final textValueSmall7MontserratDarkBle = GoogleFonts.montserrat(
+  static final textValueSmall7MontserratDarkBlue = GoogleFonts.montserrat(
     fontSize:7,
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
+  );
+  static final textValueSmall7MontserratLightBlack = GoogleFonts.montserrat(
+    fontSize:7,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack,
+  );
+  static final textValueSmall9MontserratLightBlack = GoogleFonts.montserrat(
+    fontSize:9,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack,
   );
   static final textSelfieSmall12MontserratLightBlackSemiBold = GoogleFonts.montserrat(
     fontSize:12,
@@ -307,7 +347,70 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.redGastei,
   );
-
-
+  static final textSelfieSmall13MontserratLightRedSemiBold = GoogleFonts.montserrat(
+    fontSize:13,
+    fontWeight: FontWeight.w600,
+    color: AppColors.redGastei,
+  );
+  static final textSelfieSmall13MontserratGreenSemiBold = GoogleFonts.montserrat(
+    fontSize:13,
+    fontWeight: FontWeight.w600,
+    color: AppColors.greenInvesti,
+  );
+  static final textSelfieSmall9MontserratWhiteSemiBold = GoogleFonts.montserrat(
+    fontSize:9,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+  static final textSelfieCardMedium14MontserratBlackSemiBold = GoogleFonts.montserrat(
+    fontSize:14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+  static final textSelfieCardBig20MontserratBlackSemiBold = GoogleFonts.montserrat(
+    fontSize:20,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+  static final textSelfieCardMedium15MontserratDarkBlueSemiBold = GoogleFonts.montserrat(
+    fontSize:15,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkBlue,
+  );
+  static final textSelfieCardBig21MontserratDarkBlueSemiBold = GoogleFonts.montserrat(
+    fontSize:21,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkBlue,
+  );
+  static final paragraphSmall9MontserratRed = GoogleFonts.montserrat(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.redGastei
+  );
+  static final paragraphSmall9MontserratGreen = GoogleFonts.montserrat(
+      fontSize: 9,
+      fontWeight: FontWeight.w500,
+      color: AppColors.greenInvesti
+  );
+  static final textSelfieSmall13MontserratGreySemiBold = GoogleFonts.montserrat(
+    fontSize:13,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textGray,
+  );
+  static final textSelfieSmall9MontserratGreySemiBold = GoogleFonts.montserrat(
+    fontSize:9,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textGray,
+  );
+  static final textSelfieCardMedium14MontserratGreySemiBold = GoogleFonts.montserrat(
+    fontSize:14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textGray,
+  );
+  static final textSelfieCardBig20MontserratGreySemiBold = GoogleFonts.montserrat(
+    fontSize:20,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textGray,
+  );
 
 }
