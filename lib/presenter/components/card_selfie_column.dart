@@ -57,7 +57,7 @@ class CardSelfieColumn extends StatelessWidget {
                     maintainSize: true,
                     maintainAnimation: true,
                     maintainState: true,
-                    visible: heartIconVisibility!,
+                    visible: heartIconVisibility,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Padding(

@@ -6,12 +6,15 @@ class AppColors {
   static const textNath = Color(0xFFF6F2FF);
   static const white = Color(0xFFFFFFFF);
   static const orange = Color(0xFFFDAB47);
+  static const darkOrange = Color(0xFF88B337);
   static const darkBlue = Color(0xFF3A2372);
   static const loginBackground = Color(0xFFF6F2FF);
   static const textLightBlack = Color(0xFF202020);
   static const black = Color(0xFF000000);
   static const textGray = Color(0xFF989898);
   static const textDarkGray = Color(0xFF818181);
+  static const textDarkerGray = Color(0xFF656A6E);
+  static const textLightGray = Color(0xFFE5E5E5);
   static const buttonDisabled = Color(0xFFBFBFBF);
   static const facebookBlue = Color(0xFF1778F2);
   static const redGastei = Color(0xFFE35365);
@@ -24,5 +27,7 @@ class AppColors {
   static const robotBubble = Color(0xFFFFF8EF);
   static const cardLightOrange = Color(0xFFFFE8CB);
   static const cardLightYellow = Color(0xFFF4FFE2);
+  static const backgroundLightYellow = Color(0xFFF8FCF1);
+  static const backgroundLightGreen = Color(0xFFFFFCF2);
 
 }

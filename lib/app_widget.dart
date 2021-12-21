@@ -21,6 +21,11 @@ import 'package:mepoupeapp/presenter/pages/onboarding/onboarding_3_nao_sei.dart'
 import 'package:mepoupeapp/presenter/pages/onboarding/onboarding_4hoje_nao.dart';
 import 'package:mepoupeapp/presenter/pages/onboarding/onboarding_5.dart';
 import 'package:mepoupeapp/presenter/pages/onboarding/prefiro_app_pior.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_1.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_2.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_3.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_4.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/home_pos_selfie.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/atualizando_selfie.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/como_prefere_conectar.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/conta_manual.dart';
@@ -64,7 +69,7 @@ class _AppWidgetState extends State<AppWidget> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/selfie_financeira_2',
+        initialRoute: '/criar_meta_3',
         routes: {
           '/onboarding_1': (context) => const OnboardingScreen1(),
           '/onboarding_2': (context) => const OnboardingScreen2(),
@@ -106,6 +111,11 @@ class _AppWidgetState extends State<AppWidget> {
               ),
           '/mostrar_selfie': (context) => MostrarSelfie(
               imageFile: ModalRoute.of(context)!.settings.arguments as XFile),
+          '/home_pos_selfie': (context) => const HomePosSelfie(),
+          '/criar_meta_1': (context) => const CriarMeta1(),
+          '/criar_meta_2': (context) => const CriarMeta2(),
+          '/criar_meta_3': (context) => const CriarMeta3(),
+          '/criar_meta_4': (context) => const CriarMeta4(),
 
         },
       ),

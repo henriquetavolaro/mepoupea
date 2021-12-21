@@ -47,7 +47,8 @@ dependencies:
   path: ^1.8.0
   path_provider: ^2.0.8
   gallery_saver: ^2.3.2
-
+  flutter_rounded_progress_bar: ^0.2.0
+  hexagon: 0.2.0-nullsafety.1
 
 dev_dependencies:
   mockito: ^5.0.16
