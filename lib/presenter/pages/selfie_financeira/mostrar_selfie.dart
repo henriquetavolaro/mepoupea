@@ -8,6 +8,7 @@ import 'package:mepoupeapp/theme/text_style.dart';
 
 class MostrarSelfie extends StatefulWidget {
   final XFile imageFile;
+
   const MostrarSelfie({Key? key, required this.imageFile}) : super(key: key);
 
   @override
@@ -20,19 +21,13 @@ class _MostrarSelfieState extends State<MostrarSelfie> {
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
               Image.file(
-                  File(widget.imageFile.path),
+                File(widget.imageFile.path),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -48,21 +43,18 @@ class _MostrarSelfieState extends State<MostrarSelfie> {
                             alignment: Alignment.bottomCenter,
                             children: [
                               Padding(
-                                padding:
-                                const EdgeInsets.only(bottom: 4.0),
+                                padding: const EdgeInsets.only(bottom: 4.0),
                                 child: Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 12, vertical: 8),
                                   height: 280,
                                   decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(14),
+                                      borderRadius: BorderRadius.circular(14),
                                       color: AppColors.lightRedSelfie
                                           .withOpacity(0.8)),
                                   child: Text(
                                     'HOJE',
-                                    style: TextStyles
-                                        .paragraphSmall12Black,
+                                    style: TextStyles.paragraphSmall12Black,
                                   ),
                                 ),
                               ),
@@ -98,10 +90,12 @@ class _MostrarSelfieState extends State<MostrarSelfie> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 4.0, horizontal: 8),
                           child: InkWell(
-                            onTap: () async {
-                            },
+                            onTap: () async => await Navigator.pushNamed(
+                                context, '/selfie_financeira_1',
+                                arguments: widget.imageFile),
                             child: const Icon(
                               Icons.check_circle,
                               color: AppColors.white,
@@ -115,22 +109,18 @@ class _MostrarSelfieState extends State<MostrarSelfie> {
                             alignment: Alignment.bottomCenter,
                             children: [
                               Padding(
-                                padding:
-                                const EdgeInsets.only(bottom: 4.0),
+                                padding: const EdgeInsets.only(bottom: 4.0),
                                 child: Container(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 12, vertical: 8),
                                     height: 300,
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.circular(14),
-                                        color: AppColors
-                                            .lightGreenSelfie
+                                        borderRadius: BorderRadius.circular(14),
+                                        color: AppColors.lightGreenSelfie
                                             .withOpacity(0.8)),
                                     child: Text(
                                       'Em 10 anos \n(com Na.th)',
-                                      style: TextStyles
-                                          .paragraphSmall12Black,
+                                      style: TextStyles.paragraphSmall12Black,
                                     )),
                               ),
                               Column(

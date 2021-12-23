@@ -105,7 +105,7 @@ class _LoginPhoneVerificationState extends State<LoginPhoneVerification> {
                                       const EdgeInsets.symmetric(vertical: 36.0),
                                   child: Text(
                                     'Valide o token recebido por SMS',
-                                    style: TextStyles.phoneVerificationSmall11,
+                                    style: TextStyles.phoneVerificationSmall11DarkBlue,
                                   ),
                                 ),
                                 Padding(
@@ -143,7 +143,7 @@ class _LoginPhoneVerificationState extends State<LoginPhoneVerification> {
                         child: RichText(
                           text: TextSpan(
                             text: 'Não recebeu? ',
-                            style: TextStyles.phoneVerificationSmall11,
+                            style: TextStyles.phoneVerificationSmall11DarkBlue,
                             children: <TextSpan>[
                               TextSpan(
                                   text: 'Reenviar',

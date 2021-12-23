@@ -95,8 +95,8 @@ class AuthenticationClass {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
-          email: "barry.allen@example.com",
-          password: "SuperSecretPassword!"
+          email: email,
+          password: password
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -115,7 +115,7 @@ class AuthenticationClass {
       if (event != null) {
         final token = await getUserId();
         setToken(token);
-        navigatorKey.currentState!.pushReplacementNamed('/pre_selfie_1');
+        navigatorKey.currentState!.pushReplacementNamed('/pre_selfie_nome');
       } else {
         removeToken();
       }

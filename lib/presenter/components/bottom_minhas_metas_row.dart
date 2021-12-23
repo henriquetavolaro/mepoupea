@@ -7,15 +7,18 @@ import 'package:mepoupeapp/theme/text_style.dart';
 import 'custom_paint_bike.dart';
 
 class BottomMinhasMetasRow extends StatelessWidget {
-
   final double percent;
   final String total;
   final String prazo;
   final String valorAtual;
   final Image image;
+  bool editable;
+  bool rocketVisibility;
 
-  const BottomMinhasMetasRow({
+  BottomMinhasMetasRow({
     Key? key,
+    this.editable = false,
+    this.rocketVisibility = false,
     required this.percent,
     required this.total,
     required this.prazo,
@@ -25,12 +28,11 @@ class BottomMinhasMetasRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = 40;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 24, bottom: 8),
@@ -39,46 +41,76 @@ class BottomMinhasMetasRow extends StatelessWidget {
             Expanded(
               child: SizedBox(
                 height: 44,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                      side: const BorderSide(
-                          width: 1, color: AppColors.darkBlue)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: RoundedProgressBar(
-                      height: 30,
-                      style: RoundedProgressBarStyle(
-                          borderWidth: 0,
-                          colorProgress: AppColors.darkBlue,
-                          backgroundProgress: AppColors.gasteiBackground,
-                          widthShadow: 0),
-                      borderRadius: BorderRadius.circular(25),
-                      percent: percent > 15 ? percent : 15,
+                child: Stack(
+                  children: [
+                    Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                          side: const BorderSide(
+                              width: 1, color: AppColors.darkBlue)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: RoundedProgressBar(
+                          height: 30,
+                          style: RoundedProgressBarStyle(
+                              borderWidth: 0,
+                              colorProgress: AppColors.darkBlue,
+                              backgroundProgress: AppColors.gasteiBackground,
+                              widthShadow: 0),
+                          borderRadius: BorderRadius.circular(25),
+                          percent: percent > 15 ? percent : 15,
+                          childRight: rocketVisibility
+                              ? Image.asset('assets/rocket.png')
+                              : null,
+                        ),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset('assets/rocket.png'),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      total,
-                      style: TextStyles.textSmall11MontserratGreySemiBold,
+              child: Container(
+                constraints: const BoxConstraints(minWidth: 65),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        total,
+                        style: TextStyles.textSmall11MontserratGreySemiBold,
+                      ),
                     ),
-                  ),
-                  Text(
-                    prazo,
-                    style: TextStyles.paragraphSmall9darkGrey,
-                  )
-                ],
+                    Text(
+                      prazo,
+                      style: TextStyles.paragraphSmall9darkGrey,
+                    )
+                  ],
+                ),
               ),
             ),
+            Visibility(
+              maintainSize: false,
+              maintainAnimation: false,
+              maintainState: true,
+              visible: editable ? true : false,
+              child: const Padding(
+                padding: EdgeInsets.only(left: 4),
+                child: Icon(
+                  Icons.edit_outlined,
+                  size: 16,
+                ),
+              ),
+            )
           ],
         ),
         Padding(

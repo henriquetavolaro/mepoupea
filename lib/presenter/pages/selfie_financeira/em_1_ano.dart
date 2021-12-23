@@ -98,7 +98,7 @@ class Em1Ano extends StatelessWidget {
             ),
           ),
           CustomButtonStroke(
-            onClick: () {},
+            onClick: () async => await Navigator.pushNamed(context, '/home_pos_selfie'),
             text: 'Voltar à realidade',
             color: AppColors.white,
             textColor: AppColors.darkBlue,

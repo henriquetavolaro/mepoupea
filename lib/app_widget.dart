@@ -25,7 +25,9 @@ import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_1.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_2.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_3.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_4.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/gastos_detalhes_1.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/home_pos_selfie.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/minhas_metas.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/atualizando_selfie.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/como_prefere_conectar.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/conta_manual.dart';
@@ -34,6 +36,7 @@ import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_1.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_1.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_2.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_exemplo_3.dart';
+import 'package:mepoupeapp/presenter/pages/pre_selfie/pre_selfie_nome.dart';
 import 'package:mepoupeapp/presenter/pages/pre_selfie/termos.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/camera.dart';
 import 'package:mepoupeapp/presenter/pages/selfie_financeira/mostrar_selfie.dart';
@@ -69,7 +72,7 @@ class _AppWidgetState extends State<AppWidget> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/criar_meta_3',
+        initialRoute: '/minhas_metas',
         routes: {
           '/onboarding_1': (context) => const OnboardingScreen1(),
           '/onboarding_2': (context) => const OnboardingScreen2(),
@@ -93,6 +96,7 @@ class _AppWidgetState extends State<AppWidget> {
                     ModalRoute.of(context)!.settings.arguments as String,
               ),
           '/loading': (context) => const Loading(),
+          '/pre_selfie_nome': (context) => const PreSelfieNome(),
           '/pre_selfie_1': (context) => const PreSelfie1(),
           '/pre_selfie_exemplo_1': (context) => const PreSelfieExemplo1(),
           '/pre_selfie_exemplo_2': (context) => const PreSelfieExemplo2(),
@@ -102,7 +106,9 @@ class _AppWidgetState extends State<AppWidget> {
           '/escolha_dos_bancos': (context) => const EscolhaDosBancos(),
           '/termos': (context) => const Termos(),
           '/atualizando_selfie': (context) => const AtualizandoSelfie(),
-          '/selfie_financeira_1': (context) => const SelfieFinanceira1(),
+          '/selfie_financeira_1': (context) => SelfieFinanceira1(
+            imageFile: ModalRoute.of(context)!.settings.arguments as XFile?,
+          ),
           '/selfie_financeira_2': (context) => SelfieFinanceira2(),
           '/tirar_selfie': (context) => const TirarSelfie(),
           '/camera': (context) => Camera(
@@ -116,6 +122,8 @@ class _AppWidgetState extends State<AppWidget> {
           '/criar_meta_2': (context) => const CriarMeta2(),
           '/criar_meta_3': (context) => const CriarMeta3(),
           '/criar_meta_4': (context) => const CriarMeta4(),
+          '/minhas_metas': (context) => const MinhasMetas(),
+          '/gastos_detalhes_1': (context) => const GastosDetalhes1(),
 
         },
       ),

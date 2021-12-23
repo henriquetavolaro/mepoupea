@@ -49,6 +49,8 @@ dependencies:
   gallery_saver: ^2.3.2
   flutter_rounded_progress_bar: ^0.2.0
   hexagon: 0.2.0-nullsafety.1
+  grouped_list: ^4.1.0
+  intl: ^0.17.0
 
 dev_dependencies:
   mockito: ^5.0.16

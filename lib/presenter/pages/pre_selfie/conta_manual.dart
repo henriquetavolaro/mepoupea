@@ -151,7 +151,7 @@ class _ContaManualState extends State<ContaManual> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(
+                    padding: const EdgeInsets.only(
                         left: 42, right: 42, top: 48, bottom: 24),
                     width: MediaQuery
                         .of(context)

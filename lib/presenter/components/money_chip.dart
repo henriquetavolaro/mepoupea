@@ -11,7 +11,7 @@ class ChoiceChipWidget extends StatefulWidget {
   ChoiceChipWidget({required this.currencyList, required this.selectedCurrency});
 
   @override
-  _ChoiceChipWidgetState createState() => new _ChoiceChipWidgetState();
+  _ChoiceChipWidgetState createState() => _ChoiceChipWidgetState();
 }
 
 class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
@@ -28,7 +28,7 @@ class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
           backgroundColor: AppColors.white,
           selectedColor: AppColors.darkBlue,
           selected: selectedChoice == item,
-          side: BorderSide(
+          side: const BorderSide(
             color: AppColors.darkBlue,
             width: 1
           ),

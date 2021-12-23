@@ -18,6 +18,11 @@ class TextStyles {
     fontWeight: FontWeight.w800,
     color: AppColors.black
   );
+  static final paragraphMedium16LightBlackSemiBold = GoogleFonts.poppins(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textLightBlack
+  );
   static final buttonTextSemiBold = GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w700,
@@ -54,6 +59,12 @@ class TextStyles {
   static final textUnderlinedDarkBlue = GoogleFonts.poppins(
     fontSize: 12,
     fontWeight: FontWeight.w600,
+    color: AppColors.darkBlue,
+    decoration: TextDecoration.underline
+  );
+  static final textUnderlinedDark11Blue = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
     decoration: TextDecoration.underline
   );
@@ -141,6 +152,22 @@ class TextStyles {
       fontWeight: FontWeight.w500,
       color: AppColors.white
   );
+  static final paragraphSmall10Grey = GoogleFonts.poppins(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textGray
+  );
+  static final paragraphSmall10GreyUnderline = GoogleFonts.poppins(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textGray,
+    decoration: TextDecoration.underline
+  );
+  static final paragraphSmall10LightBlack = GoogleFonts.poppins(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textLightBlack
+  );
   static final paragraphSmall11WhiteBold = GoogleFonts.poppins(
       fontSize: 11,
       fontWeight: FontWeight.w700,
@@ -211,7 +238,7 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.textLightBlack
   );
-  static final phoneVerificationSmall11 = GoogleFonts.poppins(
+  static final phoneVerificationSmall11DarkBlue = GoogleFonts.poppins(
     fontSize: 11,
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue
@@ -220,6 +247,12 @@ class TextStyles {
     fontSize: 11,
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
+    decoration: TextDecoration.underline
+  );
+  static final monthChipMedium14Underline = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack,
     decoration: TextDecoration.underline
   );
   static final paragraphGreySmall11light = GoogleFonts.poppins(
@@ -236,6 +269,11 @@ class TextStyles {
     fontSize: 11,
     fontWeight: FontWeight.w500,
     color: AppColors.darkBlue,
+  );
+  static final textWhiteSmall11Medium = GoogleFonts.poppins(
+    fontSize: 11,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
   );
   static final textLoadingWhite20Medium = GoogleFonts.poppins(
     fontSize:20,

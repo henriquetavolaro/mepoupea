@@ -1,3 +1,5 @@
+import 'package:camera/camera.dart';
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_chat_bubble/bubble_type.dart';
@@ -10,9 +12,10 @@ import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
-
 class SelfieFinanceira1 extends StatefulWidget {
-  const SelfieFinanceira1({Key? key}) : super(key: key);
+  final XFile? imageFile;
+
+  const SelfieFinanceira1({Key? key, this.imageFile}) : super(key: key);
 
   @override
   _SelfieFinanceira1State createState() => _SelfieFinanceira1State();
@@ -21,16 +24,21 @@ class SelfieFinanceira1 extends StatefulWidget {
 class _SelfieFinanceira1State extends State<SelfieFinanceira1>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
-  bool isAccountConnected = false;
+  late bool isAccountConnected;
 
   @override
   void initState() {
     animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 5));
+        AnimationController(vsync: this, duration: const Duration(seconds: 5));
     animationController.addListener(() {
       setState(() {});
     });
     animationController.forward();
+    if(widget.imageFile != null){
+      isAccountConnected = true;
+    } else {
+      isAccountConnected = false;
+    }
     super.initState();
   }
 
@@ -52,50 +60,54 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
             statusBarColor: AppColors.white),
         automaticallyImplyLeading: false,
         actions: [
-          Column(
-            children: [
-              Text(
-                'Últimas 24h',
-                style: TextStyles.paragraphSmall9darkBlue,
-              ),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 3, horizontal: 28),
-                      child: Row(
-                        children: [
-                          Text(
-                            'R\$',
-                            style: TextStyles.textValueSmall7MontserratDarkBlue,
-                          ),
-                          Text(' 3,00',
-                              style:
-                                  TextStyles.textValueSmall12MontserratDarkBle)
-                        ],
+          DelayedDisplay(
+            delay: const Duration(milliseconds: 200),
+            child: Column(
+              children: [
+                Text(
+                  'Últimas 24h',
+                  style: TextStyles.paragraphSmall9darkBlue,
+                ),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 3, horizontal: 28),
+                        child: Row(
+                          children: [
+                            Text(
+                              'R\$',
+                              style: TextStyles.textValueSmall7MontserratDarkBlue,
+                            ),
+                            Text(' 3,00',
+                                style:
+                                    TextStyles.textValueSmall12MontserratDarkBle)
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  const Positioned(
-                    right: 8,
-                    child: Icon(
-                      Icons.add_circle_outlined,
-                      color: AppColors.purple,
-                      size: 18,
+                    const Positioned(
+                      right: 8,
+                      child: Icon(
+                        Icons.add_circle_outlined,
+                        color: AppColors.purple,
+                        size: 18,
+                      ),
                     ),
-                  ),
-                  Positioned(
+                    Positioned(
                       left: 0,
                       bottom: 6,
-                      child: Image.asset('assets/selfie_coin.png'),)
-                ],
-              ),
-            ],
+                      child: Image.asset('assets/selfie_coin.png'),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
           IconButton(
               onPressed: () {},
@@ -106,242 +118,265 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
         ],
       ),
       body: SafeArea(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 22, right: 10),
-                        child: AvatarPreSelfie(),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16, bottom: 8),
-                            child: Text(
-                              'Olá, Joaquina',
-                              style: TextStyles.textBlack14Medium,
-                            ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              text: 'Sua Selfie da Riqueza merece ',
-                              style: TextStyles.textBlack14Medium,
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: '\n67 curtidas',
-                                    style: TextStyles.textPurple14SemiBold),
-                                TextSpan(
-                                    text: '!',
-                                    style: TextStyles.textBlack14Medium),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 74.0),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        color: AppColors.loginBackground,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 14, right: 14, top: 120),
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: Column(
+        child: DelayedDisplay(
+          delay: const Duration(milliseconds: 200),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: Stack(
+              children: [
+                Column(
                   children: [
-                    Expanded(
-                      child: Card(
-                        elevation: 8,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8, right: 8, top: 12, bottom: 24),
-                          child: Column(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: CardGanhei(
-                                    animationController: animationController,
-                                  textAlignment: Alignment.bottomLeft,
-                                  text: '7.568,65',),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 22, right: 10),
+                          child: InkWell(
+                            onTap: () async => await Navigator.pushNamed(
+                                context, '/tirar_selfie'),
+                              child: AvatarPreSelfie(
+                            imageFile: widget.imageFile,
+                          ),),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 16, bottom: 8),
+                              child: Text(
+                                'Olá, Joaquina',
+                                style: TextStyles.textBlack14Medium,
                               ),
-                              Expanded(
-                                flex: 1,
-                                child: Row(
+                            ),
+                            widget.imageFile != null ?
+                                Text(
+                                  'Prazem em conhecê-la! \nGostei da selfie :)',
+                                  style: TextStyles.textBlack14Medium,
+                                )
+                            : RichText(
+                              text: TextSpan(
+                                text: 'Sua Selfie da Riqueza merece ',
+                                style: TextStyles.textBlack14Medium,
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: '\n67 curtidas',
+                                      style: TextStyles.textPurple14SemiBold),
+                                  TextSpan(
+                                      text: '!',
+                                      style: TextStyles.textBlack14Medium),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 74.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          color: AppColors.loginBackground,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 14, right: 14, top: 120),
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Card(
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 8, right: 8, top: 12, bottom: 24),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: CardGanhei(
+                                    animationController: animationController,
+                                    textAlignment: Alignment.bottomLeft,
+                                    text: '7.568,65',
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 4.0),
+                                          child: CardGasteiInvesti(
+                                            value: ' 6.795,93',
+                                            liquidColor:
+                                                AppColors.gasteiBackground,
+                                            text: 'Gastei',
+                                            valueStyle:
+                                                TextStyles.textCardValorGastei,
+                                            animationController:
+                                                animationController,
+                                            moneyStyle:
+                                                TextStyles.textCardR$Gastei,
+                                            liquidPercentage: 0.56,
+                                            textAlignment: Alignment.bottomLeft,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 4.0),
+                                          child: CardGasteiInvesti(
+                                            value: ' 398,42',
+                                            liquidColor:
+                                                AppColors.investiBackground,
+                                            text: 'Investi',
+                                            valueStyle:
+                                                TextStyles.textCardValorInvest,
+                                            animationController:
+                                                animationController,
+                                            moneyStyle:
+                                                TextStyles.textCardR$Investi,
+                                            liquidPercentage: 0.24,
+                                            textAlignment: Alignment.bottomLeft,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
                                   children: [
                                     Expanded(
                                       flex: 1,
                                       child: Padding(
-                                        padding: const EdgeInsets.only(right: 4.0),
-                                        child: CardGasteiInvesti(
-                                          value: ' 6.795,93',
-                                          liquidColor: AppColors.gasteiBackground,
-                                          text: 'Gastei',
-                                          valueStyle:
-                                              TextStyles.textCardValorGastei,
-                                          animationController: animationController,
-                                          moneyStyle: TextStyles.textCardR$Gastei,
-                                          liquidPercentage: 0.56,
-                                          textAlignment: Alignment.bottomLeft,
-                                        ),
+                                        padding:
+                                            const EdgeInsets.only(right: 4.0),
+                                        child: CustomButton(
+                                            onClick: () {},
+                                            text: 'Inserir dívida',
+                                            color: AppColors.white,
+                                            textColor: AppColors.redGastei,
+                                            style: TextStyles.textCardR$Gastei,
+                                            visualDensity: VisualDensity.compact),
                                       ),
                                     ),
                                     Expanded(
                                       flex: 1,
                                       child: Padding(
                                         padding: const EdgeInsets.only(left: 4.0),
-                                        child: CardGasteiInvesti(
-                                          value: ' 398,42',
-                                          liquidColor: AppColors.investiBackground,
-                                          text: 'Investi',
-                                          valueStyle:
-                                              TextStyles.textCardValorInvest,
-                                          animationController: animationController,
-                                          moneyStyle: TextStyles.textCardR$Investi,
-                                          liquidPercentage: 0.24,
-                                          textAlignment: Alignment.bottomLeft,
-                                        ),
+                                        child: CustomButton(
+                                            onClick: () {},
+                                            text: 'Conectar corretora',
+                                            color: AppColors.white,
+                                            textColor: AppColors.greenInvesti,
+                                            style: TextStyles.textCardR$Investi,
+                                            visualDensity: VisualDensity.compact),
                                       ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    flex: 1,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(right: 4.0),
-                                      child: CustomButton(
-                                          onClick: () {},
-                                          text: 'Inserir dívida',
-                                          color: AppColors.white,
-                                          textColor: AppColors.redGastei,
-                                          style: TextStyles.textCardR$Gastei,
-                                          visualDensity: VisualDensity.compact),
+                                Card(
+                                  elevation: 4,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, top: 8, bottom: 8, right: 22),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Saldo atual',
+                                          style:
+                                              TextStyles.textTermosLightBlack11,
+                                        ),
+                                        Text(
+                                          'R\$ 749,00',
+                                          style: TextStyles
+                                              .textValueSmall13MontserratBlack,
+                                        )
+                                      ],
                                     ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 4.0),
-                                      child: CustomButton(
-                                          onClick: () {},
-                                          text: 'Conectar corretora',
-                                          color: AppColors.white,
-                                          textColor: AppColors.greenInvesti,
-                                          style: TextStyles.textCardR$Investi,
-                                          visualDensity: VisualDensity.compact),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Card(
-                                elevation: 4,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 8.0, top: 8, bottom: 8, right: 22),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'Saldo atual',
-                                        style: TextStyles.textTermosLightBlack11,
-                                      ),
-                                      Text(
-                                        'R\$ 749,00',
-                                        style: TextStyles
-                                            .textValueSmall13MontserratBlack,
-                                      )
-                                    ],
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16, bottom: 32),
-                                child: Visibility(
-                                  maintainSize: true,
-                                  maintainAnimation: true,
-                                  maintainState: true,
-                                  visible: isAccountConnected ? false : true,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 16, bottom: 32),
+                                  child: Visibility(
+                                    maintainSize: true,
+                                    maintainAnimation: true,
+                                    maintainState: true,
+                                    visible: isAccountConnected ? false : true,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
                                         'Conecte todas as suas contas para ver uma mensagem que trouxe do futuro!',
                                         style: TextStyles.paragraphSmall12Black,
-                                     ),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              CustomButton(
-                                onClick: () async => await Navigator.pushNamed(
-                                    context, '/escolha_dos_bancos'),
-                                text: 'Conectar + contas',
-                                color: AppColors.orange,
-                                textColor: AppColors.white,
-                                style: TextStyles.buttonTextMedium,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16.0),
-                                child: InkWell(
-                                  onTap: () async => await Navigator.pushNamed(
-                                      context, '/tirar_selfie'),
-                                  child: Text(
-                                    'Ver futuro com a Na.th',
-                                    style: TextStyles.textUnderlinedDarkBlue,
-                                  ),
+                                CustomButton(
+                                  onClick: () async => await Navigator.pushNamed(
+                                      context, '/escolha_dos_bancos'),
+                                  text: 'Conectar + contas',
+                                  color: AppColors.orange,
+                                  textColor: AppColors.white,
+                                  style: TextStyles.buttonTextMedium,
                                 ),
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16.0),
+                                  child: InkWell(
+                                    onTap: () async => await Navigator.pushNamed(
+                                        context, '/selfie_financeira_2'),
+                                    child: Text(
+                                      'Ver futuro com a Na.th',
+                                      style: TextStyles.textUnderlinedDarkBlue,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 84,
-                right: 6,
-                child: Visibility(
-                  maintainSize: true,
-                  maintainAnimation: true,
-                  maintainState: true,
-                  visible: isAccountConnected ? true : false,
-                  child: Image.asset(
-                    'assets/robot.png',
+                    ],
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 115,
-                right: 32,
-                child: Visibility(
-                  maintainSize: true,
-                  maintainAnimation: true,
-                  maintainState: true,
-                  visible: isAccountConnected ? true : false,
-                  child: Container(
+                Positioned(
+                  bottom: 84,
+                  right: 6,
+                  child: Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: isAccountConnected ? true : false,
+                    child: Image.asset(
+                      'assets/robot.png',
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 115,
+                  right: 32,
+                  child: Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: isAccountConnected ? true : false,
                     child: ChatBubble(
                       clipper: ChatBubbleClipper6(type: BubbleType.sendBubble),
                       backGroundColor: AppColors.robotBubble,
@@ -351,9 +386,9 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                       ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
