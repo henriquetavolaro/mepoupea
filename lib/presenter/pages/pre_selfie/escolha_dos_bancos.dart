@@ -99,25 +99,14 @@ class _EscolhaDosBancosState extends State<EscolhaDosBancos> {
                     style: TextStyles.paragraphGreySmall11light,
                   ),
                   Expanded(
+                    child: SingleChildScrollView(
                       child: Column(
-                    children: [...banks.map(buildCheckboxListTile).toList()],
-                  )
-                      // ListView(
-                      //   children: List.keys.map((String key) {
-                      //     return CheckboxListTile(
-                      //       title: Text(key),
-                      //       value: List[key],
-                      //       activeColor: Colors.deepPurple[400],
-                      //       checkColor: Colors.white,
-                      //       onChanged: (bool? value) {
-                      //         setState(() {
-                      //           List[key] = value!;
-                      //         });
-                      //       },
-                      //     );
-                      //   }).toList(),
-                      // ),
+                        children: [
+                          ...banks.map(buildCheckboxListTile).toList()
+                        ],
                       ),
+                    ),
+                  ),
                   Container(
                     padding: const EdgeInsets.only(
                         left: 106, right: 106, top: 60, bottom: 14),
@@ -150,14 +139,32 @@ class _EscolhaDosBancosState extends State<EscolhaDosBancos> {
         borderRadius: BorderRadius.circular(25),
       ),
       elevation: 4,
-      child: CheckboxListTile(
-        shape: const CircleBorder(),
-        controlAffinity: ListTileControlAffinity.leading,
-        value: bankCheckBox.value,
-        title: Text(bankCheckBox.name),
-        onChanged: (bool? value) => setState(() {
-          _value = value!;
-        }),
+      child: Theme(
+        data: ThemeData(
+          checkboxTheme: CheckboxThemeData(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
+          ),
+        ),
+        child: CheckboxListTile(
+          controlAffinity: ListTileControlAffinity.leading,
+          value: bankCheckBox.value,
+          title: Row(
+            children: [
+              bankCheckBox.image,
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Text(bankCheckBox.name),
+              ),
+            ],
+          ),
+          onChanged: (bool? value) => setState(
+                () {
+              bankCheckBox.value = value!;
+            },
+          ),
+        ),
       ),
     );
   }

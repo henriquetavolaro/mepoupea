@@ -1,28 +1,24 @@
-import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'package:mepoupeapp/presenter/components/bank_chip.dart';
-import 'package:mepoupeapp/presenter/components/card_gasto_category_exclamation.dart';
-import 'package:mepoupeapp/presenter/components/custom_button.dart';
 import 'package:mepoupeapp/presenter/components/custom_button_stroke.dart';
 import 'package:mepoupeapp/presenter/components/gasto_column.dart';
 import 'package:mepoupeapp/presenter/components/gasto_detail_list_tile.dart';
-import 'package:mepoupeapp/presenter/components/me_poupe_baloon_exclamation.dart';
 import 'package:mepoupeapp/presenter/components/month_chip.dart';
 import 'package:mepoupeapp/theme/app_colors.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
-import 'package:grouped_list/grouped_list.dart';
 
-class GastosDetalhes1 extends StatefulWidget {
-  const GastosDetalhes1({Key? key}) : super(key: key);
+class GastosDetalhesCategoria extends StatefulWidget {
+  const GastosDetalhesCategoria({Key? key}) : super(key: key);
 
   @override
-  _GastosDetalhes1State createState() => _GastosDetalhes1State();
+  _GastosDetalhesCategoriaState createState() => _GastosDetalhesCategoriaState();
 }
 
-class _GastosDetalhes1State extends State<GastosDetalhes1> {
+class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
   final TextEditingController selectedMonth = TextEditingController();
   List<String> monthList = [
     'Mar',
@@ -37,94 +33,65 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
 
   List<GastoColumn> gastosList = [
     const GastoColumn(
-      total: '1.780',
+      total: '284',
       height: 175,
       color: AppColors.darkBlue,
-      text: 'Moradia',
+      text: 'Combustível',
       percent: '23',
-      icon: Icons.home,
+      icon: Icons.local_gas_station,
     ),
     const GastoColumn(
-      total: '670',
-      height: 670 * 175 / 1780,
+      total: '60',
+      height: 60 * 175 / 284,
       color: AppColors.yellow,
-      text: 'Comida',
+      text: 'Apps',
       percent: '7',
-      icon: Icons.dinner_dining_outlined,
+      icon: Icons.android_outlined,
     ),
     const GastoColumn(
-      total: '978',
-      height: 978 * 175 / 1780,
+      total: '79',
+      height: 79 * 175 / 284,
       color: AppColors.orange,
-      text: 'Transporte',
+      text: 'Seguro',
       percent: '10',
       icon: Icons.directions_car_filled_rounded,
     ),
     const GastoColumn(
-      total: '713',
-      height: 713 * 175 / 1780,
+      total: '37',
+      height: 37 * 175 / 284,
       color: AppColors.redGastei,
-      text: 'Viagem',
+      text: 'Estac.',
       percent: '9',
-      icon: Icons.beach_access,
+      icon: Icons.local_parking_outlined,
     ),
     const GastoColumn(
-      total: '377',
-      height: 377 * 175 / 1780,
+      total: '19',
+      height: 19 * 175 / 284,
       color: AppColors.textLightBlack,
-      text: 'Saúde',
+      text: 'Manutenção',
       percent: '5',
-      icon: Icons.favorite,
+      icon: Icons.car_repair,
     ),
-    const GastoColumn(
-      total: '978',
-      height: 978 * 175 / 1780,
-      color: AppColors.purple,
-      text: 'Cat A',
-      percent: '10',
-      icon: Icons.directions_car_filled_rounded,
-    ),
-  ];
-
-  final TextEditingController selectedBank = TextEditingController();
-  List<String> bankList = [
-    'Todos os bancos',
-    'Itaú',
-    'Nubank',
-    'Bradesco',
-    "Banco do Brasil"
   ];
 
   final gastos = [
     {
-      'text': 'Restaurante da esquina',
-      'category': 'Comida',
+      'text': 'Uber',
+      'category': 'Carros de App',
       'valor': "-R\$ 32.90",
       'detail': "Crédito (Final 5006)",
-      'date': '22/12/2021'
+      'date': '27/12/2021'
     },
     {
-      'text': 'Magalu',
-      'category': 'Compras',
-      'valor': "-R\$ 332.90",
+      'text': 'Posto Shell',
+      'category': 'Combustível',
+      'valor': "-R\$ 52.90",
       'detail': "PIX conta Itaú",
-      'date': '21/12/2021'
+      'date': '26/12/2021'
     },
-    {
-      'text': 'Magalu',
-      'category': 'Compras',
-      'valor': "-R\$ 332.90",
-      'detail': "PIX conta Itaú",
-      'date': '21/12/2021'
-    },
-    {
-      'text': 'Magalu',
-      'category': 'Compras',
-      'valor': "-R\$ 332.90",
-      'detail': "PIX conta Itaú",
-      'date': '21/12/2021'
-    }
+
   ];
+
   String selectedCategory = '';
 
   @override
@@ -171,7 +138,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                             Padding(
                               padding: const EdgeInsets.only(left: 24),
                               child: Text(
-                                'Onde Gastei?',
+                                'Gastos com transporte',
                                 style: TextStyles
                                     .paragraphMedium16LightBlackSemiBold,
                               ),
@@ -185,7 +152,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                                 .textSelfieSmall12MontserratLightRedSemiBold,
                             children: <TextSpan>[
                               TextSpan(
-                                  text: '6.795,95',
+                                  text: '978,20',
                                   style: TextStyles
                                       .textSelfieMedium16MontserratLightRedSemiBold),
                             ],
@@ -196,7 +163,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.only(left: 16, right: 16, bottom: 32),
+                    const EdgeInsets.only(left: 16, right: 16, bottom: 32),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: MonthChip(
@@ -210,7 +177,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Você ainda tem R\$ 287,20 de verba este mês',
+                        'Você gastou 25% dos seus ganhos no mês com transporte, a maior parte com combustível',
                         style: TextStyles.paragraphSmall12BlackMedium,
                       ),
                     ),
@@ -234,7 +201,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                                     borderRadius: BorderRadius.circular(14)),
                                 color: AppColors.white,
                                 elevation:
-                                    selectedCategory == item.text ? 4 : 0,
+                                selectedCategory == item.text ? 4 : 0,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       top: 20, bottom: 12, right: 16, left: 16),
@@ -253,15 +220,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                       ),
                     ),
                   ),
-                  Visibility(
-                    maintainSize: false,
-                    maintainAnimation: true,
-                    maintainState: true,
-                    visible: selectedCategory.isNotEmpty,
-                    child: CardGastoCategoryExclamation(
-                      onClick: () async => await Navigator.pushNamed(context, '/gastos_detalhes_categoria'),
-                    ),
-                  ),
+
                   Padding(
                     padding: const EdgeInsets.only(
                         right: 24, left: 24, top: 24, bottom: 20),
@@ -269,7 +228,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                       width: MediaQuery.of(context).size.width,
                       child: CustomButtonStroke(
                         onClick: () {},
-                        text: 'Na.th, me ajuda a reduzir meus gastos!',
+                        text: 'Quero reduzir os gastos com Transporte!',
                         color: AppColors.white,
                         textColor: AppColors.darkBlue,
                         style: TextStyles.buttonTextMedium,
@@ -295,32 +254,7 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 24, right: 24, bottom: 24),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 20),
-                            child: Text(
-                              'Exibir:',
-                              style: TextStyles.paragraphSmall9lightBlack,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              BankChip(
-                                bankList: bankList,
-                                selectedBank: selectedBank,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+
                   Padding(
                     padding: const EdgeInsets.only(left: 24),
                     child: Align(
@@ -343,18 +277,18 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                               left: 24, bottom: 20, top: 24),
                           child: groupByValue == formattedNow
                               ? Text(
-                                  'Hoje',
-                                  style: TextStyles.textTermosLightBlack11,
-                                )
+                            'Hoje',
+                            style: TextStyles.textTermosLightBlack11,
+                          )
                               : groupByValue == formattedYesterday
-                                  ? Text(
-                                      'Ontem $groupByValue',
-                                      style: TextStyles.textTermosLightBlack11,
-                                    )
-                                  : Text(
-                                      groupByValue,
-                                      style: TextStyles.textTermosLightBlack11,
-                                    ),
+                              ? Text(
+                            'Ontem $groupByValue',
+                            style: TextStyles.textTermosLightBlack11,
+                          )
+                              : Text(
+                            groupByValue,
+                            style: TextStyles.textTermosLightBlack11,
+                          ),
                         ),
                       );
                     },

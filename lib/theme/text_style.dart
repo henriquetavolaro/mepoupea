@@ -8,6 +8,11 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.textNath
   );
+  static final mePoupeExclamation = GoogleFonts.poppins(
+    fontSize: 44,
+    fontWeight: FontWeight.w800,
+    color: AppColors.white
+  );
   static final paragraphHeaderWhite = GoogleFonts.poppins(
     fontSize: 16,
     fontWeight: FontWeight.w600,
@@ -124,6 +129,11 @@ class TextStyles {
   );
   static final paragraphMedium14Black = GoogleFonts.poppins(
     fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textLightBlack
+  );
+  static final paragraphMedium15Black = GoogleFonts.poppins(
+    fontSize: 15,
     fontWeight: FontWeight.w500,
     color: AppColors.textLightBlack
   );
