@@ -7,6 +7,7 @@ class AppColors {
   static const white = Color(0xFFFFFFFF);
   static const orange = Color(0xFFFDAB47);
   static const darkOrange = Color(0xFF88B337);
+  static const lightOrange = Color(0xFFFFC987);
   static const darkBlue = Color(0xFF3A2372);
   static const loginBackground = Color(0xFFF6F2FF);
   static const textLightBlack = Color(0xFF202020);
@@ -30,5 +31,7 @@ class AppColors {
   static const backgroundLightYellow = Color(0xFFF8FCF1);
   static const backgroundLightGreen = Color(0xFFFFFCF2);
   static const yellow = Color(0xFFB6E664);
+  static const brown = Color(0xFF6B3B00);
+
 
 }

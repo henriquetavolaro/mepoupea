@@ -51,6 +51,7 @@ dependencies:
   hexagon: 0.2.0-nullsafety.1
   grouped_list: ^4.1.0
   intl: ^0.17.0
+  coast: ^2.0.2
 
 dev_dependencies:
   mockito: ^5.0.16

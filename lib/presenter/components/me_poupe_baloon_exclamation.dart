@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:mepoupeapp/theme/text_style.dart';
 
-class MePoupeBaloonExclamation extends StatelessWidget {
-  const MePoupeBaloonExclamation({
+class MePoupeBaloonExclamationBig extends StatelessWidget {
+  const MePoupeBaloonExclamationBig({
     Key? key,
   }) : super(key: key);
 
@@ -24,6 +24,34 @@ class MePoupeBaloonExclamation extends StatelessWidget {
           top: 8,
           child: Text('!',
             style: TextStyles.mePoupeExclamation,),
+        )
+      ],
+    );
+  }
+}
+
+class MePoupeBaloonExclamationMedium extends StatelessWidget {
+  const MePoupeBaloonExclamationMedium({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        CustomPaint(
+          size: Size(58, (58*0.9824394874228761).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+          painter: RPSCustomPainterMePoupe2(),
+        ),
+        CustomPaint(
+          size: Size(61, (58*0.9824394874228761).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+          painter: RPSCustomPainterMePoupe(),
+        ),
+        Positioned(
+          right: 16,
+          top: 8,
+          child: Text('!',
+            style: TextStyles.mePoupeExclamationMedium,),
         )
       ],
     );

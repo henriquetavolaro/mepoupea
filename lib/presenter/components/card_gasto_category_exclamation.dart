@@ -68,7 +68,7 @@ class CardGastoCategoryExclamation extends StatelessWidget {
         const Positioned(
           right: 24,
           top: 24,
-          child: MePoupeBaloonExclamation(),
+          child: MePoupeBaloonExclamationBig(),
         )
 
       ],
