@@ -202,7 +202,7 @@ class _CameraState extends State<Camera> {
                     child: IconButton(
                       icon: const Icon(
                         Icons.flip_camera_ios_rounded,
-                        color: AppColors.black,
+                        color: AppColors.white,
                         size: 48,
                       ),
                       onPressed: () {

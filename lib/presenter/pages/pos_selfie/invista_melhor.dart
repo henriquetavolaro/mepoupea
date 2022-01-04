@@ -123,7 +123,7 @@ class _InvistaMelhorState extends State<InvistaMelhor> {
                                 TextSpan(
                                     text: '490 ',
                                     style: TextStyles
-                                        .textSelfieBig24MontserratDarkOrangeSemiBold),
+                                        .textSelfieBig24MontserratDarkOrangeLight),
                                 TextSpan(
                                     text: '/ mês',
                                     style: TextStyles

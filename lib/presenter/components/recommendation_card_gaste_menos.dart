@@ -9,6 +9,7 @@ class RecommendationCardGasteMenos extends StatelessWidget {
   final String valor;
   final String valorMes;
   final String descricao;
+  final VoidCallback onClick;
 
   const RecommendationCardGasteMenos({
     Key? key,
@@ -16,6 +17,7 @@ class RecommendationCardGasteMenos extends StatelessWidget {
     required this.valor,
     required this.valorMes,
     required this.descricao,
+    required this.onClick,
   }) : super(key: key);
 
   @override
@@ -54,7 +56,7 @@ class RecommendationCardGasteMenos extends StatelessWidget {
                           TextSpan(
                               text: '$valor ',
                               style: TextStyles
-                                  .textSelfieBig24MontserratDarkOrangeSemiBold),
+                                  .textSelfieBig24MontserratDarkOrangeLight),
                           TextSpan(
                               text: '(- R\$ $valorMes/mês)',
                               style: TextStyles
@@ -92,7 +94,7 @@ class RecommendationCardGasteMenos extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 24.0),
             child: CustomButton(
-              onClick: () {},
+              onClick: onClick,
               text: 'Eu quero!',
               color: AppColors.orange,
               textColor: AppColors.white,

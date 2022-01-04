@@ -26,6 +26,8 @@ import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_2.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_3.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/criar_meta_4.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/detalhe_card_gastos.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/detalhes_card_distribuir_em_metas.dart';
+import 'package:mepoupeapp/presenter/pages/pos_selfie/detalhes_card_gastos_com_nath.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/gastos_detalhes_1.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/gastos_detalhes_categoria.dart';
 import 'package:mepoupeapp/presenter/pages/pos_selfie/home_pos_selfie.dart';
@@ -74,7 +76,7 @@ class _AppWidgetState extends State<AppWidget> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: '/detalhes_card_gastos',
+        initialRoute: '/criar_meta_3',
         routes: {
           '/onboarding_1': (context) => const OnboardingScreen1(),
           '/onboarding_2': (context) => const OnboardingScreen2(),
@@ -128,6 +130,8 @@ class _AppWidgetState extends State<AppWidget> {
           '/gastos_detalhes_1': (context) => const GastosDetalhes1(),
           '/gastos_detalhes_categoria': (context) => const GastosDetalhesCategoria(),
           '/detalhes_card_gastos': (context) => const DetalheCardGastos(),
+          '/detalhes_card_gastos_com_nath': (context) => const DetalheCardGastosComNath(),
+          '/detalhes_card_distribuir_em_metas': (context) => const DetalhesCardDistribuirEmMetas(),
 
         },
       ),

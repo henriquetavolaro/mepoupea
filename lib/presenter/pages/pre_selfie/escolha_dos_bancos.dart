@@ -12,7 +12,6 @@ class EscolhaDosBancos extends StatefulWidget {
 }
 
 class _EscolhaDosBancosState extends State<EscolhaDosBancos> {
-  bool _value = false;
 
   final banks = [
     BankCheckBox(name: 'Bradesco', image: Image.asset('assets/bradesco.png')),
@@ -31,23 +30,6 @@ class _EscolhaDosBancosState extends State<EscolhaDosBancos> {
     'Fllower': false,
     'Fruits': false,
   };
-
-  var holder_1 = [];
-
-  getItems() {
-    List.forEach((key, value) {
-      if (value == true) {
-        holder_1.add(key);
-      }
-    });
-
-    // Printing all selected items on Terminal screen.
-    print(holder_1);
-    // Here you will get all your selected Checkbox items.
-
-    // Clear array after use.
-    holder_1.clear();
-  }
 
   @override
   Widget build(BuildContext context) {

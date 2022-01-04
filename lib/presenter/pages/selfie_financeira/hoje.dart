@@ -59,6 +59,7 @@ class Hoje extends StatelessWidget {
                     dinheiroQueFizR$Style: dinheiroQueFizR$StyleSozinho,
                     dinheiroQueFizValorStyle: dinheiroQueFizValorStyleSozinho,
                     heartIconVisibility: false,
+                    gasteiOnClick: () async => await Navigator.pushNamed(context, '/gastos_detalhes_1'),
                   ),
                   Expanded(
                     flex: 1,

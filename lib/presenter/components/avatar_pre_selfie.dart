@@ -32,7 +32,7 @@ class AvatarPreSelfie extends StatelessWidget {
                     color: AppColors.purple),
                 child: Center(
                   child: Text(
-                    'J',
+                    'B',
                     style: TextStyles.initialLetterSelfie,
                   ),
                 ),

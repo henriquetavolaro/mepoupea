@@ -15,10 +15,12 @@ class CardSelfieColumn extends StatelessWidget {
   final TextStyle dinheiroQueFizR$Style;
   final TextStyle dinheiroQueFizValorStyle;
   bool heartIconVisibility;
+  VoidCallback? gasteiOnClick;
 
   CardSelfieColumn(
     {
     Key? key,
+      this.gasteiOnClick,
     this.heartIconVisibility = true,
     required this.elevation,
     required this.backgroundColor,
@@ -122,68 +124,71 @@ class CardSelfieColumn extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: Material(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 8.0, bottom: 16, left: 8, right: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            text: '- R\$ ',
-                            style: TextStyles.paragraphSmall9MontserratRed,
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: gastei,
-                                  style: TextStyles
-                                      .textSelfieSmall13MontserratLightRedSemiBold),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                RotatedBox(
-                                  quarterTurns: -1,
-                                  child: Text(
-                                    '---------',
-                                    style: TextStyles.paragraphGreySmall11light,
-                                  ),
-                                ),
-                                Transform.translate(
-                                  offset: Offset(-6, 0),
-                                  child: RichText(
-                                    text: TextSpan(
-                                      text: '_ _   R\$ ',
-                                      style: TextStyles
-                                          .textValueSmall7MontserratLightBlack,
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                            text: gasteiComDividas,
-                                            style: TextStyles
-                                                .textValueSmall9MontserratLightBlack),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                child: InkWell(
+                  onTap: gasteiOnClick,
+                  child: Material(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 8.0, bottom: 16, left: 8, right: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: '- R\$ ',
+                              style: TextStyles.paragraphSmall9MontserratRed,
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: gastei,
+                                    style: TextStyles
+                                        .textSelfieSmall13MontserratLightRedSemiBold),
                               ],
                             ),
-                            Text(
-                              'com dívidas',
-                              style: TextStyles.textValueSmall7LightBlack,
-                            )
-                          ],
-                        ),
-                      ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  RotatedBox(
+                                    quarterTurns: -1,
+                                    child: Text(
+                                      '---------',
+                                      style: TextStyles.paragraphGreySmall11light,
+                                    ),
+                                  ),
+                                  Transform.translate(
+                                    offset: Offset(-6, 0),
+                                    child: RichText(
+                                      text: TextSpan(
+                                        text: '_ _   R\$ ',
+                                        style: TextStyles
+                                            .textValueSmall7MontserratLightBlack,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                              text: gasteiComDividas,
+                                              style: TextStyles
+                                                  .textValueSmall9MontserratLightBlack),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                'com dívidas',
+                                style: TextStyles.textValueSmall7LightBlack,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

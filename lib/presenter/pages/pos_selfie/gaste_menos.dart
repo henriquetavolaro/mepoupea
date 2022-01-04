@@ -41,18 +41,20 @@ class _GasteMenosState extends State<GasteMenos> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     RecommendationCardGasteMenos(
                       elimineEconomize: 'Elimine',
                       valor: '490',
                       valorMes: '40,83',
                       descricao: 'Zerando a anuidade do seu cartão de crédito',
+                      onClick: () async => await Navigator.pushNamed(context, '/detalhes_card_gastos'),
                     ),
                     RecommendationCardGasteMenos(
                       elimineEconomize: 'Economize',
                       valor: '300',
                       valorMes: '30,00',
                       descricao: 'Eliminando as tarifas bancárias',
+                      onClick: () async => await Navigator.pushNamed(context, '/detalhes_card_gastos'),
                     ),
                   ],
                 ),

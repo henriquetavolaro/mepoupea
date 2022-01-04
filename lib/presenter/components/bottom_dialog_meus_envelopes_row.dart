@@ -11,8 +11,10 @@ class BottomMeusEnvelopesRow extends StatelessWidget {
   final String prazo;
   final String valorAtual;
 
+
   const BottomMeusEnvelopesRow({
     Key? key,
+
     required this.title,
     required this.percent,
     required this.total,

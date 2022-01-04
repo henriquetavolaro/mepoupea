@@ -145,7 +145,7 @@ class _SelfieFinanceira1State extends State<SelfieFinanceira1>
                             Padding(
                               padding: const EdgeInsets.only(top: 16, bottom: 8),
                               child: Text(
-                                'Olá, Joaquina',
+                                'Olá, Bruce Dickinson',
                                 style: TextStyles.textBlack14Medium,
                               ),
                             ),

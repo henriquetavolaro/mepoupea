@@ -15,7 +15,8 @@ class GastosDetalhesCategoria extends StatefulWidget {
   const GastosDetalhesCategoria({Key? key}) : super(key: key);
 
   @override
-  _GastosDetalhesCategoriaState createState() => _GastosDetalhesCategoriaState();
+  _GastosDetalhesCategoriaState createState() =>
+      _GastosDetalhesCategoriaState();
 }
 
 class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
@@ -89,7 +90,6 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
       'detail': "PIX conta Itaú",
       'date': '26/12/2021'
     },
-
   ];
 
   String selectedCategory = '';
@@ -130,10 +130,13 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
                       children: [
                         Row(
                           children: [
-                            const FaIcon(
-                              FontAwesomeIcons.angleLeft,
-                              color: AppColors.purple,
-                              size: 28,
+                            IconButton(
+                              onPressed: () => Navigator.pop(context),
+                              icon: const FaIcon(
+                                FontAwesomeIcons.angleLeft,
+                                color: AppColors.purple,
+                                size: 28,
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 24),
@@ -163,7 +166,7 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(left: 16, right: 16, bottom: 32),
+                        const EdgeInsets.only(left: 16, right: 16, bottom: 32),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: MonthChip(
@@ -201,7 +204,7 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
                                     borderRadius: BorderRadius.circular(14)),
                                 color: AppColors.white,
                                 elevation:
-                                selectedCategory == item.text ? 4 : 0,
+                                    selectedCategory == item.text ? 4 : 0,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       top: 20, bottom: 12, right: 16, left: 16),
@@ -220,7 +223,6 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(
                         right: 24, left: 24, top: 24, bottom: 20),
@@ -254,7 +256,6 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(left: 24),
                     child: Align(
@@ -277,18 +278,18 @@ class _GastosDetalhesCategoriaState extends State<GastosDetalhesCategoria> {
                               left: 24, bottom: 20, top: 24),
                           child: groupByValue == formattedNow
                               ? Text(
-                            'Hoje',
-                            style: TextStyles.textTermosLightBlack11,
-                          )
+                                  'Hoje',
+                                  style: TextStyles.textTermosLightBlack11,
+                                )
                               : groupByValue == formattedYesterday
-                              ? Text(
-                            'Ontem $groupByValue',
-                            style: TextStyles.textTermosLightBlack11,
-                          )
-                              : Text(
-                            groupByValue,
-                            style: TextStyles.textTermosLightBlack11,
-                          ),
+                                  ? Text(
+                                      'Ontem $groupByValue',
+                                      style: TextStyles.textTermosLightBlack11,
+                                    )
+                                  : Text(
+                                      groupByValue,
+                                      style: TextStyles.textTermosLightBlack11,
+                                    ),
                         ),
                       );
                     },

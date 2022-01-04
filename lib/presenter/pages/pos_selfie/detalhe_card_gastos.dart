@@ -20,6 +20,7 @@ class _DetalheCardGastosState extends State<DetalheCardGastos> {
     Beach(builder: (context) => LeftScreen()),
     Beach(builder: (context) => const MiddleScreen()),
     Beach(builder: (context) => const RightScreen()),
+
   ];
 
   final _coastController = CoastController(initialPage: 1);
@@ -301,7 +302,7 @@ class _LeftScreenState extends State<LeftScreen> {
                             Padding(
                               padding: const EdgeInsets.only(top: 24),
                               child: CustomButton(
-                                  onClick: () {},
+                                  onClick: () async => await Navigator.pushNamed(context, '/detalhes_card_gastos_com_nath'),
                                   text: 'Na.th, faz pra mim!',
                                   color: AppColors.white,
                                   textColor: AppColors.darkBlue,
@@ -1195,6 +1196,11 @@ class MiddleScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
 
 class GradientIcon extends StatelessWidget {
   const GradientIcon({

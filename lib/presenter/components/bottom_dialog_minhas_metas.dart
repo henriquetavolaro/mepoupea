@@ -41,6 +41,7 @@ class _BottomDialogMinhasMetasState extends State<BottomDialogMinhasMetas> {
                     valorAtual: item.valorAtual,
                     prazo: item.prazo,
                     image: item.image,
+                    title: item.title,
                   );
                 },
               ),

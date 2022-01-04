@@ -12,18 +12,22 @@ class BottomMinhasMetasRow extends StatelessWidget {
   final String prazo;
   final String valorAtual;
   final Image image;
+  final String title;
   bool editable;
   bool rocketVisibility;
+  bool checkValue;
 
   BottomMinhasMetasRow({
     Key? key,
     this.editable = false,
     this.rocketVisibility = false,
+    this.checkValue = false,
     required this.percent,
     required this.total,
     required this.prazo,
     required this.valorAtual,
     required this.image,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -31,6 +35,13 @@ class BottomMinhasMetasRow extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 70.0, bottom: 8),
+          child: Text(
+            title,
+            style: TextStyles.paragraphSmall11DarkBlue,
+          ),
+        ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

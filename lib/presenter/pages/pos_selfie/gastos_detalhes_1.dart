@@ -163,10 +163,13 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                       children: [
                         Row(
                           children: [
-                            const FaIcon(
-                              FontAwesomeIcons.angleLeft,
-                              color: AppColors.purple,
-                              size: 28,
+                            IconButton(
+                              onPressed: () => Navigator.pop(context),
+                              icon: const FaIcon(
+                                FontAwesomeIcons.angleLeft,
+                                color: AppColors.purple,
+                                size: 28,
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 24),
@@ -259,7 +262,8 @@ class _GastosDetalhes1State extends State<GastosDetalhes1> {
                     maintainState: true,
                     visible: selectedCategory.isNotEmpty,
                     child: CardGastoCategoryExclamation(
-                      onClick: () async => await Navigator.pushNamed(context, '/gastos_detalhes_categoria'),
+                      onClick: () async => await Navigator.pushNamed(
+                          context, '/gastos_detalhes_categoria'),
                     ),
                   ),
                   Padding(

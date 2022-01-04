@@ -22,6 +22,7 @@ class _MinhasMetasState extends State<MinhasMetas> {
       image: Image.asset('assets/umbrella.png'),
       editable: true,
       rocketVisibility: true,
+      title: 'Férias na praia',
     ),
     BottomMinhasMetasRow(
       percent: 200 / 700 * 100,
@@ -31,6 +32,7 @@ class _MinhasMetasState extends State<MinhasMetas> {
       image: Image.asset('assets/bicycle.png'),
       editable: true,
       rocketVisibility: true,
+      title: 'Bicicleta SOuth Stark',
     ),
     BottomMinhasMetasRow(
       percent: 80613 / 1000000 * 100,
@@ -40,6 +42,7 @@ class _MinhasMetasState extends State<MinhasMetas> {
       image: Image.asset('assets/house.png'),
       editable: true,
       rocketVisibility: true,
+      title: 'Imóvel',
     ),
   ];
 
@@ -70,11 +73,14 @@ class _MinhasMetasState extends State<MinhasMetas> {
                 children: [
                   Row(
                     children: [
-                      const FaIcon(
-                        FontAwesomeIcons.angleLeft,
-                        color: AppColors.purple,
-                        size: 28,
-                      ),
+                      IconButton(
+                          onPressed: () => Navigator.popUntil(context, ModalRoute.withName('/home_pos_selfie')),
+                          // Navigator.pushNamed(context, '/home_pos_selfie'),
+                          icon: const FaIcon(
+                            FontAwesomeIcons.angleLeft,
+                            color: AppColors.purple,
+                            size: 28,
+                          ),),
                       Padding(
                         padding: const EdgeInsets.only(left: 24),
                         child: Text(
@@ -104,6 +110,7 @@ class _MinhasMetasState extends State<MinhasMetas> {
                                 image: item.image,
                                 editable: item.editable,
                                 rocketVisibility: item.rocketVisibility,
+                                title: item.title,
                               );
                             },
                           ),

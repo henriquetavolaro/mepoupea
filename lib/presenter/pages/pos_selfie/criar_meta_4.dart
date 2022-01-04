@@ -208,7 +208,7 @@ class _CriarMeta4State extends State<CriarMeta4> {
                         text: 'Começar a realizar!',
                         textColor: AppColors.white,
                         color: AppColors.orange,
-                        onClick: () {},
+                        onClick: () async => await Navigator.pushNamed(context, '/minhas_metas'),
                         style: TextStyles.buttonTextMedium,
                       ),
                     ),

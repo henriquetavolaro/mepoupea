@@ -48,6 +48,7 @@ class _HomePosSelfieState extends State<HomePosSelfie>   with SingleTickerProvid
     prazo: 'dez 2022',
     valorAtual: 'R\$ 22.500',
     image: Image.asset('assets/bicycle.png'),
+    title: 'Bicicleta South Stark',
   ),
     BottomMinhasMetasRow(
       percent: 80613/1000000*100,
@@ -55,6 +56,7 @@ class _HomePosSelfieState extends State<HomePosSelfie>   with SingleTickerProvid
       prazo: 'set 2036',
       valorAtual: 'R\$ 10.000',
       image: Image.asset('assets/house.png'),
+      title: 'Imóvel',
     ),
   ];
 
@@ -239,7 +241,7 @@ class _HomePosSelfieState extends State<HomePosSelfie>   with SingleTickerProvid
                           Padding(
                             padding: const EdgeInsets.only(left: 16),
                             child: Text(
-                              'Joaquina',
+                              'Bruce Dickinson',
                               style: TextStyles.textBlack14Medium,
                             ),
                           )

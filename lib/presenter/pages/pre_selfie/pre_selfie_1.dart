@@ -63,7 +63,7 @@ class _PreSelfie1State extends State<PreSelfie1>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Olá, Joaquina!',
+                        'Olá, Bruce Dickinson!',
                         style: TextStyles.headerTextBlue,
                       ),
                       Text(

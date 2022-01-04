@@ -474,6 +474,11 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.textLightBlack,
   );
+  static final textValueSmall7MontserratWhite = GoogleFonts.montserrat(
+    fontSize:7,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
   static final textValueSmall9MontserratLightBlack = GoogleFonts.montserrat(
     fontSize:9,
     fontWeight: FontWeight.w500,
@@ -499,9 +504,14 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.darkBlue,
   );
-  static final textSelfieBig24MontserratDarkOrangeSemiBold = GoogleFonts.montserrat(
+  static final textSelfieBig24MontserratDarkOrangeLight = GoogleFonts.montserrat(
     fontSize:24,
     fontWeight: FontWeight.w400,
+    color: AppColors.darkOrange,
+  );
+  static final textSelfieBig35MontserratDarkOrangeMedium = GoogleFonts.montserrat(
+    fontSize:35,
+    fontWeight: FontWeight.w500,
     color: AppColors.darkOrange,
   );
   static final textSelfieBig24MontserratDarkBlueSemiBold = GoogleFonts.montserrat(
@@ -553,6 +563,16 @@ class TextStyles {
     fontSize:14,
     fontWeight: FontWeight.w600,
     color: AppColors.black,
+  );
+  static final textSelfieCardMedium14MontserratWhiteSemiBold = GoogleFonts.montserrat(
+    fontSize:14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+  static final textSelfieCardMedium14MontserratDarkBlueSemiBold = GoogleFonts.montserrat(
+    fontSize:14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkBlue,
   );
   static final textSelfieCardBig20MontserratBlackSemiBold = GoogleFonts.montserrat(
     fontSize:20,
